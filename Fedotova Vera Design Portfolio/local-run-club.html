@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Local Run Club App · Case Study</title>
+  <meta name="description" content="UX case study: Local Run Club App — community-led research, loyalty design, and prototype validation for runners in Warsaw." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=230" />
+</head>
+<body class="site-theme">
+  <header class="site-header">
+    <nav class="nav" aria-label="Main">
+      <a class="logo" href="welcome.html">Vera Fedotova</a>
+      <div class="nav-end">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#projects">Projects</a></li>
+          <li><a href="index.html#experience" class="hide-mobile">Experience</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a class="nav-cv" href="https://fvofedotova.github.io/fedotovadesign/Fedotova%20Vera%20CV%20Designer.pdf?v=188" download="Fedotova Vera CV Designer.pdf">Download CV</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="case-hero">
+      <div class="container">
+        <p class="section-label">Case study · Mobile · Early 2025</p>
+        <h1 class="hero-title">Local Run Club App</h1>
+        <p class="hero-sub">Shaped by the community</p>
+        <p class="hero-lead">
+          A mobile loyalty concept for runners in Warsaw — challenges, local events, and rewards from neighborhood businesses. Co-designed with athletes from Hyrox clubs Dvor and Athletic House and with local business owners in Żoliborz. Research and prototyping are complete; launch is on hold.
+        </p>
+
+        <dl class="case-meta">
+          <div>
+            <dt>Role</dt>
+            <dd>Product Designer</dd>
+          </div>
+          <div>
+            <dt>Focus</dt>
+            <dd>Mobile product · Community research · Loyalty</dd>
+          </div>
+          <div>
+            <dt>Status</dt>
+            <dd>Concept · On hold · Early 2025</dd>
+          </div>
+          <div>
+            <dt>Deliverables</dt>
+            <dd>Research summary · UX/UI design · Prototype</dd>
+          </div>
+        </dl>
+
+        <dl class="case-meta case-meta--tools">
+          <div>
+            <dt>Surveys</dt>
+            <dd>Google Forms</dd>
+          </div>
+          <div>
+            <dt>Design and presentation</dt>
+            <dd>Figma</dd>
+          </div>
+          <div>
+            <dt>Accessibility</dt>
+            <dd>WCAG · HIG review</dd>
+          </div>
+          <div>
+            <dt>User testing</dt>
+            <dd>Maze · Figma prototype</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <div class="case-accordion">
+    <section class="case-block case-block--discover case-accordion-item">
+      <div class="container">
+        <h2 class="case-accordion-heading">
+          <button type="button" class="case-accordion-trigger" aria-expanded="false" aria-controls="accordion-discover" id="accordion-trigger-discover">
+            <span class="case-accordion-title">Discover</span>
+            <span class="case-accordion-icon" aria-hidden="true"></span>
+          </button>
+        </h2>
+        <div class="case-accordion-panel" id="accordion-discover" role="region" aria-labelledby="accordion-trigger-discover" hidden>
+
+        <h3 class="case-block-subtitle">UX challenge</h3>
+        <p>
+          With little existing data, the community became the main source of truth. Surveys and interviews with runners, plus conversations with local businesses, defined what a loyalty experience should offer — and what partners would realistically support.
+        </p>
+
+        <h3 class="case-block-subtitle">Research scope</h3>
+
+        <dl class="case-meta case-meta--survey case-meta--boxed">
+          <div>
+            <dt>Surveys</dt>
+            <dd>30 athletes · mixed levels</dd>
+          </div>
+          <div>
+            <dt>Interviews</dt>
+            <dd>5 local business owners</dd>
+          </div>
+          <div>
+            <dt>Methods</dt>
+            <dd>Google Forms · in-person interviews</dd>
+          </div>
+        </dl>
+
+        <h3 class="case-block-subtitle">Needs and pains</h3>
+        <dl class="case-meta case-meta--needs case-meta--boxed">
+          <div>
+            <dt>Health &amp; balance</dt>
+            <dd class="discover-box-body">
+              <p><span class="discover-sub">Need</span> Stay active and recover from work stress.</p>
+              <p><span class="discover-sub">Pain</span> Little energy or time outside training.</p>
+            </dd>
+          </div>
+          <div>
+            <dt>Progress &amp; consistency</dt>
+            <dd class="discover-box-body">
+              <p><span class="discover-sub">Need</span> Visible goals and proof of improvement.</p>
+              <p><span class="discover-sub">Pain</span> Hard to stay consistent without feedback.</p>
+            </dd>
+          </div>
+          <div>
+            <dt>Community</dt>
+            <dd class="discover-box-body">
+              <p><span class="discover-sub">Need</span> Shared motivation and belonging.</p>
+              <p><span class="discover-sub">Pain</span> Solo training feels isolating.</p>
+            </dd>
+          </div>
+          <div>
+            <dt>Rewards</dt>
+            <dd class="discover-box-body">
+              <p><span class="discover-sub">Need</span> Tangible perks — discounts, wellness, event entries.</p>
+              <p><span class="discover-sub">Pain</span> Generic loyalty offers feel forgettable.</p>
+            </dd>
+          </div>
+          <div>
+            <dt>Motivation over time</dt>
+            <dd class="discover-box-body">
+              <p><span class="discover-sub">Need</span> Fresh goals and reasons to keep showing up.</p>
+              <p><span class="discover-sub">Pain</span> Routine turns into boredom; momentum fades.</p>
+            </dd>
+          </div>
+        </dl>
+
+        <h3 class="case-block-subtitle">Reward preferences</h3>
+        <div class="discover-chart-box">
+          <p class="case-block-lead">Which type of rewards would make you the happiest?</p>
+          <div class="discover-chart">
+            <div class="discover-bar">
+              <div class="discover-bar-head">
+                <span class="discover-bar-label">Wellness treats</span>
+                <span class="discover-bar-value">20</span>
+              </div>
+              <div class="discover-bar-track" role="presentation"><span class="discover-bar-fill" style="--bar: 100%"></span></div>
+            </div>
+            <div class="discover-bar">
+              <div class="discover-bar-head">
+                <span class="discover-bar-label">Food &amp; drink perks</span>
+                <span class="discover-bar-value">16</span>
+              </div>
+              <div class="discover-bar-track" role="presentation"><span class="discover-bar-fill" style="--bar: 80%"></span></div>
+            </div>
+            <div class="discover-bar">
+              <div class="discover-bar-head">
+                <span class="discover-bar-label">Sportswear &amp; gear discounts</span>
+                <span class="discover-bar-value">14</span>
+              </div>
+              <div class="discover-bar-track" role="presentation"><span class="discover-bar-fill" style="--bar: 70%"></span></div>
+            </div>
+            <div class="discover-bar">
+              <div class="discover-bar-head">
+                <span class="discover-bar-label">Race &amp; class entries</span>
+                <span class="discover-bar-value">12</span>
+              </div>
+              <div class="discover-bar-track" role="presentation"><span class="discover-bar-fill" style="--bar: 60%"></span></div>
+            </div>
+            <div class="discover-bar">
+              <div class="discover-bar-head">
+                <span class="discover-bar-label">Shout-outs &amp; badges</span>
+                <span class="discover-bar-value">7</span>
+              </div>
+              <div class="discover-bar-track" role="presentation"><span class="discover-bar-fill" style="--bar: 35%"></span></div>
+            </div>
+            <p class="discover-chart-note">30 participants · multiple choice (selections could overlap)</p>
+          </div>
+        </div>
+
+        <h3 class="case-block-subtitle">Personas</h3>
+        <dl class="case-meta case-meta--personas case-meta--boxed">
+          <div>
+            <dt>The Dedicated Runner · Intermediate to advanced</dt>
+            <dd class="discover-box-body">
+              <p><span class="discover-sub">Goal</span> Stay engaged between races.</p>
+              <p><span class="discover-sub">Needs</span> Meaningful challenges and rewards that match effort — e.g. a free coffee after a long run.</p>
+            </dd>
+          </div>
+          <div>
+            <dt>The Newcomer · Beginner</dt>
+            <dd class="discover-box-body">
+              <p><span class="discover-sub">Goal</span> Build a habit and confidence.</p>
+              <p><span class="discover-sub">Needs</span> Simple onboarding, clear milestones, and low-pressure comparison with peers at a similar level.</p>
+            </dd>
+          </div>
+          <div>
+            <dt>The Local Business Owner · Partner</dt>
+            <dd class="discover-box-body">
+              <p><span class="discover-sub">Goal</span> Bring new customers through the door.</p>
+              <p><span class="discover-sub">Needs</span> A light way to join the program — perks that are easy to honor and worth offering.</p>
+            </dd>
+          </div>
+          <div>
+            <dt>The Cashier · Staff</dt>
+            <dd class="discover-box-body">
+              <p><span class="discover-sub">Goal</span> Keep checkout fast.</p>
+              <p><span class="discover-sub">Needs</span> Quick reward verification — no friction at the counter.</p>
+            </dd>
+          </div>
+        </dl>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="case-block case-block--define case-accordion-item">
+      <div class="container">
+        <h2 class="case-accordion-heading">
+          <button type="button" class="case-accordion-trigger" aria-expanded="false" aria-controls="accordion-define" id="accordion-trigger-define">
+            <span class="case-accordion-title">Define</span>
+            <span class="case-accordion-icon" aria-hidden="true"></span>
+          </button>
+        </h2>
+        <div class="case-accordion-panel" id="accordion-define" role="region" aria-labelledby="accordion-trigger-define" hidden>
+
+        <h3 class="case-block-subtitle">Customer journey map</h3>
+        <dl class="case-meta case-meta--cjm case-meta--boxed">
+          <div>
+            <dt>01 · Awareness</dt>
+            <dd class="discover-box-body">
+              <p><span class="discover-sub">Action</span> Hears about the club or sees a local campaign.</p>
+              <p><span class="discover-sub">Need</span> Understand why it is worth joining.</p>
+              <p><span class="discover-sub">Pain</span> Unclear value or low trust.</p>
+              <p><span class="discover-sub">Opportunity</span> Lead with health, progress, and local rewards.</p>
+            </dd>
+          </div>
+          <div>
+            <dt>02 · Onboarding</dt>
+            <dd class="discover-box-body">
+              <p><span class="discover-sub">Action</span> Signs up and links activity tracking.</p>
+              <p><span class="discover-sub">Need</span> Fast setup and an early win.</p>
+              <p><span class="discover-sub">Pain</span> Long forms or unclear next steps.</p>
+              <p><span class="discover-sub">Opportunity</span> Guided first challenge and welcome perk.</p>
+            </dd>
+          </div>
+          <div>
+            <dt>03 · Engagement</dt>
+            <dd class="discover-box-body">
+              <p><span class="discover-sub">Action</span> Logs runs, joins challenges, checks progress.</p>
+              <p><span class="discover-sub">Need</span> Motivation and a sense of community.</p>
+              <p><span class="discover-sub">Pain</span> Progress feels invisible; group activity is hard to find.</p>
+              <p><span class="discover-sub">Opportunity</span> Milestones, social challenges, local group runs.</p>
+            </dd>
+          </div>
+          <div>
+            <dt>04 · Rewards</dt>
+            <dd class="discover-box-body">
+              <p><span class="discover-sub">Action</span> Browses perks and local offers.</p>
+              <p><span class="discover-sub">Need</span> Rewards that feel worth the effort.</p>
+              <p><span class="discover-sub">Pain</span> Thin or generic catalog.</p>
+              <p><span class="discover-sub">Opportunity</span> Mix everyday perks (coffee, gear) with experiences (spa, races).</p>
+            </dd>
+          </div>
+          <div>
+            <dt>05 · Redemption</dt>
+            <dd class="discover-box-body">
+              <p><span class="discover-sub">Action</span> Redeems points or sends them to a friend.</p>
+              <p><span class="discover-sub">Need</span> Recognition without hassle.</p>
+              <p><span class="discover-sub">Pain</span> Confusing flows at checkout.</p>
+              <p><span class="discover-sub">Opportunity</span> QR redemption and clear confirmation.</p>
+            </dd>
+          </div>
+          <div>
+            <dt>06 · Retention</dt>
+            <dd class="discover-box-body">
+              <p><span class="discover-sub">Action</span> Reviews progress and sets new goals.</p>
+              <p><span class="discover-sub">Need</span> Reasons to return after the first reward.</p>
+              <p><span class="discover-sub">Pain</span> Motivation drops once novelty wears off.</p>
+              <p><span class="discover-sub">Opportunity</span> Seasonal challenges and streak rewards.</p>
+            </dd>
+          </div>
+        </dl>
+
+        <h3 class="case-block-subtitle">Core flows</h3>
+        <dl class="case-meta case-meta--flows case-meta--boxed">
+          <div>
+            <dt>Join &amp; explore</dt>
+            <dd class="discover-box-body">
+              <p><span class="discover-sub">Flow</span> Create profile · Learn features · Browse rewards and challenges</p>
+              <p><span class="discover-sub">Purpose</span> Show value early and let users personalize the experience.</p>
+            </dd>
+          </div>
+          <div>
+            <dt>Earn &amp; redeem</dt>
+            <dd class="discover-box-body">
+              <p><span class="discover-sub">Flow</span> Track activity · Collect points · Activate and redeem</p>
+              <p><span class="discover-sub">Purpose</span> Close the loop between effort and reward.</p>
+            </dd>
+          </div>
+          <div>
+            <dt>Share points</dt>
+            <dd class="discover-box-body">
+              <p><span class="discover-sub">Flow</span> Choose friend · Set amount · Confirm transfer</p>
+              <p><span class="discover-sub">Purpose</span> Strengthen social ties inside the club.</p>
+            </dd>
+          </div>
+          <div>
+            <dt>Challenges</dt>
+            <dd class="discover-box-body">
+              <p><span class="discover-sub">Flow</span> Pick challenge · Track progress · Complete and celebrate</p>
+              <p><span class="discover-sub">Purpose</span> Keep training active between events.</p>
+            </dd>
+          </div>
+        </dl>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="case-block case-block--develop case-accordion-item">
+      <div class="container">
+        <h2 class="case-accordion-heading">
+          <button type="button" class="case-accordion-trigger" aria-expanded="false" aria-controls="accordion-develop" id="accordion-trigger-develop">
+            <span class="case-accordion-title">Develop</span>
+            <span class="case-accordion-icon" aria-hidden="true"></span>
+          </button>
+        </h2>
+        <div class="case-accordion-panel" id="accordion-develop" role="region" aria-labelledby="accordion-trigger-develop" hidden>
+
+        <h3 class="case-block-subtitle">Visual direction</h3>
+        <div class="discover-chart-box develop-text-box">
+          <p class="develop-text">Sport-native visuals, real photography, and user-generated content. The loyalty layer stays transparent — progress and perks first, not promotional noise.</p>
+        </div>
+
+        <h3 class="case-block-subtitle">Leaderboard decision</h3>
+        <div class="discover-chart-box develop-text-box">
+          <p class="develop-text">Competition split the group: some wanted public rankings, others preferred private progress. Research and sketches tested how much social pressure the product should apply.</p>
+        </div>
+
+        <p class="case-block-lead develop-step">Step 01 · Survey</p>
+        <div class="discover-chart-box">
+          <p class="case-block-lead">How much do you enjoy a bit of friendly competition?</p>
+          <div class="discover-chart">
+            <div class="discover-bar">
+              <div class="discover-bar-head">
+                <span class="discover-bar-label">Love it — I thrive on leaderboards</span>
+                <span class="discover-bar-value">35%</span>
+              </div>
+              <div class="discover-bar-track" role="presentation"><span class="discover-bar-fill" style="--bar: 100%"></span></div>
+            </div>
+            <div class="discover-bar">
+              <div class="discover-bar-head">
+                <span class="discover-bar-label">Average interest</span>
+                <span class="discover-bar-value">35%</span>
+              </div>
+              <div class="discover-bar-track" role="presentation"><span class="discover-bar-fill" style="--bar: 100%"></span></div>
+            </div>
+            <div class="discover-bar">
+              <div class="discover-bar-head">
+                <span class="discover-bar-label">Meh — I focus mostly on myself</span>
+                <span class="discover-bar-value">30%</span>
+              </div>
+              <div class="discover-bar-track" role="presentation"><span class="discover-bar-fill" style="--bar: 86%"></span></div>
+            </div>
+          </div>
+          <p class="discover-chart-note">30 survey participants · share of responses</p>
+        </div>
+
+        <h3 class="case-block-subtitle">A/B comparison</h3>
+
+        <p class="case-block-lead develop-step">Step 02 · Sketches</p>
+        <div class="develop-ab-grid">
+          <figure class="develop-ab-card">
+            <figcaption class="develop-ab-head"><span class="develop-ab-badge">A</span> Variant A</figcaption>
+            <div class="develop-phone-wrap">
+              <svg class="develop-ab-sketch" viewBox="0 0 110 200" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sketch: Variant A — personal progress, no public ranking">
+                <rect x="11" y="5" width="88" height="190" rx="14" stroke="currentColor" stroke-width="1.25"/>
+                <rect x="18" y="22" width="74" height="166" rx="8" stroke="currentColor" stroke-width="1" opacity="0.22"/>
+                <rect x="47" y="11" width="16" height="3.5" rx="1.75" fill="currentColor" opacity="0.22"/>
+                <line x1="26" y1="40" x2="84" y2="40" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" opacity="0.45"/>
+                <rect x="26" y="54" width="58" height="6" rx="3" stroke="currentColor" stroke-width="1" opacity="0.28"/>
+                <rect x="26" y="54" width="38" height="6" rx="3" fill="currentColor" opacity="0.16"/>
+                <rect x="26" y="72" width="58" height="30" rx="6" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3" opacity="0.3"/>
+                <circle cx="33" cy="118" r="5" stroke="currentColor" stroke-width="1" opacity="0.28"/>
+                <line x1="44" y1="118" x2="80" y2="118" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.24"/>
+                <circle cx="33" cy="140" r="5" stroke="currentColor" stroke-width="1.35"/>
+                <line x1="44" y1="140" x2="72" y2="140" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" opacity="0.5"/>
+                <circle cx="33" cy="162" r="5" stroke="currentColor" stroke-width="1" opacity="0.28"/>
+                <line x1="44" y1="162" x2="80" y2="162" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.24"/>
+                <rect x="43" y="178" width="24" height="2" rx="1" fill="currentColor" opacity="0.2"/>
+              </svg>
+            </div>
+            <p class="develop-ab-caption">Personal list — progress without public ranking</p>
+          </figure>
+          <figure class="develop-ab-card">
+            <figcaption class="develop-ab-head"><span class="develop-ab-badge">B</span> Variant B</figcaption>
+            <div class="develop-phone-wrap">
+              <svg class="develop-ab-sketch" viewBox="0 0 110 200" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sketch: Variant B — public leaderboard with ranks">
+                <rect x="11" y="5" width="88" height="190" rx="14" stroke="currentColor" stroke-width="1.25"/>
+                <rect x="18" y="22" width="74" height="166" rx="8" stroke="currentColor" stroke-width="1" opacity="0.22"/>
+                <rect x="47" y="11" width="16" height="3.5" rx="1.75" fill="currentColor" opacity="0.22"/>
+                <line x1="26" y1="40" x2="84" y2="40" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" opacity="0.45"/>
+                <rect x="34" y="58" width="12" height="22" rx="2" stroke="currentColor" stroke-width="1" opacity="0.28"/>
+                <rect x="48" y="48" width="14" height="32" rx="2" stroke="currentColor" stroke-width="1.25"/>
+                <rect x="64" y="62" width="12" height="18" rx="2" stroke="currentColor" stroke-width="1" opacity="0.28"/>
+                <line x1="26" y1="84" x2="84" y2="84" stroke="currentColor" stroke-width="1" opacity="0.18"/>
+                <text x="30" y="121" text-anchor="middle" fill="currentColor" font-family="Inter, system-ui, sans-serif" font-size="9" font-weight="600">1</text>
+                <line x1="42" y1="118" x2="82" y2="118" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" opacity="0.5"/>
+                <text x="30" y="143" text-anchor="middle" fill="currentColor" font-family="Inter, system-ui, sans-serif" font-size="9" opacity="0.55">2</text>
+                <line x1="42" y1="140" x2="76" y2="140" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.28"/>
+                <text x="30" y="165" text-anchor="middle" fill="currentColor" font-family="Inter, system-ui, sans-serif" font-size="9" opacity="0.55">3</text>
+                <line x1="42" y1="162" x2="78" y2="162" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.28"/>
+                <rect x="43" y="178" width="24" height="2" rx="1" fill="currentColor" opacity="0.2"/>
+              </svg>
+            </div>
+            <p class="develop-ab-caption">Public leaderboard — comparison and rivalry upfront</p>
+          </figure>
+        </div>
+
+        <p class="case-block-lead develop-step">Step 03 · Trade-offs</p>
+        <dl class="case-meta case-meta--ab case-meta--boxed">
+          <div>
+            <dt>Variant A · Personal list</dt>
+            <dd class="discover-box-body">
+              <p><span class="discover-sub">Lower pressure</span> Less fear of ranking last.</p>
+              <p><span class="discover-sub">Inclusive</span> Group feel over head-to-head rivalry.</p>
+              <p><span class="discover-sub">Self-focus</span> Progress framed against personal goals.</p>
+            </dd>
+          </div>
+          <div>
+            <dt>Variant B · Leaderboard</dt>
+            <dd class="discover-box-body">
+              <p><span class="discover-sub">Recognition</span> Status visible to the group.</p>
+              <p><span class="discover-sub">Clear hierarchy</span> Leaders stand out immediately.</p>
+              <p><span class="discover-sub">Rivalry</span> Others become competitors to beat.</p>
+            </dd>
+          </div>
+        </dl>
+
+        <div class="discover-chart-box develop-text-box develop-outcome">
+          <p class="develop-text">Variant A aligned better with mixed competition appetite and beginner needs. The prototype hides other participants’ results until you join a challenge, avoids podium-style leaderboards, and keeps lighter cues — medals and rank — for those who enjoy friendly competition.</p>
+        </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="case-block case-block--deliver case-accordion-item">
+      <div class="container">
+        <h2 class="case-accordion-heading">
+          <button type="button" class="case-accordion-trigger" aria-expanded="false" aria-controls="accordion-deliver" id="accordion-trigger-deliver">
+            <span class="case-accordion-title">Deliver</span>
+            <span class="case-accordion-badge case-accordion-badge--pulse" aria-hidden="true">Tasks &amp; clickmaps</span>
+            <span class="case-accordion-icon" aria-hidden="true"></span>
+          </button>
+        </h2>
+        <div class="case-accordion-panel" id="accordion-deliver" role="region" aria-labelledby="accordion-trigger-deliver" hidden>
+
+        <h3 class="case-block-subtitle">Usability testing &amp; SEQ</h3>
+
+        <dl class="case-meta case-meta--deliver case-meta--boxed">
+          <div>
+            <dt>Participants</dt>
+            <dd>5 per round · 2 prototype iterations</dd>
+          </div>
+          <div>
+            <dt>Tool</dt>
+            <dd>Maze · Figma prototype</dd>
+          </div>
+        </dl>
+
+        <dl class="case-meta case-meta--deliver-goals case-meta--boxed">
+          <div>
+            <dt>Task 1</dt>
+            <dd class="discover-box-body">
+              <p>Find a reward you cannot afford yet, see how to earn the missing points, and join a matching challenge.</p>
+            </dd>
+          </div>
+          <div>
+            <dt>Task 2</dt>
+            <dd class="discover-box-body">
+              <p>Activate a reward or redeem one already on your loyalty card.</p>
+            </dd>
+          </div>
+          <div>
+            <dt>Task 3</dt>
+            <dd class="discover-box-body">
+              <p>Send a chosen number of points to a specific friend.</p>
+            </dd>
+          </div>
+        </dl>
+
+        <h3 class="case-block-subtitle">Findings &amp; changes</h3>
+
+        <div class="deliver-findings erp-feature-stack">
+          <article class="deliver-finding design-flow">
+            <h3 class="case-block-subtitle">Active coupons</h3>
+            <p class="deliver-finding-text">Active coupons moved to the loyalty card sheet — one tap closer at redemption.</p>
+            <figure class="case-image-box deliver-clickmap">
+              <img src="images/local-run-club/deliver/clickmap.png" alt="Clickmap from Maze prototype testing" width="1200" height="675" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="case-image-box deliver-testing-picture">
+              <img src="images/local-run-club/deliver/testing%20picture.png" alt="Before and after loyalty card sheet with active coupons" width="1200" height="675" loading="lazy" decoding="async" />
+            </figure>
+          </article>
+
+          <article class="deliver-finding design-flow">
+            <h3 class="case-block-subtitle">Shortened navigation paths</h3>
+            <p class="deliver-finding-text">Fewer steps to activities and key menu items from the home screen.</p>
+            <figure class="case-image-box deliver-testing-picture-2">
+              <img src="images/local-run-club/deliver/testing%20picture%202.png" alt="Before and after welcome points screen with shortened navigation paths" width="1200" height="675" loading="lazy" decoding="async" />
+            </figure>
+          </article>
+
+          <article class="deliver-finding design-flow">
+            <h3 class="case-block-subtitle">Warning message</h3>
+            <p class="deliver-finding-text">Confirmation warns that sending points affects your status — tested users missed this without it.</p>
+            <figure class="case-image-box deliver-testing-picture-3">
+              <img src="images/local-run-club/deliver/testing%20picture%203.png" alt="Before and after send points confirmation with warning message" width="1200" height="675" loading="lazy" decoding="async" />
+            </figure>
+          </article>
+
+          <article class="deliver-finding design-flow">
+            <h3 class="case-block-subtitle">Tappable points balance</h3>
+            <p class="deliver-finding-text">Click maps showed users tapping the balance expecting navigation — it now opens the Points tab.</p>
+            <figure class="case-image-box deliver-clickmap-copy">
+              <img src="images/local-run-club/deliver/clickmap%20copy.png" alt="Clickmap showing misclicks on points balance and navigation bar" width="1200" height="675" loading="lazy" decoding="async" />
+            </figure>
+          </article>
+        </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="case-block case-block--design case-accordion-item">
+      <div class="container">
+        <h2 class="case-accordion-heading">
+          <button type="button" class="case-accordion-trigger" aria-expanded="false" aria-controls="accordion-design" id="accordion-trigger-design">
+            <span class="case-accordion-title">Explore Product</span>
+            <span class="case-accordion-badge case-accordion-badge--pulse" aria-hidden="true">Designs</span>
+            <span class="case-accordion-icon" aria-hidden="true"></span>
+          </button>
+        </h2>
+        <div class="case-accordion-panel" id="accordion-design" role="region" aria-labelledby="accordion-trigger-design" hidden>
+        <p>
+          Core flows and key screens from the validated prototype. For extended flows or a walkthrough — get in touch.
+        </p>
+        <div class="erp-feature-stack design-flows">
+          <article class="design-flow">
+            <h3 class="case-block-subtitle">Join the club</h3>
+            <figure class="case-image-box">
+              <img src="images/local-run-club/design/1.png" alt="Onboarding flow: join, sign up, sync Strava, and get started" width="1200" height="675" loading="lazy" decoding="async" />
+            </figure>
+          </article>
+          <article class="design-flow">
+            <h3 class="case-block-subtitle">Explore the app</h3>
+            <figure class="case-image-box">
+              <img src="images/local-run-club/design/2.png" alt="Home feed, rewards, activities, and loyalty profile screens" width="1200" height="675" loading="lazy" decoding="async" />
+            </figure>
+          </article>
+          <article class="design-flow">
+            <h3 class="case-block-subtitle">Earn and redeem</h3>
+            <figure class="case-image-box">
+              <img src="images/local-run-club/design/3.png" alt="Points balance, rewards catalog, and redemption flow" width="1200" height="675" loading="lazy" decoding="async" />
+            </figure>
+          </article>
+          <article class="design-flow">
+            <h3 class="case-block-subtitle">Challenges</h3>
+            <figure class="case-image-box">
+              <img src="images/local-run-club/design/5.png" alt="Challenges and leaderboard screens" width="1200" height="675" loading="lazy" decoding="async" />
+            </figure>
+          </article>
+        </div>
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <section class="case-block case-block-alt">
+      <div class="container">
+        <h2>What stayed with me</h2>
+        <p>
+          An early concept, paused before launch — but the process still matters. With limited analytics, direct conversations and prototype tests surfaced what runners and partners actually needed: local rewards worth earning, redemption without friction, and competition that does not push beginners away. The direction was shaped with the community, not only for it.
+        </p>
+      </div>
+    </section>
+
+    <div class="container case-nav">
+      <a href="erp-system.html">← ERP System Improvement</a>
+      <a href="index.html#projects">All projects →</a>
+    </div>
+
+    <section class="section-sm" id="contact">
+      <div class="container">
+        <p class="section-label">Contact</p>
+        <div class="contact-links">
+          <a class="contact-link contact-link--email" href="mailto:fvo.fedotova@gmail.com">
+            <span class="contact-link-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <rect x="2.5" y="4.5" width="19" height="15" rx="2.5" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M3.5 7.5L12 13.5L20.5 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="contact-link-text">fvo.fedotova@gmail.com</span>
+          </a>
+          <a class="contact-link contact-link--linkedin" href="https://www.linkedin.com/in/vera-fedotova/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <g transform="translate(12 12) scale(0.93) translate(-12 -12)">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.062 2.062 0 0 1 2.063-2.063 2.062 2.062 0 0 1 2.063 2.063 2.062 2.062 0 0 1-2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/>
+              </g>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>© 2026 Vera Fedotova</p>
+    </div>
+  </footer>
+
+  <script src="main.js?v=11"></script>
+</body>
+</html>

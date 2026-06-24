@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vera Fedotova · UX/UI Designer · CV</title>
+  <meta name="description" content="CV — Vera Fedotova, UX/UI designer specializing in SaaS, ERP, complex applications, and loyalty solutions." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..600&family=Syne:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #000000;
+      --surface-2: rgba(242, 241, 236, 0.04);
+      --ink: #f2f1ec;
+      --ink-2: rgba(242, 241, 236, 0.78);
+      --muted: rgba(242, 241, 236, 0.5);
+      --line: rgba(242, 241, 236, 0.14);
+      --line-strong: rgba(242, 241, 236, 0.34);
+      --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-display: "Syne", var(--font);
+      --radius: 4px;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      background: var(--bg);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      color-scheme: dark;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 1.7;
+      letter-spacing: -0.01em;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    .sheet {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 72px 56px 80px;
+      background: var(--bg);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    /* Header */
+    .cv-header {
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .cv-header-main {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 40px;
+      margin-bottom: 20px;
+    }
+
+    .cv-identity {
+      flex-shrink: 0;
+    }
+
+    .cv-name {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 5.5vw, 46px);
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .cv-role {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .cv-contact-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px 0;
+    }
+
+    .cv-contact-item {
+      font-size: 12px;
+      color: var(--ink-2);
+      line-height: 1.4;
+      letter-spacing: 0.01em;
+    }
+
+    .cv-contact-item--static {
+      color: var(--muted);
+    }
+
+    .cv-contact-item--accent {
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    a.cv-contact-item {
+      border-bottom: 1px solid transparent;
+    }
+
+    a.cv-contact-item:hover {
+      color: var(--ink);
+      border-bottom-color: var(--line-strong);
+    }
+
+    .cv-contact-sep {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: var(--line-strong);
+      margin: 0 14px;
+      flex-shrink: 0;
+    }
+
+    .portfolio-link::after {
+      content: " ↗";
+      font-size: 10px;
+      opacity: 0.55;
+    }
+
+    /* Summary */
+    .summary {
+      padding: 36px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .summary p {
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--ink-2);
+      max-width: 68ch;
+      text-wrap: pretty;
+    }
+
+    /* Layout */
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 232px;
+      gap: 72px;
+      margin-top: 36px;
+      align-items: stretch;
+    }
+
+    .side-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100%;
+    }
+
+    .section + .section {
+      margin-top: 40px;
+    }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .section-label::before {
+      content: "";
+      width: 24px;
+      height: 1px;
+      background: var(--line-strong);
+      flex-shrink: 0;
+    }
+
+    /* Experience entries */
+    .entry {
+      padding-bottom: 28px;
+      margin-bottom: 28px;
+      border-bottom: 1px solid var(--line);
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .entry:last-child {
+      padding-bottom: 0;
+      margin-bottom: 0;
+      border-bottom: none;
+    }
+
+    .entry-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 20px;
+      margin-bottom: 4px;
+    }
+
+    .entry-role {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+    }
+
+    .entry-date {
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+      flex-shrink: 0;
+      letter-spacing: 0.02em;
+    }
+
+    .entry-company {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .bullets li {
+      position: relative;
+      padding-left: 18px;
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--ink-2);
+    }
+
+    .bullets li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.7em;
+      width: 5px;
+      height: 1px;
+      background: var(--line-strong);
+    }
+
+    .achievements {
+      margin-top: 16px;
+    }
+
+    .achievements-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    /* Sidebar */
+    .side-block + .side-block {
+      margin-top: 0;
+    }
+
+    .side-block--tight + .side-block {
+      margin-top: 0;
+    }
+
+    .side-chip-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 12px;
+      row-gap: 8px;
+    }
+
+    .side-chip-list li {
+      position: relative;
+      padding-left: 11px;
+      font-size: 11px;
+      line-height: 1.4;
+      color: var(--ink-2);
+    }
+
+    .side-chip-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 4px;
+      height: 1px;
+      background: var(--line-strong);
+    }
+
+    .side-col .section-label {
+      margin-bottom: 14px;
+    }
+
+    .side-col .section-label::before {
+      width: 16px;
+    }
+
+    .lang-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .lang-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .lang-item:last-child {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .lang-name {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .lang-level {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .side-entry {
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .side-entry:last-child {
+      padding-bottom: 0;
+      margin-bottom: 0;
+      border-bottom: none;
+    }
+
+    .side-entry-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .side-entry-meta {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .side-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .side-list li {
+      font-size: 13px;
+      color: var(--ink-2);
+      line-height: 1.5;
+    }
+
+    .side-list a {
+      border-bottom: 1px solid transparent;
+    }
+
+    .side-list a:hover {
+      color: var(--ink);
+      border-bottom-color: var(--line-strong);
+    }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    @media print {
+      html,
+      body,
+      .sheet {
+        background: #000000 !important;
+      }
+
+      body {
+        font-size: 12px;
+        line-height: 1.45;
+      }
+
+      .sheet {
+        max-width: 100%;
+        min-height: 100vh;
+        padding: 10mm 11mm;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .cv-header {
+        padding-bottom: 16px;
+      }
+
+      .cv-header-main {
+        margin-bottom: 12px;
+      }
+
+      .cv-name {
+        font-size: 33px;
+        margin-bottom: 5px;
+      }
+
+      .cv-contact-item {
+        font-size: 10.5px;
+      }
+
+      .cv-contact-sep {
+        margin: 0 11px;
+      }
+
+      .layout {
+        flex: 1;
+        margin-top: 18px;
+        gap: 44px;
+        grid-template-columns: 1fr 204px;
+        align-items: stretch;
+      }
+
+      .main-col .section {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 100%;
+      }
+
+      .side-col {
+        justify-content: space-between;
+        gap: 0;
+        min-height: 100%;
+      }
+
+      .section-label {
+        margin-bottom: 10px;
+      }
+
+      .side-col .section-label {
+        margin-bottom: 7px;
+      }
+
+      .side-col .section-label::before {
+        width: 13px;
+      }
+
+      .entry {
+        padding-bottom: 14px;
+        margin-bottom: 14px;
+      }
+
+      .entry-role {
+        font-size: 13px;
+      }
+
+      .entry-date {
+        font-size: 10.5px;
+      }
+
+      .entry-company {
+        margin-bottom: 7px;
+        font-size: 11px;
+      }
+
+      .bullets {
+        gap: 4px;
+      }
+
+      .bullets li {
+        font-size: 11px;
+        line-height: 1.44;
+        padding-left: 14px;
+      }
+
+      .achievements {
+        margin-top: 9px;
+      }
+
+      .achievements-label {
+        margin-bottom: 5px;
+        font-size: 9px;
+      }
+
+      .side-chip-list {
+        row-gap: 4px;
+        column-gap: 7px;
+      }
+
+      .side-chip-list li {
+        font-size: 9.5px;
+        padding-left: 9px;
+      }
+
+      .lang-list {
+        gap: 7px;
+      }
+
+      .lang-item {
+        padding-bottom: 7px;
+      }
+
+      .lang-name {
+        font-size: 11px;
+      }
+
+      .lang-level {
+        font-size: 10px;
+      }
+
+      .side-entry {
+        padding-bottom: 7px;
+        margin-bottom: 7px;
+      }
+
+      .side-entry-title {
+        font-size: 11px;
+        margin-bottom: 2px;
+        line-height: 1.32;
+      }
+
+      .side-entry-meta {
+        font-size: 9.5px;
+        line-height: 1.38;
+      }
+
+      .side-list {
+        gap: 4px;
+      }
+
+      .side-list li {
+        font-size: 10px;
+        line-height: 1.38;
+      }
+    }
+
+    @media screen and (max-width: 760px) {
+      .sheet {
+        padding: 48px 24px 56px;
+      }
+
+      .cv-header {
+        gap: 20px;
+      }
+
+      .cv-header-main {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        margin-bottom: 16px;
+      }
+
+      .cv-contact-bar {
+        gap: 10px 0;
+      }
+
+      .cv-contact-sep {
+        margin: 0 10px;
+      }
+
+      .layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .side-col {
+        justify-content: flex-start;
+        gap: 36px;
+        min-height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Portfolio link uses the live GitHub Pages URL so it works in PDF and when CV is shared -->
+  <main class="sheet">
+    <header class="cv-header">
+      <div class="cv-header-main">
+        <div class="cv-identity">
+          <h1 class="cv-name">Vera Fedotova</h1>
+          <p class="cv-role">UX/UI Designer</p>
+        </div>
+      </div>
+      <div class="cv-contact-bar">
+        <a class="cv-contact-item" href="mailto:fvo.fedotova@gmail.com">fvo.fedotova@gmail.com</a>
+        <span class="cv-contact-sep" aria-hidden="true"></span>
+        <a class="cv-contact-item" href="https://www.linkedin.com/in/vera-fedotova/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <span class="cv-contact-sep" aria-hidden="true"></span>
+        <span class="cv-contact-item cv-contact-item--static">Warsaw, Poland</span>
+        <span class="cv-contact-sep" aria-hidden="true"></span>
+        <a class="cv-contact-item cv-contact-item--accent portfolio-link" id="portfolio-link" href="https://fvofedotova.github.io/fedotovadesign/" target="_blank" rel="noopener noreferrer">Portfolio</a>
+      </div>
+    </header>
+
+    <div class="layout">
+      <div class="main-col">
+        <section class="section">
+          <p class="section-label">Experience</p>
+
+          <article class="entry">
+            <div class="entry-head">
+              <h3 class="entry-role">UX/UI Designer</h3>
+              <span class="entry-date">2022 – Present</span>
+            </div>
+            <p class="entry-company">Comarch</p>
+            <ul class="bullets">
+              <li>Design SaaS loyalty and e-commerce products across desktop and mobile — from research and flows to production hand-off</li>
+              <li>Lead WCAG and UX writing audits; translate findings into shippable design improvements</li>
+              <li>Evolve the component library for AI-friendly structure, tokens, and design-system use</li>
+              <li>Drive AI workflow integration across prototyping, documentation, and cross-functional delivery</li>
+            </ul>
+            <div class="achievements">
+              <p class="achievements-label">Key achievements</p>
+              <ul class="bullets">
+                <li>Built a custom AI agent to accelerate design exploration, prototyping, and team documentation</li>
+                <li>Restructured the component library for AI-ready naming, tokens, and hand-off — adopted org-wide</li>
+                <li>Led WCAG audits across key product surfaces and embedded accessibility checks into the design pipeline</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="entry">
+            <div class="entry-head">
+              <h3 class="entry-role">UX/UI Designer</h3>
+              <span class="entry-date">2025 – Present</span>
+            </div>
+            <p class="entry-company">Freelance</p>
+            <ul class="bullets">
+              <li>Led ERP platform redesign for Enoterra: discovery workshops, flow audits, WCAG review, and user testing — operational dashboard, AI assistant, and command palette in production</li>
+              <li>Built AI-assisted functional prototypes to validate interactions and assistant logic with the client team before development</li>
+              <li>Designed Local Run Club App: athlete-led community research, loyalty-driven mobile UX, and interactive prototype</li>
+            </ul>
+          </article>
+
+          <article class="entry">
+            <div class="entry-head">
+              <h3 class="entry-role">UX/UI Designer Trainee</h3>
+              <span class="entry-date">2021 – 2022</span>
+            </div>
+            <p class="entry-company">iTechArt Group</p>
+            <ul class="bullets">
+              <li>Led qualitative research for a real estate marketplace product</li>
+              <li>Designed core interfaces and delivered an interactive Minimum Viable Product (MVP) prototype</li>
+              <li>Presented final solutions through a clickable prototype to stakeholders</li>
+              <li>Drove design system improvements for cross-functional hand-off</li>
+            </ul>
+            <div class="achievements">
+              <p class="achievements-label">Key achievements</p>
+              <ul class="bullets">
+                <li>Conducted market research and defined the design direction for a real estate buying/selling platform</li>
+                <li>Built a Figma design system adopted by cross-functional teams across the organization</li>
+                <li>Delivered prototype and MVP presentation that became reference templates for client demos</li>
+              </ul>
+            </div>
+          </article>
+        </section>
+      </div>
+
+      <aside class="side-col">
+        <section class="side-block side-block--tight">
+          <p class="section-label">Skills</p>
+          <ul class="side-chip-list">
+            <li>Research</li>
+            <li>Product Design</li>
+            <li>Design Systems</li>
+            <li>WCAG Audits</li>
+            <li>UX Writing</li>
+            <li>User Tests</li>
+            <li>Workshops</li>
+            <li>AI Agents</li>
+          </ul>
+        </section>
+
+        <section class="side-block">
+          <p class="section-label">Tools</p>
+          <ul class="side-chip-list">
+            <li>Figma</li>
+            <li>FigJam</li>
+            <li>Miro</li>
+            <li>Maze</li>
+            <li>Dovetail</li>
+            <li>UX Pilot</li>
+            <li>AI Factory</li>
+            <li>Cursor</li>
+            <li>Webflow</li>
+            <li>GitHub</li>
+            <li>Jira</li>
+            <li>HIG</li>
+          </ul>
+        </section>
+
+        <section class="side-block">
+          <p class="section-label">Languages</p>
+          <ul class="lang-list">
+            <li class="lang-item"><span class="lang-name">Polish</span><span class="lang-level">Professional</span></li>
+            <li class="lang-item"><span class="lang-name">English</span><span class="lang-level">Professional</span></li>
+            <li class="lang-item"><span class="lang-name">Belarusian</span><span class="lang-level">Native</span></li>
+          </ul>
+        </section>
+
+        <section class="side-block">
+          <p class="section-label">Education</p>
+          <article class="side-entry">
+            <p class="side-entry-title">Researcher</p>
+            <p class="side-entry-meta">University of Warsaw · 2020 – 2021</p>
+          </article>
+          <article class="side-entry">
+            <p class="side-entry-title">Master of Arts (MA)</p>
+            <p class="side-entry-meta">Bard College program · 2015 – 2017</p>
+          </article>
+          <article class="side-entry side-entry--last">
+            <p class="side-entry-title">Bachelor of Arts in Communication</p>
+            <p class="side-entry-meta">European Humanities University · 2011 – 2015</p>
+          </article>
+        </section>
+
+        <section class="side-block">
+          <p class="section-label">Certificates</p>
+          <ul class="side-list">
+            <li><a href="https://drive.google.com/file/d/1XhS8noqrf_eyWfCe5n4aIyfSk_rJTeSi/view" target="_blank" rel="noopener noreferrer">Digital Analytics Strategy</a></li>
+            <li><a href="https://drive.google.com/file/d/1TU982dLPbpVp6qJwtaEB6N7TwYxKrtVl/view" target="_blank" rel="noopener noreferrer">English for Designers</a></li>
+            <li><a href="https://app.smalltalk2.me/cert/1269ad4e" target="_blank" rel="noopener noreferrer">English Speaking Level B2+</a></li>
+            <li><a href="https://credsverse.com/credentials/4a7beaeb-f8b5-4c6f-b3bf-e88e8a484a7b" target="_blank" rel="noopener noreferrer">Digital Designer</a></li>
+            <li><a href="https://drive.google.com/file/d/1o9NqXHKPAX4KVV3myJTLKPASrpOpgtYD/view" target="_blank" rel="noopener noreferrer">WCAG</a></li>
+          </ul>
+        </section>
+
+        <section class="side-block">
+          <p class="section-label">Past Employment</p>
+          <article class="side-entry side-entry--last">
+            <p class="side-entry-title">Curator &amp; Cultural Project Manager</p>
+            <p class="side-entry-meta">Photo Month Festival · Exhibition Organisation</p>
+          </article>
+        </section>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>

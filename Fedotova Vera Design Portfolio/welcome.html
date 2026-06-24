@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome · Vera Fedotova</title>
+  <meta name="description" content="Welcome — jump into Vera Fedotova's UX/UI design portfolio or open her CV." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..600&display=swap" rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #000000;
+      --surface-2: rgba(242, 241, 236, 0.04);
+      --ink: #f2f1ec;
+      --ink-2: rgba(242, 241, 236, 0.78);
+      --muted: rgba(242, 241, 236, 0.5);
+      --line: rgba(242, 241, 236, 0.14);
+      --line-strong: rgba(242, 241, 236, 0.34);
+      --accent: #f2f1ec;
+      --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --max: 1040px;
+      --radius: 4px;
+    }
+
+    html {
+      color-scheme: dark;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.7;
+      font-size: 15px;
+      letter-spacing: -0.01em;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    .hero {
+      padding: 96px 0;
+      background: transparent;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .splash-page main {
+      min-height: 100vh;
+      position: relative;
+      z-index: 1;
+    }
+
+    .splash-hero {
+      min-height: 100vh;
+      padding: 0;
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      border-bottom: none;
+    }
+
+    .splash-meta {
+      position: absolute;
+      z-index: 1;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      pointer-events: none;
+    }
+
+    .splash-meta--tl {
+      top: clamp(24px, 4vh, 40px);
+      left: clamp(24px, 4vw, 40px);
+    }
+
+    .splash-meta--br {
+      right: clamp(24px, 4vw, 40px);
+      bottom: clamp(24px, 4vh, 40px);
+    }
+
+    .splash-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+      transform: translateY(4vh);
+    }
+
+    .splash-actions {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: center;
+      gap: clamp(10px, 2.5vw, 18px);
+    }
+
+    .splash-action {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .splash-action-index {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .splash-connector {
+      align-self: center;
+      width: clamp(28px, 8vw, 56px);
+      height: 1px;
+      margin-bottom: clamp(42px, 11vw, 54px);
+      background: linear-gradient(90deg, transparent, var(--line-strong) 20%, var(--line-strong) 80%, transparent);
+      opacity: 0.7;
+    }
+
+    .btn-round {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      box-sizing: border-box;
+      width: clamp(96px, 22vw, 118px);
+      height: clamp(96px, 22vw, 118px);
+      padding: 16px;
+      border-radius: 50%;
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      line-height: 1.4;
+      border: 1px solid var(--line-strong);
+      background: transparent;
+      color: var(--ink-2);
+      flex-shrink: 0;
+      transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+    }
+
+    .btn-round::before {
+      content: "";
+      position: absolute;
+      inset: 6px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      pointer-events: none;
+      transition: border-color 0.25s ease;
+    }
+
+    .btn-round-label {
+      position: relative;
+      z-index: 1;
+      max-width: 11ch;
+    }
+
+    .btn-round--primary {
+      color: var(--ink);
+      border-color: var(--line-strong);
+      background: var(--surface-2);
+    }
+
+    .btn-round--primary::before {
+      border-color: var(--line);
+    }
+
+    .btn-round:hover {
+      background: #000000;
+      border-color: #ffffff;
+      color: #ffffff;
+    }
+
+    .btn-round:hover::before {
+      border-color: rgba(255, 255, 255, 0.18);
+    }
+
+    @media (max-width: 640px) {
+      .splash-meta--br {
+        display: none;
+      }
+
+      .splash-inner {
+        transform: none;
+      }
+
+      .splash-connector {
+        width: 20px;
+        margin-bottom: 40px;
+      }
+    }
+  </style>
+</head>
+<body class="splash-page">
+  <main>
+    <section class="hero splash-hero">
+      <div class="splash-meta splash-meta--tl">Vera Fedotova</div>
+      <div class="splash-meta splash-meta--br" aria-hidden="true">UX/UI · Portfolio</div>
+
+      <div class="container splash-inner">
+        <div class="splash-actions">
+          <div class="splash-action">
+            <span class="splash-action-index">01</span>
+            <a class="btn-round btn-round--primary" href="index.html">
+              <span class="btn-round-label">Jump into portfolio</span>
+            </a>
+          </div>
+
+          <span class="splash-connector" aria-hidden="true"></span>
+
+          <div class="splash-action">
+            <span class="splash-action-index">02</span>
+            <a class="btn-round btn-round--secondary" href="Fedotova Vera CV Designer.html">
+              <span class="btn-round-label">Open CV</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
