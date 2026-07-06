@@ -4387,6 +4387,46 @@ main {
     gap: 28px;
   }
 
+  .case-hero .case-meta,
+  .case-meta--hero-aligned,
+  .case-meta--boxed,
+  .case-meta.case-meta--survey,
+  .case-meta.case-meta--needs,
+  .case-meta.case-meta--personas,
+  .case-meta.case-meta--cjm,
+  .case-meta.case-meta--flows,
+  .case-meta.case-meta--ab,
+  .case-meta.case-meta--deliver,
+  .case-meta.case-meta--deliver-goals,
+  .case-block--erp-discovery .case-meta.case-meta--erp-workshop,
+  .case-block--erp-discovery .case-meta.case-meta--erp-empathy,
+  .case-block--erp-discovery .case-meta.case-meta--erp-priority {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    row-gap: 16px;
+  }
+
+  .case-meta > div,
+  .case-hero .case-meta > div,
+  .case-meta--hero-aligned > div {
+    gap: 6px;
+    min-width: 0;
+  }
+
+  .case-meta--hero-aligned dd {
+    min-height: 0;
+  }
+
+  .case-meta dd,
+  .case-meta dt {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .case-meta dd br {
+    display: none;
+  }
+
   .case-meta.case-meta--tools {
     display: flex;
     flex-wrap: nowrap;
