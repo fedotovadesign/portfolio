@@ -331,8 +331,8 @@ main {
 }
 
 @keyframes hero-marquee-scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -4300,6 +4300,50 @@ main {
   }
 
   .project-card-status {
+    white-space: normal;
+  }
+
+  .project-card--template {
+    position: relative;
+  }
+
+  .project-card--template .project-card-body {
+    padding: 24px 20px 26px;
+  }
+
+  .project-card-badge {
+    position: static;
+    align-self: flex-start;
+    margin: 0 20px;
+    margin-top: 20px;
+    margin-bottom: 4px;
+    max-width: calc(100% - 40px);
+    white-space: normal;
+  }
+
+  .project-card-title,
+  .project-card-tags-line,
+  .card-accordion-summary-text {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .case-accordion-trigger {
+    flex-wrap: wrap;
+    gap: 10px 12px;
+    align-items: center;
+  }
+
+  .case-accordion-title {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .case-accordion-badge {
+    order: 3;
+    flex-basis: 100%;
+    margin: 0;
     white-space: normal;
   }
 
