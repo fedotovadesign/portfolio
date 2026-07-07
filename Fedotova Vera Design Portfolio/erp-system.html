@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=230" />
+  <link rel="stylesheet" href="style.css?v=268" />
 </head>
 <body class="site-theme">
   <header class="site-header">
@@ -21,7 +21,7 @@
           <li><a href="index.html#experience" class="hide-mobile">Experience</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
-        <a class="nav-cv" href="https://fedotovadesign.github.io/fedotovadesign/Fedotova%20Vera%20CV%20Designer.pdf?v=188" download="Fedotova Vera CV Designer.pdf">Download CV</a>
+        <a class="nav-cv" href="Fedotova Vera CV Designer.html" target="_blank" rel="noopener noreferrer">Open CV</a>
       </div>
     </nav>
   </header>
@@ -272,8 +272,6 @@
 
         <p class="erp-develop-prose">Interactive prototypes built with Cursor and Factory AI — core interactions and AI behaviour validated in code before handover.</p>
 
-        <h3 class="case-block-subtitle">Prototyped features</h3>
-
         <div class="erp-feature-stack">
           <article class="erp-feature">
             <h4 class="erp-feature-title">Operational Dashboard</h4>
@@ -317,14 +315,7 @@
             <h4 class="erp-feature-title">Order workflow &amp; wine substitution</h4>
             <p class="erp-feature-text erp-feature-text--tight">Three local statuses — <strong>Przygotowane</strong>, <strong>Wysłane</strong>, <strong>Anulowane</strong> — with warehouse progress in a separate column. Every change via row menu + confirmation. Out-of-stock wine: account manager describes client and quantity in AI chat; system suggests available alternatives and pre-fills the order.</p>
 
-            <figure class="case-image-box erp-flow-video">
-              <video class="erp-flow-video__player" autoplay loop muted playsinline preload="auto" width="1440" height="900" poster="images/erp-system/deliver/order-flow-poster.jpg" src="images/erp-system/deliver/order-flow.mp4?v=2" aria-label="Screen recording: AI wine substitution chat, pre-filled order form, and Wyślij to Wysłane">
-                <source src="images/erp-system/deliver/order-flow.mp4?v=2" type="video/mp4" />
-              </video>
-              <figcaption class="erp-video-caption">Step 1 · AI chat → Step 2 · Create order</figcaption>
-            </figure>
-
-            <figure class="ux-flow ux-flow--collapsible ux-flow--after-video" id="ux-flow-orders">
+            <figure class="ux-flow ux-flow--collapsible ux-flow--before-video" id="ux-flow-orders">
               <button type="button" class="ux-flow-toggle" aria-expanded="false" aria-controls="ux-flow-orders-panel" id="ux-flow-orders-trigger">
                 <span class="ux-flow-caption">User flow · Wine substitution → order → status</span>
                 <span class="ux-flow-icon" aria-hidden="true"></span>
@@ -394,6 +385,13 @@
                 <span>Every status change requires confirmation</span>
               </div>
               </div>
+            </figure>
+
+            <figure class="case-image-box erp-flow-video">
+              <video class="erp-flow-video__player" autoplay loop muted playsinline preload="auto" width="1440" height="900" poster="images/erp-system/deliver/order-flow-poster.jpg" src="images/erp-system/deliver/order-flow.mp4?v=2" aria-label="Screen recording: AI wine substitution chat, pre-filled order form, and Wyślij to Wysłane">
+                <source src="images/erp-system/deliver/order-flow.mp4?v=2" type="video/mp4" />
+              </video>
+              <figcaption class="erp-video-caption">Step 1 · AI chat → Step 2 · Create order</figcaption>
             </figure>
           </article>
         </div>
@@ -585,6 +583,6 @@
     </div>
   </footer>
 
-  <script src="main.js?v=11"></script>
+  <script src="main.js?v=23"></script>
 </body>
 </html>

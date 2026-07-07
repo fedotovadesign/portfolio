@@ -143,6 +143,52 @@
       opacity: 0.55;
     }
 
+    .cv-top-btn {
+      position: fixed;
+      top: 24px;
+      z-index: 100;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      height: 36px;
+      padding: 0 16px;
+      font-family: var(--font);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: 1px solid var(--line-strong);
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: var(--muted);
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .cv-top-btn:hover {
+      background: #000000;
+      border-color: #ffffff;
+      color: #ffffff;
+    }
+
+    .cv-top-btn svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+      opacity: 0.75;
+    }
+
+    .cv-top-btn--back {
+      left: 24px;
+    }
+
+    .cv-top-btn--save {
+      right: 24px;
+    }
+
     /* Summary */
     .summary {
       padding: 36px 0;
@@ -408,6 +454,10 @@
     }
 
     @media print {
+      .cv-top-btn {
+        display: none !important;
+      }
+
       html,
       body,
       .sheet {
@@ -595,6 +645,21 @@
         margin: 0 10px;
       }
 
+      .cv-top-btn {
+        top: 16px;
+        height: 32px;
+        padding: 0 12px;
+        font-size: 10px;
+      }
+
+      .cv-top-btn--back {
+        left: 16px;
+      }
+
+      .cv-top-btn--save {
+        right: 16px;
+      }
+
       .layout {
         grid-template-columns: 1fr;
         gap: 40px;
@@ -609,6 +674,21 @@
   </style>
 </head>
 <body>
+  <a class="cv-top-btn cv-top-btn--back" href="welcome.html" aria-label="Back to start">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M19 12H5" />
+      <path d="m12 19-7-7 7-7" />
+    </svg>
+    Back to start
+  </a>
+  <a class="cv-top-btn cv-top-btn--save" href="Fedotova Vera CV Designer.pdf" download="Fedotova Vera CV Designer.pdf" aria-label="Save CV as PDF">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 3v12" />
+      <path d="m7 10 5 5 5-5" />
+      <path d="M5 21h14" />
+    </svg>
+    Save as PDF
+  </a>
   <!-- Portfolio link uses the live GitHub Pages URL so it works in PDF and when CV is shared -->
   <main class="sheet">
     <header class="cv-header">
@@ -649,7 +729,7 @@
             <div class="achievements">
               <p class="achievements-label">Key achievements</p>
               <ul class="bullets">
-                <li>Built a custom AI agent to accelerate design exploration, prototyping, and team documentation</li>
+                <li>Enhanced product functionality in a new upgraded version for desktop and mobile platforms</li>
                 <li>Restructured the component library for AI-ready naming, tokens, and hand-off — adopted org-wide</li>
                 <li>Led WCAG audits across key product surfaces and embedded accessibility checks into the design pipeline</li>
               </ul>
@@ -715,7 +795,7 @@
             <li>FigJam</li>
             <li>Miro</li>
             <li>Maze</li>
-            <li>Dovetail</li>
+            <li>Claude</li>
             <li>UX Pilot</li>
             <li>AI Factory</li>
             <li>Cursor</li>
