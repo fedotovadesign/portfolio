@@ -732,18 +732,33 @@ main {
 }
 
 .about-row-photo {
+  position: relative;
   width: 220px;
-  margin: 24px -8px 0 auto;
+  max-width: 100%;
+  margin: 24px 0 0 auto;
   border-radius: 0;
   overflow: hidden;
   border: 1px solid var(--line);
+  aspect-ratio: 11 / 14;
 }
 
 .about-row-photo img {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
-  height: auto;
-  margin-top: -40px;
+  height: 100%;
+  margin: 0;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.about-row-photo--anchor-top img {
+  object-position: top center;
+}
+
+.about-row-photo--crop-top img {
+  object-position: bottom center;
 }
 
 .about-row-photo--anchor-top {
@@ -4240,6 +4255,11 @@ main {
   .about-row-main {
     padding-right: 0;
     border-right: none;
+  }
+
+  .about-row-photo {
+    width: min(220px, 80vw);
+    margin: 24px auto 0;
   }
 
   .about-row-side {
