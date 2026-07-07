@@ -761,6 +761,20 @@ main {
   object-position: bottom center;
 }
 
+.about-row-photo--natural {
+  aspect-ratio: auto;
+  height: auto;
+}
+
+.about-row-photo--natural img {
+  position: static;
+  inset: auto;
+  width: 100%;
+  height: auto;
+  object-fit: unset;
+  object-position: initial;
+}
+
 .about-row-photo--anchor-top {
   aspect-ratio: 11 / 14;
 }
