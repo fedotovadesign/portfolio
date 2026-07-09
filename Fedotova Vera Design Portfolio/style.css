@@ -644,10 +644,14 @@ main {
 }
 
 .about-accordion {
-  border-top: 1px solid var(--line-strong);
+  border-top: none;
 }
 
 .about-row {
+  border-bottom: none;
+}
+
+.about-row:not(:last-child) {
   border-bottom: 1px solid var(--line-strong);
 }
 
@@ -1294,33 +1298,41 @@ button.project-card-link {
 
 .project-card-badge {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 8px;
+  right: 8px;
   z-index: 3;
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  padding: 5px 10px;
-  font-size: 9px;
+  gap: 4px;
+  padding: 3px 7px;
+  font-size: 7px;
   font-weight: 500;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ink);
   background: rgba(0, 0, 0, 0.92);
   border: 1px solid rgba(242, 241, 236, 0.32);
   border-radius: 999px;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
 
 .project-card-badge::before {
   content: "";
-  width: 6px;
-  height: 6px;
+  width: 4px;
+  height: 4px;
   border-radius: 50%;
   background: var(--accent);
   animation: project-card-badge-pulse 2s ease-in-out infinite;
+}
+
+.project-card-badge--quiet::before {
+  display: none;
+}
+
+.project-card-badge--quiet {
+  color: var(--muted);
 }
 
 @keyframes project-card-badge-pulse {
@@ -1639,6 +1651,39 @@ body.figma-modal-open {
   max-width: none;
   object-fit: contain;
   object-position: center;
+}
+
+.case-showcase--erp {
+  background: transparent;
+  border-bottom: 1px solid var(--line);
+}
+
+.case-showcase--erp .container {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.case-showcase--erp .case-showcase-figure {
+  margin: 0;
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000000;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.case-showcase--erp img {
+  display: block;
+  width: auto;
+  max-width: 92%;
+  max-height: 92%;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
 }
 
 .case-hero--split .case-hero-layout {
@@ -2499,7 +2544,7 @@ body.figma-modal-open {
 }
 
 .erp-scope-panel--tools .erp-tools-note {
-  margin-top: auto;
+  margin-top: 12px;
 }
 
 .erp-kpi-roadmap {
@@ -4588,8 +4633,8 @@ body.figma-modal-open {
 
   .project-card-badge {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 8px;
+    right: 8px;
     margin: 0;
     max-width: calc(100% - 20px);
     white-space: normal;
