@@ -1168,6 +1168,11 @@ main {
   border-radius: 8px;
 }
 
+.project-card-preview--cover-comarch .project-card-cover {
+  border: none;
+  border-radius: 0;
+}
+
 .project-card-preview--cover-run-club .project-card-cover {
   width: auto;
   max-width: 92%;
