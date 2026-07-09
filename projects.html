@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=268" />
+  <link rel="stylesheet" href="style.css?v=283" />
 </head>
 <body class="site-theme">
   <header class="site-header">
@@ -35,8 +35,20 @@
     <section class="section-sm">
       <div class="container">
         <div class="projects-grid">
+          <a class="project-card" href="comarch-loyalty.html">
+            <div class="project-card-preview project-card-preview--cover project-card-preview--cover-framed">
+              <img class="project-card-cover" src="images/comarch/comarch.png" alt="Comarch Loyalty Management — backoffice product overview" width="1400" height="788" loading="lazy" decoding="async" />
+            </div>
+            <div class="project-card-body">
+              <p class="project-card-status">SaaS · Enterprise · 2022 – Present</p>
+              <h3 class="project-card-title">Comarch Loyalty Management</h3>
+              <p class="project-card-sub">Backoffice · Desktop &amp; Mobile</p>
+              <span class="project-card-link">Overview</span>
+            </div>
+          </a>
+
           <a class="project-card" href="erp-system.html">
-            <div class="project-card-preview project-card-preview--cover project-card-preview--cover-enoterra">
+            <div class="project-card-preview project-card-preview--cover project-card-preview--cover-framed">
               <img class="project-card-cover" src="images/erp-system/hero/dashboard-dark.png" alt="ERP System Improvement — Enoterra dashboard in dark mode" width="1200" height="750" loading="lazy" decoding="async" />
             </div>
             <div class="project-card-body">
@@ -45,6 +57,18 @@
               <span class="project-card-link">View case study</span>
             </div>
           </a>
+
+          <article class="project-card project-card--template">
+            <span class="project-card-badge">Continuously updated</span>
+            <div class="project-card-preview project-card-preview--cover project-card-preview--cover-framed">
+              <img class="project-card-cover" src="images/enoterra%20mobile/UI%20Kit/Section%20Card/Doc%20Window.png" alt="AI-Driven Enoterra Mobile App — typography system preview" width="1200" height="750" loading="lazy" decoding="async" />
+            </div>
+            <div class="project-card-body">
+              <p class="project-card-status">In progress · In implementation · 2026</p>
+              <h3 class="project-card-title">AI-Driven Enoterra Mobile App</h3>
+              <button type="button" class="project-card-link" data-figma-open="enoterra-ui-kit-modal">UI Kit overview</button>
+            </div>
+          </article>
 
           <a class="project-card" href="local-run-club.html">
             <div class="project-card-preview project-card-preview--cover project-card-preview--cover-run-club">
@@ -85,12 +109,31 @@
     </section>
   </main>
 
+  <div class="figma-modal" id="enoterra-ui-kit-modal" hidden aria-hidden="true">
+    <div class="figma-modal__backdrop" data-figma-close tabindex="-1"></div>
+    <div class="figma-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="enoterra-ui-kit-modal-title">
+      <div class="figma-modal__header">
+        <button type="button" class="figma-modal__close" data-figma-close aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <h2 class="visually-hidden" id="enoterra-ui-kit-modal-title">Token-driven UI Kit · Design System Sneak Peek</h2>
+      <div class="figma-modal__frame-wrap">
+        <iframe
+          title="Token-driven UI Kit · Design System Sneak Peek"
+          data-figma-src="https://embed.figma.com/proto/QEHNNjkGY9CJrhkHtZzr9G/Enoterra-AI-App?node-id=0-332&amp;viewport=328%2C60%2C0.09&amp;scaling=scale-down-width&amp;content-scaling=fixed&amp;page-id=0%3A1&amp;embed-host=share"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </div>
+
   <footer class="site-footer">
     <div class="footer-inner">
       <p>© 2026 Vera Fedotova</p>
     </div>
   </footer>
 
-  <script src="main.js?v=11"></script>
+  <script src="main.js?v=26"></script>
 </body>
 </html>
