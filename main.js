@@ -49,7 +49,7 @@
   var visible = false;
 
   var interactiveSelector =
-    "a, button, .btn, .btn-round, .nav-cv, .case-accordion-trigger, .ux-flow-toggle, .design-carousel__btn, .design-carousel__dot, input, textarea, select, label[for], .project-card, .contact-link";
+    "a, button, .btn, .btn-round, .nav-cv, .case-accordion-trigger, .ux-flow-toggle, .design-carousel__btn, .design-carousel__dot, input, textarea, select, label[for], .project-card, .contact-link, [data-figma-open]";
 
   function setVisible(state) {
     visible = state;
@@ -564,5 +564,68 @@
     }
 
     goTo(0);
+  });
+})();
+
+(function () {
+  var openButtons = document.querySelectorAll("[data-figma-open]");
+  if (!openButtons.length) return;
+
+  var activeModal = null;
+  var lastTrigger = null;
+
+  function loadIframe(modal) {
+    var iframe = modal.querySelector("iframe[data-figma-src]");
+    if (!iframe || iframe.src) return;
+    iframe.src = iframe.getAttribute("data-figma-src");
+  }
+
+  function openModal(modal, trigger) {
+    if (!modal) return;
+
+    activeModal = modal;
+    lastTrigger = trigger || null;
+    loadIframe(modal);
+    modal.hidden = false;
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("figma-modal-open");
+
+    var closeBtn = modal.querySelector(".figma-modal__close");
+    if (closeBtn) closeBtn.focus();
+  }
+
+  function closeModal(modal) {
+    if (!modal) return;
+
+    modal.hidden = true;
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("figma-modal-open");
+
+    if (activeModal === modal) activeModal = null;
+
+    if (lastTrigger) {
+      lastTrigger.focus();
+      lastTrigger = null;
+    }
+  }
+
+  openButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      var modal = document.getElementById(button.getAttribute("data-figma-open"));
+      if (!modal) return;
+      openModal(modal, button);
+    });
+  });
+
+  document.querySelectorAll("[data-figma-close]").forEach(function (control) {
+    control.addEventListener("click", function () {
+      closeModal(control.closest(".figma-modal"));
+    });
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && activeModal) {
+      closeModal(activeModal);
+    }
   });
 })();
