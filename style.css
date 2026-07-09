@@ -740,11 +740,23 @@ main {
   border: 1px solid var(--line);
 }
 
+.about-row-photo--avatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
 .about-row-photo img {
   display: block;
   width: 100%;
   height: auto;
   margin: 0;
+}
+
+.about-row-photo--avatar img {
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .about-row-side {
@@ -4234,6 +4246,11 @@ main {
   .about-row-photo {
     width: min(220px, 80vw);
     margin: 24px auto 0;
+  }
+
+  .about-row-photo--avatar {
+    width: min(180px, 72vw);
+    height: min(180px, 72vw);
   }
 
   .about-row-side {
