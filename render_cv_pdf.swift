@@ -50,13 +50,12 @@ final class PDFRenderer: NSObject, WKNavigationDelegate {
 
 let args = CommandLine.arguments
 guard args.count == 3 else {
-    fputs("Usage: render_cv_pdf.swift <input.html> <output.pdf>\n", stderr)
+    fputs("Usage: render_cv_pdf.swift <input.html> <output.pdf>\nExample: render_cv_pdf.swift \"Fedotova Vera CV Designer.html\" \"UX:UI Designer  Fedotova Vera.pdf\"\n", stderr)
     exit(2)
 }
 
 let inputURL = URL(fileURLWithPath: args[1])
 let outputURL = URL(fileURLWithPath: args[2])
-
 let app = NSApplication.shared
 app.setActivationPolicy(.prohibited)
 
