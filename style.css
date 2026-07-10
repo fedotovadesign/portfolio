@@ -1247,10 +1247,6 @@ main {
   font-size: 13px;
   line-height: 1.6;
   color: var(--ink-2);
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
   text-wrap: pretty;
 }
 
