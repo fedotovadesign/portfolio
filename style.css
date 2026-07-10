@@ -2146,15 +2146,16 @@ body.figma-modal-open {
   justify-content: center;
   background: var(--bg);
   aspect-ratio: auto;
-  min-height: min(52vh, 680px);
+  min-height: auto;
   overflow: hidden;
 }
 
 .case-showcase--erp img {
   display: block;
   width: 100%;
-  max-width: 100%;
+  max-width: min(100%, 960px);
   height: auto;
+  margin-inline: auto;
   object-fit: contain;
   object-position: center;
   border: 1px solid var(--line-strong);
@@ -3566,20 +3567,20 @@ body.figma-modal-open {
 .case-block--erp-develop .erp-flow-video.case-image-box,
 .case-block--erp-results .erp-video-frame,
 .erp-kpi-method .erp-video-frame {
-  margin: 8px 0 0;
+  margin: 8px auto 0;
   width: 100%;
-  max-width: 100%;
+  max-width: min(100%, 880px);
   padding: 6px 6px 4px;
 }
 
 .case-block--erp-develop .case-image-box img,
 .case-block--erp-develop .erp-flow-video video,
 .case-block--erp-results .erp-video-frame video,
-.erp-kpi-method .erp-video-frame video,
-.case-showcase--erp img {
+.erp-kpi-method .erp-video-frame video {
   width: 100%;
   max-width: 100%;
   height: auto;
+  margin-inline: auto;
   border-radius: calc(var(--radius) - 2px);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -3589,7 +3590,8 @@ body.figma-modal-open {
 .erp-video-center {
   display: block;
   width: 100%;
-  margin-top: 52px;
+  max-width: min(100%, 880px);
+  margin: 52px auto 0;
 }
 
 .case-block--erp-develop .erp-video-frame {
