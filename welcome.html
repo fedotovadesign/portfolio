@@ -7,7 +7,7 @@
   <meta name="description" content="Welcome — jump into Vera Fedotova's UX/UI design portfolio or open her CV." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     *,
     *::before,
@@ -18,7 +18,7 @@
     }
 
     :root {
-      --bg: #000000;
+      --bg: #0b0b0d;
       --surface-2: rgba(242, 241, 236, 0.04);
       --ink: #f2f1ec;
       --ink-2: rgba(242, 241, 236, 0.78);
@@ -151,9 +151,12 @@
     }
 
     .splash-action-index {
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 0.16em;
+      font-family: "Roboto Mono", ui-monospace, "SFMono-Regular", "Menlo", monospace;
+      font-size: 11px;
+      font-weight: 400;
+      font-variant-numeric: tabular-nums lining-nums;
+      font-feature-settings: "zero" 0;
+      letter-spacing: 0.02em;
       color: var(--accent);
       line-height: 1;
     }
@@ -217,7 +220,7 @@
     }
 
     .btn-round:hover {
-      background: #000000;
+      background: #08080a;
       border-color: #ffffff;
       color: #ffffff;
     }
@@ -246,13 +249,13 @@
   <main>
     <section class="hero splash-hero">
       <div class="splash-meta splash-meta--tl">Vera Fedotova</div>
-      <div class="splash-meta splash-meta--br" aria-hidden="true">UX/UI · Portfolio</div>
+      <div class="splash-meta splash-meta--br" aria-hidden="true">Portfolio · Product Design</div>
 
       <div class="container splash-inner">
         <div class="splash-actions">
           <div class="splash-action">
             <span class="splash-action-index">01</span>
-            <a class="btn-round btn-round--primary" href="index.html">
+            <a class="btn-round btn-round--secondary" href="index.html">
               <span class="btn-round-label">Jump into portfolio</span>
             </a>
           </div>
