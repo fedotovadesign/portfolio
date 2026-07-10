@@ -41,6 +41,96 @@
 })();
 
 (function () {
+  var path = window.location.pathname.split("/").pop() || "index.html";
+  var isHome = path === "" || path === "index.html";
+  if (!isHome) return;
+
+  var motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var scrollFrame = null;
+  var scrollToken = 0;
+
+  document.documentElement.classList.add("nav-smooth-scroll");
+
+  function getNavOffset() {
+    var navVar = parseFloat(
+      getComputedStyle(document.documentElement).getPropertyValue("--nav-h")
+    );
+    return (isNaN(navVar) ? 64 : navVar) + 24;
+  }
+
+  function easeInOutSine(t) {
+    return -(Math.cos(Math.PI * t) - 1) / 2;
+  }
+
+  function getScrollDuration(distance) {
+    return Math.min(Math.max(Math.abs(distance) * 0.72, 640), 1400);
+  }
+
+  function smoothScrollToY(targetY) {
+    if (motionQuery.matches) {
+      window.scrollTo(0, targetY);
+      return;
+    }
+
+    scrollToken += 1;
+    var token = scrollToken;
+
+    if (scrollFrame) {
+      cancelAnimationFrame(scrollFrame);
+      scrollFrame = null;
+    }
+
+    var startY = window.scrollY || window.pageYOffset || 0;
+    var distance = targetY - startY;
+    if (Math.abs(distance) < 2) return;
+
+    var duration = getScrollDuration(distance);
+    var startTime = null;
+
+    function step(now) {
+      if (token !== scrollToken) return;
+
+      if (!startTime) startTime = now;
+      var progress = Math.min((now - startTime) / duration, 1);
+      window.scrollTo(0, startY + distance * easeInOutSine(progress));
+
+      if (progress < 1) {
+        scrollFrame = requestAnimationFrame(step);
+      } else {
+        scrollFrame = null;
+        window.scrollTo(0, targetY);
+      }
+    }
+
+    scrollFrame = requestAnimationFrame(step);
+  }
+
+  document.querySelectorAll('.nav-links a[href^="#"]').forEach(function (link) {
+    link.addEventListener("click", function (event) {
+      var hash = link.getAttribute("href");
+      if (!hash || hash === "#") return;
+
+      var target = document.querySelector(hash);
+      if (!target) return;
+
+      event.preventDefault();
+
+      var top =
+        target.getBoundingClientRect().top +
+        (window.scrollY || window.pageYOffset || 0) -
+        getNavOffset();
+
+      smoothScrollToY(Math.max(0, top));
+
+      if (window.location.hash !== hash) {
+        history.pushState(null, "", hash);
+        window.dispatchEvent(new Event("hashchange"));
+      }
+    });
+  });
+})();
+
+(function () {
   if (!window.matchMedia("(pointer: fine)").matches) return;
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
@@ -280,6 +370,135 @@
   window.addEventListener("resize", function () {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(polishAll, 150);
+  });
+})();
+
+(function () {
+  var aboutAccordion = document.querySelector(".about-accordion");
+  if (!aboutAccordion) return;
+
+  var rows = Array.prototype.slice.call(aboutAccordion.querySelectorAll(".about-row"));
+  var motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var duration = 560;
+  var easing = "cubic-bezier(0.22, 1, 0.36, 1)";
+
+  function prefersReduced() {
+    return motionQuery.matches;
+  }
+
+  function getDuration() {
+    return prefersReduced() ? 0 : duration;
+  }
+
+  function ensureBodyInner(body) {
+    var inner = body.querySelector(".about-row-body-inner");
+    if (inner) return inner;
+
+    inner = document.createElement("div");
+    inner.className = "about-row-body-inner";
+    while (body.firstChild) {
+      inner.appendChild(body.firstChild);
+    }
+    body.appendChild(inner);
+    return inner;
+  }
+
+  function measureBody(body) {
+    var current = body.style.height;
+    body.style.height = "auto";
+    var height = body.scrollHeight;
+    body.style.height = current;
+    return height;
+  }
+
+  function onHeightTransitionEnd(body, callback) {
+    function handler(event) {
+      if (event.target !== body || event.propertyName !== "height") return;
+      body.removeEventListener("transitionend", handler);
+      callback();
+    }
+
+    body.addEventListener("transitionend", handler);
+  }
+
+  function prepareRow(row) {
+    var body = row.querySelector(".about-row-body");
+    if (!body || body.dataset.aboutReady === "true") return body;
+
+    body.dataset.aboutReady = "true";
+    ensureBodyInner(body);
+    body.style.overflow = "hidden";
+    body.style.transition = "height " + getDuration() + "ms " + easing;
+    body.style.height = row.open ? "auto" : "0px";
+    return body;
+  }
+
+  function setRowState(row, open, animate) {
+    var body = prepareRow(row);
+    if (!body) return;
+
+    var ms = animate && !prefersReduced() ? getDuration() : 0;
+    body.style.transition = ms ? "height " + ms + "ms " + easing : "none";
+
+    if (open) {
+      row.setAttribute("open", "");
+
+      if (ms === 0) {
+        body.style.height = "auto";
+        return;
+      }
+
+      body.style.height = "0px";
+      body.offsetHeight;
+      body.style.height = measureBody(body) + "px";
+      onHeightTransitionEnd(body, function () {
+        if (row.open) body.style.height = "auto";
+      });
+      return;
+    }
+
+    if (ms === 0) {
+      row.removeAttribute("open");
+      body.style.height = "0px";
+      return;
+    }
+
+    if (body.style.height === "auto") {
+      body.style.height = measureBody(body) + "px";
+    }
+
+    body.offsetHeight;
+    body.style.height = "0px";
+    onHeightTransitionEnd(body, function () {
+      if (!row.open) return;
+      row.removeAttribute("open");
+    });
+  }
+
+  rows.forEach(function (row) {
+    var summary = row.querySelector(".about-row-head");
+    if (!summary) return;
+
+    prepareRow(row);
+
+    summary.addEventListener("click", function (event) {
+      event.preventDefault();
+      setRowState(row, !row.open, true);
+    });
+  });
+
+  window.addEventListener("resize", function () {
+    rows.forEach(function (row) {
+      if (!row.open) return;
+
+      var body = row.querySelector(".about-row-body");
+      if (!body) return;
+
+      body.style.transition = "none";
+      body.style.height = "auto";
+      body.offsetHeight;
+      body.style.transition = "height " + getDuration() + "ms " + easing;
+    });
   });
 })();
 
