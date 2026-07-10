@@ -1171,6 +1171,17 @@ main {
 
 .project-case--static {
   cursor: default;
+  pointer-events: auto;
+}
+
+.project-case--static:hover .project-case-cover {
+  transform: none;
+}
+
+.project-case--static:hover .project-case-label,
+.project-case--static:focus-visible .project-case-label {
+  opacity: 0;
+  transform: translateY(-6px);
 }
 
 .project-case-media {
@@ -1434,6 +1445,16 @@ html.case-embed #contact {
 
 html.case-embed main {
   min-height: auto;
+}
+
+html.case-embed .case-showcase--erp .container,
+html.case-embed .case-block--erp-discovery .container,
+html.case-embed .case-block--erp-develop .container,
+html.case-embed .case-block--erp-results .container,
+html.case-embed .case-block--erp-closing .container {
+  max-width: none;
+  padding-left: clamp(18px, 2.5vw, 32px);
+  padding-right: clamp(18px, 2.5vw, 32px);
 }
 
 @media (max-width: 900px) {
@@ -2119,20 +2140,20 @@ body.figma-modal-open {
 
 .case-showcase--erp .case-showcase-figure {
   margin: 0;
-  padding: 24px 28px;
+  padding: 12px 0 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--bg);
-  aspect-ratio: 16 / 10;
+  aspect-ratio: auto;
+  min-height: min(52vh, 680px);
   overflow: hidden;
 }
 
 .case-showcase--erp img {
   display: block;
-  width: auto;
-  max-width: 92%;
-  max-height: 92%;
+  width: 100%;
+  max-width: 100%;
   height: auto;
   object-fit: contain;
   object-position: center;
@@ -3274,6 +3295,11 @@ body.figma-modal-open {
   .erp-theme-compare {
     grid-template-columns: 1fr;
   }
+
+  .case-showcase--erp .case-showcase-figure {
+    min-height: auto;
+    padding: 8px 0 16px;
+  }
 }
 
 /* UX user-flow diagram (Enoterra case study) */
@@ -3537,16 +3563,32 @@ body.figma-modal-open {
 
 .case-block--erp-develop .case-image-box,
 .case-block--erp-develop .erp-video-frame,
+.case-block--erp-develop .erp-flow-video.case-image-box,
+.case-block--erp-results .erp-video-frame,
 .erp-kpi-method .erp-video-frame {
-  margin: 8px auto 0;
-  width: 64%;
-  max-width: 64%;
-  padding: 11px 10px;
+  margin: 8px 0 0;
+  width: 100%;
+  max-width: 100%;
+  padding: 6px 6px 4px;
+}
+
+.case-block--erp-develop .case-image-box img,
+.case-block--erp-develop .erp-flow-video video,
+.case-block--erp-results .erp-video-frame video,
+.erp-kpi-method .erp-video-frame video,
+.case-showcase--erp img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: calc(var(--radius) - 2px);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .erp-video-center {
-  display: flex;
-  justify-content: center;
+  display: block;
+  width: 100%;
   margin-top: 52px;
 }
 
@@ -5203,16 +5245,90 @@ body.figma-modal-open {
   }
 }
 
-/* Custom cursor — arrow */
+/* Custom cursor */
 @media (pointer: fine) {
-  body.has-custom-cursor,
-  body.has-custom-cursor * {
+  body.has-custom-cursor {
     cursor: none !important;
   }
 
-  html.case-embed,
-  html.case-embed * {
+  body.has-custom-cursor * {
+    cursor: inherit !important;
+  }
+
+  body.has-custom-cursor :is(
+    a[href],
+    button:not(:disabled),
+    summary,
+    label[for],
+    input:not(:disabled),
+    textarea:not(:disabled),
+    select:not(:disabled),
+    [role="button"],
+    [role="link"],
+    [tabindex]:not([tabindex="-1"]),
+    .btn,
+    .btn-round,
+    .nav-cv,
+    .logo,
+    .nav-links a,
+    .case-accordion-trigger,
+    .ux-flow-toggle,
+    .design-carousel__btn,
+    .design-carousel__dot,
+    .project-case:not(.project-case--static),
+    .project-card,
+    .contact-link,
+    .contact-tonik-email,
+    .contact-tonik-social,
+    .case-panel__close,
+    .case-panel__backdrop,
+    .figma-modal__close,
+    .figma-modal__backdrop,
+    [data-figma-open],
+    [data-figma-close],
+    [data-case-panel-close],
+    .about-row-head,
+    .about-row > summary
+  ) {
+    cursor: pointer !important;
+  }
+
+  body.has-custom-cursor .project-case--static,
+  body.has-custom-cursor .project-case--static * {
     cursor: none !important;
+  }
+
+  html.case-embed {
+    cursor: none !important;
+  }
+
+  html.case-embed * {
+    cursor: inherit !important;
+  }
+
+  html.case-embed :is(
+    a[href],
+    button:not(:disabled),
+    summary,
+    label[for],
+    input:not(:disabled),
+    textarea:not(:disabled),
+    select:not(:disabled),
+    [role="button"],
+    [role="link"],
+    [tabindex]:not([tabindex="-1"]),
+    .btn,
+    .btn-round,
+    .case-accordion-trigger,
+    .ux-flow-toggle,
+    .design-carousel__btn,
+    .design-carousel__dot,
+    .contact-link,
+    [data-figma-open],
+    [data-figma-close],
+    [data-case-panel-close]
+  ) {
+    cursor: pointer !important;
   }
 }
 
@@ -5227,21 +5343,21 @@ body.figma-modal-open {
   background: rgba(242, 241, 236, 0.04);
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35);
   pointer-events: none;
-  will-change: transform;
+  will-change: transform, opacity;
   transition:
-    width 0.2s ease,
-    height 0.2s ease,
-    border-color 0.2s ease,
-    background 0.2s ease,
-    box-shadow 0.2s ease;
+    opacity 0.16s ease,
+    width 0.16s ease,
+    height 0.16s ease,
+    border-color 0.16s ease,
+    background 0.16s ease,
+    box-shadow 0.16s ease;
 }
 
-.site-cursor.is-hover .site-cursor-ring {
-  width: 22px;
-  height: 22px;
-  border-color: rgba(242, 241, 236, 0.95);
-  background: rgba(242, 241, 236, 0.08);
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.45);
+.site-cursor.is-pointer .site-cursor-ring {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  border-width: 0;
 }
 
 .site-cursor {

@@ -135,7 +135,13 @@
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
   var interactiveSelector =
-    "a, button, .btn, .btn-round, .nav-cv, .case-accordion-trigger, .ux-flow-toggle, .design-carousel__btn, .design-carousel__dot, input, textarea, select, label[for], .project-case, .project-card, .contact-link, .contact-tonik-email, .contact-tonik-social, .case-panel__close, [data-figma-open]";
+    'a[href], button:not(:disabled), summary, label[for], input:not(:disabled), textarea:not(:disabled), select:not(:disabled), [role="button"], [role="link"], [tabindex]:not([tabindex="-1"]), .btn, .btn-round, .nav-cv, .logo, .nav-links a, .case-accordion-trigger, .ux-flow-toggle, .design-carousel__btn, .design-carousel__dot, .project-case:not(.project-case--static), .project-card, .contact-link, .contact-tonik-email, .contact-tonik-social, .case-panel__close, .case-panel__backdrop, .figma-modal__close, .figma-modal__backdrop, [data-figma-open], [data-figma-close], [data-case-panel-close], .about-row-head, .about-row > summary';
+
+  function isInteractiveTarget(target) {
+    if (!target || !target.closest) return false;
+    if (target.closest(".project-case--static")) return false;
+    return !!target.closest(interactiveSelector);
+  }
 
   var isEmbedFrame =
     window.parent !== window &&
@@ -151,7 +157,7 @@
             event: "move",
             x: e.clientX,
             y: e.clientY,
-            interactive: !!(e.target && e.target.closest && e.target.closest(interactiveSelector)),
+            interactive: isInteractiveTarget(e.target),
           },
           "*"
         );
@@ -185,8 +191,8 @@
     root.classList.toggle("is-visible", state);
   }
 
-  function setHover(state) {
-    root.classList.toggle("is-hover", state);
+  function setPointer(state) {
+    root.classList.toggle("is-pointer", state);
   }
 
   function movePointer(x, y) {
@@ -199,7 +205,7 @@
     function (e) {
       if (!visible) setVisible(true);
       movePointer(e.clientX, e.clientY);
-      setHover(!!e.target.closest(interactiveSelector));
+      setPointer(isInteractiveTarget(e.target));
     },
     { passive: true }
   );
@@ -225,7 +231,8 @@
       var rect = frame.getBoundingClientRect();
       if (!visible) setVisible(true);
       movePointer(rect.left + event.data.x, rect.top + event.data.y);
-      setHover(!!event.data.interactive);
+      setPointer(!!event.data.interactive);
+      frame.style.cursor = event.data.interactive ? "pointer" : "none";
     }
   });
 

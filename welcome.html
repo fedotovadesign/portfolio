@@ -243,6 +243,72 @@
         margin-bottom: 40px;
       }
     }
+
+    @media (pointer: fine) {
+      body.has-custom-cursor {
+        cursor: none !important;
+      }
+
+      body.has-custom-cursor * {
+        cursor: inherit !important;
+      }
+
+      body.has-custom-cursor :is(
+        a[href],
+        button:not(:disabled),
+        .btn-round,
+        .logo
+      ) {
+        cursor: pointer !important;
+      }
+    }
+
+    .site-cursor-ring {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 16px;
+      height: 16px;
+      border: 1.5px solid rgba(242, 241, 236, 0.78);
+      border-radius: 50%;
+      background: rgba(242, 241, 236, 0.04);
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35);
+      pointer-events: none;
+      will-change: transform, opacity;
+      transition:
+        opacity 0.16s ease,
+        width 0.16s ease,
+        height 0.16s ease,
+        border-color 0.16s ease,
+        background 0.16s ease,
+        box-shadow 0.16s ease;
+    }
+
+    .site-cursor.is-pointer .site-cursor-ring {
+      opacity: 0;
+      width: 0;
+      height: 0;
+      border-width: 0;
+    }
+
+    .site-cursor {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 10000;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .site-cursor.is-visible {
+      opacity: 1;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .site-cursor {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body class="splash-page">
@@ -272,5 +338,6 @@
       </div>
     </section>
   </main>
+  <script src="main.js?v=39"></script>
 </body>
 </html>
