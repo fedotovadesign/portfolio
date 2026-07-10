@@ -1,4 +1,10 @@
 (function () {
+  if (new URLSearchParams(window.location.search).has("embed")) {
+    document.documentElement.classList.add("case-embed");
+  }
+})();
+
+(function () {
   function setNavActive() {
     var path = window.location.pathname.split("/").pop() || "index.html";
     var hash = window.location.hash;
@@ -38,6 +44,42 @@
   if (!window.matchMedia("(pointer: fine)").matches) return;
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
+  var interactiveSelector =
+    "a, button, .btn, .btn-round, .nav-cv, .case-accordion-trigger, .ux-flow-toggle, .design-carousel__btn, .design-carousel__dot, input, textarea, select, label[for], .project-case, .project-card, .contact-link, .contact-tonik-email, .contact-tonik-social, .case-panel__close, [data-figma-open]";
+
+  var isEmbedFrame =
+    window.parent !== window &&
+    new URLSearchParams(window.location.search).has("embed");
+
+  if (isEmbedFrame) {
+    document.addEventListener(
+      "mousemove",
+      function (e) {
+        window.parent.postMessage(
+          {
+            type: "portfolio-cursor",
+            event: "move",
+            x: e.clientX,
+            y: e.clientY,
+            interactive: !!(e.target && e.target.closest && e.target.closest(interactiveSelector)),
+          },
+          "*"
+        );
+      },
+      { passive: true }
+    );
+
+    document.documentElement.addEventListener(
+      "mouseleave",
+      function () {
+        window.parent.postMessage({ type: "portfolio-cursor", event: "leave" }, "*");
+      },
+      { passive: true }
+    );
+
+    return;
+  }
+
   var root = document.createElement("div");
   root.className = "site-cursor";
   root.setAttribute("aria-hidden", "true");
@@ -47,9 +89,6 @@
 
   var ring = root.querySelector(".site-cursor-ring");
   var visible = false;
-
-  var interactiveSelector =
-    "a, button, .btn, .btn-round, .nav-cv, .case-accordion-trigger, .ux-flow-toggle, .design-carousel__btn, .design-carousel__dot, input, textarea, select, label[for], .project-card, .contact-link, [data-figma-open]";
 
   function setVisible(state) {
     visible = state;
@@ -61,7 +100,8 @@
   }
 
   function movePointer(x, y) {
-    ring.style.transform = "translate3d(" + x + "px, " + y + "px, 0) translate(-50%, -50%)";
+    ring.style.transform =
+      "translate3d(" + x + "px, " + y + "px, 0) translate(-50%, -50%)";
   }
 
   document.addEventListener(
@@ -74,7 +114,30 @@
     { passive: true }
   );
 
-  document.addEventListener("mouseleave", function () { setVisible(false); }, { passive: true });
+  document.addEventListener(
+    "mouseleave",
+    function () {
+      setVisible(false);
+    },
+    { passive: true }
+  );
+
+  window.addEventListener("message", function (event) {
+    if (!event.data || event.data.type !== "portfolio-cursor") return;
+
+    var panel = document.getElementById("case-panel");
+    var frame = panel && panel.querySelector(".case-panel__frame");
+    if (!frame || event.source !== frame.contentWindow) return;
+
+    if (event.data.event === "leave") return;
+
+    if (event.data.event === "move") {
+      var rect = frame.getBoundingClientRect();
+      if (!visible) setVisible(true);
+      movePointer(rect.left + event.data.x, rect.top + event.data.y);
+      setHover(!!event.data.interactive);
+    }
+  });
 
   movePointer(window.innerWidth / 2, window.innerHeight / 2);
 })();
@@ -185,8 +248,27 @@
     el.textContent = polishText(original);
   }
 
+  function preventDotLineStart(text) {
+    return text.replace(/ · /g, "\u00A0· ");
+  }
+
+  function polishDotSeparated(el) {
+    if (!el) return;
+
+    var original = el.getAttribute("data-dot-source");
+    if (!original) {
+      original = el.textContent.replace(/\s+/g, " ").trim();
+      el.setAttribute("data-dot-source", original);
+    }
+
+    el.textContent = preventDotLineStart(original);
+  }
+
   function polishAll() {
     document.querySelectorAll(PRETTY_SELECTOR).forEach(polishParagraph);
+    document
+      .querySelectorAll(".experience-timeline-text, .experience-timeline-org")
+      .forEach(polishDotSeparated);
   }
 
   if (document.readyState === "loading") {
@@ -626,6 +708,142 @@
   document.addEventListener("keydown", function (event) {
     if (event.key === "Escape" && activeModal) {
       closeModal(activeModal);
+    }
+  });
+})();
+
+(function () {
+  var panel = document.getElementById("case-panel");
+  if (!panel) return;
+
+  var desktopMq = window.matchMedia("(min-width: 901px)");
+  var motionMq = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var frame = panel.querySelector(".case-panel__frame");
+  var inline = document.getElementById("case-panel-enoterra");
+  var closeDuration = 480;
+  var lastTrigger = null;
+  var lockedScrollY = 0;
+
+  function isDesktop() {
+    return desktopMq.matches;
+  }
+
+  function getCloseDuration() {
+    return motionMq.matches ? 0 : closeDuration;
+  }
+
+  function lockPageScroll() {
+    lockedScrollY = window.scrollY || window.pageYOffset || 0;
+    document.documentElement.classList.add("case-panel-open");
+    document.body.classList.add("case-panel-open");
+    document.body.style.position = "fixed";
+    document.body.style.top = "-" + lockedScrollY + "px";
+    document.body.style.left = "0";
+    document.body.style.right = "0";
+    document.body.style.width = "100%";
+  }
+
+  function unlockPageScroll() {
+    document.documentElement.classList.remove("case-panel-open");
+    document.body.classList.remove("case-panel-open");
+    document.body.style.position = "";
+    document.body.style.top = "";
+    document.body.style.left = "";
+    document.body.style.right = "";
+    document.body.style.width = "";
+    window.scrollTo(0, lockedScrollY);
+  }
+
+  function isPanelScrollTarget(target) {
+    if (!target || !panel.classList.contains("is-open")) return false;
+
+    var drawer = panel.querySelector(".case-panel__drawer");
+    var closeBtn = panel.querySelector(".case-panel__close");
+    if (closeBtn && (target === closeBtn || closeBtn.contains(target))) return true;
+    return !!(drawer && drawer.contains(target));
+  }
+
+  function preventBackgroundScroll(event) {
+    if (!panel.classList.contains("is-open") || panel.hidden) return;
+    if (isPanelScrollTarget(event.target)) return;
+    event.preventDefault();
+  }
+
+  function openPanel(trigger) {
+    var href = trigger.getAttribute("href") || "";
+
+    lastTrigger = trigger;
+    panel.hidden = false;
+    panel.setAttribute("aria-hidden", "false");
+    lockPageScroll();
+
+    requestAnimationFrame(function () {
+      panel.classList.add("is-open");
+    });
+
+    if (inline) inline.hidden = true;
+    if (frame) {
+      frame.hidden = false;
+      var url = href.split("#")[0];
+      frame.src = url + (url.indexOf("?") !== -1 ? "&" : "?") + "embed=1";
+    }
+  }
+
+  function closePanel(options) {
+    options = options || {};
+    panel.classList.remove("is-open");
+    panel.setAttribute("aria-hidden", "true");
+    unlockPageScroll();
+
+    window.setTimeout(function () {
+      if (panel.classList.contains("is-open")) return;
+
+      panel.hidden = true;
+      if (frame) {
+        frame.removeAttribute("src");
+        frame.hidden = false;
+      }
+      if (inline) inline.hidden = true;
+    }, getCloseDuration());
+
+    if (lastTrigger) {
+      if (options.restoreFocus) {
+        lastTrigger.focus({ preventScroll: true });
+      } else {
+        lastTrigger.blur();
+      }
+      lastTrigger = null;
+    }
+  }
+
+  document.querySelectorAll(".project-case:not(.project-case--static)").forEach(function (card) {
+    card.addEventListener("click", function (event) {
+      if (!isDesktop()) return;
+
+      event.preventDefault();
+      openPanel(card);
+    });
+  });
+
+  panel.querySelectorAll("[data-case-panel-close]").forEach(function (control) {
+    control.addEventListener("click", function () {
+      closePanel();
+    });
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && !panel.hidden && panel.classList.contains("is-open")) {
+      event.preventDefault();
+      closePanel({ restoreFocus: true });
+    }
+  });
+
+  document.addEventListener("wheel", preventBackgroundScroll, { passive: false });
+  document.addEventListener("touchmove", preventBackgroundScroll, { passive: false });
+
+  desktopMq.addEventListener("change", function () {
+    if (!desktopMq.matches && panel.classList.contains("is-open")) {
+      closePanel();
     }
   });
 })();
