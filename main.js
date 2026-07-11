@@ -490,7 +490,15 @@
 
     summary.addEventListener("click", function (event) {
       event.preventDefault();
-      setRowState(row, !row.open, true);
+      var shouldOpen = !row.open;
+      if (shouldOpen) {
+        rows.forEach(function (other) {
+          if (other !== row && other.open) {
+            setRowState(other, false, true);
+          }
+        });
+      }
+      setRowState(row, shouldOpen, true);
     });
   });
 
