@@ -16,7 +16,11 @@
     <nav class="nav" aria-label="Main">
       <a class="logo" href="welcome.html">Vera Fedotova</a>
       <div class="nav-end">
-        <ul class="nav-links">
+        <button type="button" class="nav-burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="nav-links" id="nav-menu">
           <li><a href="index.html" class="hide-desktop">Home</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#experience">Experience</a></li>
@@ -169,7 +173,7 @@
             </div>
             <div class="project-case-footer">
               <h3 class="project-case-name">ERP System Improvement</h3>
-              <p class="project-case-desc">Research, workshops, and a redesign centred on an operational dashboard, <br class="hide-mobile">a three-step order model and AI-assisted wine substitution.</p>
+              <p class="project-case-desc"><span class="desc-desktop">Research, workshops, and a redesign centred on an operational dashboard,<br>a three-step order model and AI-assisted wine substitution.</span><span class="desc-mobile">Research, workshops, and a redesign centred on an operational dashboard, a three-step order model and AI-assisted wine substitution.</span></p>
             </div>
           </a>
 
