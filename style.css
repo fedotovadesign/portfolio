@@ -3923,14 +3923,14 @@ body.figma-modal-open {
   align-items: center;
   justify-content: center;
   flex: 1;
-  min-height: 320px;
+  min-height: 220px;
   margin: 0;
-  padding: 18px var(--develop-gutter, 14px) 16px;
+  padding: 14px var(--develop-gutter, 14px) 12px;
 }
 
 .develop-ab-sketch {
   display: block;
-  width: min(176px, 64%);
+  width: min(120px, 58%);
   height: auto;
   aspect-ratio: 110 / 200;
   margin: 0 auto;
@@ -4908,7 +4908,10 @@ body.figma-modal-open {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .case-block--develop .develop-ab-grid,
+  .case-block--develop .develop-ab-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .case-block--develop .case-meta.case-meta--ab {
     grid-template-columns: 1fr;
   }
@@ -5014,7 +5017,8 @@ body.figma-modal-open {
   }
 
   .case-block--develop .develop-ab-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
   }
 
   .case-block--erp-discovery .case-meta--erp-priority.case-meta--boxed > div {
