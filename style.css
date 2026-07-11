@@ -2140,7 +2140,7 @@ body.figma-modal-open {
 
 .case-showcase--erp .case-showcase-figure {
   margin: 0;
-  padding: 12px 0 20px;
+  padding: 20px 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3299,7 +3299,7 @@ body.figma-modal-open {
 
   .case-showcase--erp .case-showcase-figure {
     min-height: auto;
-    padding: 8px 0 16px;
+    padding: 16px 0;
   }
 }
 
