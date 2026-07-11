@@ -166,21 +166,8 @@ img {
   gap: 32px;
 }
 
-.nav-back {
+.page-back {
   display: none;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  margin-right: 4px;
-  color: var(--muted);
-  border-radius: 50%;
-  transition: color 0.2s ease, background 0.2s ease;
-}
-
-.nav-back:hover {
-  color: var(--ink);
-  background: rgba(255, 255, 255, 0.06);
 }
 
 .nav-burger {
@@ -1376,9 +1363,7 @@ main {
   text-wrap: pretty;
 }
 
-.project-case-desc .desc-mobile {
-  display: none;
-}
+
 
 /* Case study slide panel (desktop) */
 .case-panel {
@@ -5206,8 +5191,30 @@ body.figma-modal-open {
     display: inline-flex;
   }
 
-  .nav-back {
+  .page-back {
     display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin: 12px 0 4px 16px;
+    padding: 6px 10px 6px 6px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: transparent;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .page-back:hover,
+  .page-back:focus-visible {
+    color: var(--ink);
+  }
+
+  .page-back svg {
+    flex-shrink: 0;
   }
 
   .nav-links {
@@ -5219,8 +5226,7 @@ body.figma-modal-open {
     align-items: flex-start;
     gap: 0;
     padding: 12px 20px 20px;
-    background: rgba(11, 11, 13, 0.96);
-    backdrop-filter: blur(20px) saturate(1.2);
+    background: #0b0b0d;
     border-bottom: 1px solid var(--line);
     opacity: 0;
     visibility: hidden;
@@ -5334,14 +5340,6 @@ body.figma-modal-open {
     display: none;
   }
 
-  .project-case-desc .desc-desktop {
-    display: none;
-  }
-
-  .project-case-desc .desc-mobile {
-    display: inline;
-  }
-
   .hero {
     padding: 72px 0 72px;
   }
@@ -5408,16 +5406,16 @@ body.figma-modal-open {
   }
 
   .case-meta.case-meta--tools {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    gap: 20px;
-    padding-bottom: 2px;
-    -webkit-overflow-scrolling: touch;
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    row-gap: 16px;
+    padding-bottom: 0;
   }
 
   .case-meta.case-meta--tools > div {
-    flex: 0 0 auto;
+    flex: initial;
+    min-width: 0;
   }
 }
 
