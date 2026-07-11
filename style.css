@@ -5046,6 +5046,16 @@ body.figma-modal-open {
     padding-top: 18px;
   }
 
+  .experience-timeline-details > summary {
+    padding: 10px 0;
+    font-size: 11px;
+  }
+
+  .experience-timeline-details .experience-timeline-text {
+    margin-top: 8px;
+    font-size: 13px;
+  }
+
   .case-meta.case-meta--survey,
   .case-meta.case-meta--needs,
   .case-meta.case-meta--cjm {
