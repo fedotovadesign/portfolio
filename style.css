@@ -5200,23 +5200,28 @@ body.figma-modal-open {
   }
 
   .case-accordion-trigger {
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
     gap: 10px 12px;
     align-items: center;
   }
 
   .case-accordion-title {
-    flex: 1 1 auto;
+    grid-column: 1;
+    grid-row: 1;
     min-width: 0;
     overflow-wrap: anywhere;
   }
 
+  .case-accordion-icon {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
   .case-accordion-badge {
-    order: 3;
-    flex-basis: 100%;
-    max-width: fit-content;
-    align-self: flex-start;
-    flex-grow: 0;
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-self: start;
     margin: 0;
     white-space: nowrap;
   }
@@ -5227,6 +5232,10 @@ body.figma-modal-open {
 
   .case-block--erp-closing:has(+ .case-nav) {
     border-top: none;
+  }
+
+  br.hide-mobile {
+    display: none;
   }
 
   .hero {
