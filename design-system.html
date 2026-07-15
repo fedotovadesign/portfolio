@@ -9,14 +9,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css?v=332" />
-  <link rel="stylesheet" href="design-system.css?v=12" />
+  <link rel="stylesheet" href="design-system.css?v=13" />
 </head>
 <body class="site-theme">
   <header class="site-header">
     <nav class="nav" aria-label="Main">
       <a class="logo" href="welcome.html">Vera Fedotova</a>
       <div class="nav-end">
-        <ul class="nav-links">
+        <button type="button" class="nav-burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="nav-links" id="nav-menu">
           <li><a href="index.html">Home</a></li>
           <li><a href="index.html#projects">Projects</a></li>
           <li><a href="index.html#experience">Experience</a></li>
@@ -264,7 +268,7 @@
 
     <div class="container case-nav">
       <a href="index.html#projects">← All projects</a>
-      <a href="comarch-loyalty.html">Next: Comarch Loyalty Management →</a>
+      <a href="comarch-loyalty.html">Comarch Loyalty Management →</a>
     </div>
 
     <section class="section-sm" id="contact">
