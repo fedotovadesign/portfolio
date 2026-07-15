@@ -179,7 +179,13 @@
 }
 
 html.case-embed .case-showcase--design-system {
-  display: none;
+  display: none !important;
+}
+
+@media (max-width: 900px) {
+  .case-showcase--design-system {
+    display: none !important;
+  }
 }
 
 html.case-embed .case-block--design-system-closing .container {
