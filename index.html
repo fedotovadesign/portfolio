@@ -9,18 +9,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&family=Roboto+Mono:wght@400;500&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
   <style>body{background:#0b0b0d;color:#f2f1ec;margin:0}</style>
-  <link rel="stylesheet" href="style.css?v=341" />
+  <link rel="stylesheet" href="style.css?v=332" />
+  <link rel="stylesheet" href="experience-styles.css?v=1" />
 </head>
 <body class="site-theme">
   <header class="site-header">
     <nav class="nav" aria-label="Main">
       <a class="logo" href="welcome.html">Vera Fedotova</a>
       <div class="nav-end">
-        <button type="button" class="nav-burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
-          <span></span>
-          <span></span>
-        </button>
-        <ul class="nav-links" id="nav-menu">
+        <ul class="nav-links">
           <li><a href="index.html" class="hide-desktop">Home</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#experience">Experience</a></li>
@@ -168,19 +165,19 @@
         <div class="projects-list">
           <a class="project-case" href="erp-system.html" data-case-label="In implementation">
             <div class="project-case-media">
-              <img class="project-case-cover project-case-cover--contain" src="images/erp-system/hero/dashboard.png" alt="Enoterra ERP System — Enoterra Pulpit dashboard in dark mode" width="2560" height="1600" loading="lazy" decoding="async" />
+              <img class="project-case-cover project-case-cover--contain" src="images/erp-system/hero/dashboard.png" alt="ERP System Improvement — Enoterra Pulpit dashboard in dark mode" width="2560" height="1600" loading="lazy" decoding="async" />
               <span class="project-case-label">In implementation</span>
             </div>
             <div class="project-case-footer">
-              <h3 class="project-case-name">Enoterra ERP System</h3>
-              <p class="project-case-desc">Research, workshops, and a redesign centred on an operational dashboard, a three-step order model and AI-assisted wine substitution.</p>
+              <h3 class="project-case-name">ERP System Improvement</h3>
+              <p class="project-case-desc">Research, workshops, and a redesign centred on an operational dashboard,<br>a three-step order model and AI-assisted wine substitution.</p>
             </div>
           </a>
 
-          <a class="project-case" href="local-run-club.html" data-case-label="On hold">
+          <a class="project-case" href="local-run-club.html" data-case-label="Concept">
             <div class="project-case-media">
               <img class="project-case-cover project-case-cover--cover" src="images/local-run-club/hero/cover.png" alt="Local Run Club App — key screens preview" width="4800" height="3600" loading="lazy" decoding="async" />
-              <span class="project-case-label">On hold</span>
+              <span class="project-case-label">Concept</span>
             </div>
             <div class="project-case-footer">
               <h3 class="project-case-name">Local Run Club App</h3>
@@ -188,16 +185,16 @@
             </div>
           </a>
 
-          <article class="project-case project-case--static" data-case-label="In progress">
+          <a class="project-case" href="design-system.html" data-case-label="In progress">
             <div class="project-case-media">
-              <img class="project-case-cover project-case-cover--contain" src="images/enoterra%20mobile/UI%20Kit/Section%20Card/Doc%20Window.png" alt="Enoterra AI-Driven Mobile App — typography system preview" width="1200" height="750" loading="lazy" decoding="async" />
+              <img class="project-case-cover project-case-cover--cover" src="images/design-system/hero/project-cover.png" alt="Token-driven design system — component library preview" width="2560" height="1600" loading="lazy" decoding="async" />
               <span class="project-case-label">In progress</span>
             </div>
             <div class="project-case-footer">
-              <h3 class="project-case-name">Enoterra AI-Driven Mobile App</h3>
-              <p class="project-case-desc">Smart wine app — token-driven design system. (Case study in progress).</p>
+              <h3 class="project-case-name">Token-driven design system</h3>
+              <p class="project-case-desc">Semantic token architecture, controls library, and AI-ready documentation — one system for design, code, and hand-off.</p>
             </div>
-          </article>
+          </a>
 
           <a class="project-case" href="comarch-loyalty.html" data-case-label="Current Role">
             <div class="project-case-media">
@@ -341,44 +338,11 @@
     <button type="button" class="case-panel__close" data-case-panel-close aria-label="Close case study">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
     </button>
-    <aside class="case-panel__drawer" role="dialog" aria-modal="true" aria-labelledby="case-panel-title">
+    <aside class="case-panel__drawer" role="dialog" aria-modal="true" aria-label="Case study">
       <div class="case-panel__frame-wrap">
         <iframe class="case-panel__frame" title="Case study" hidden></iframe>
       </div>
-      <div class="case-panel__inline" id="case-panel-enoterra" hidden>
-        <div class="case-panel__inline-inner">
-          <p class="section-label case-panel__label">Case study · Mobile · In progress</p>
-          <h2 class="case-panel__title" id="case-panel-title">ENOTERRA AI-DRIVEN MOBILE APP</h2>
-          <p class="case-panel__lead">Token-driven UI kit and mobile experience for wine distribution — AI-assisted flows, typography system, and component library in active development.</p>
-          <div class="case-panel__figma">
-            <iframe
-              title="Token-driven UI Kit · Design System Sneak Peek"
-              src="https://embed.figma.com/proto/QEHNNjkGY9CJrhkHtZzr9G/Enoterra-AI-App?node-id=0-332&amp;viewport=328%2C60%2C0.09&amp;scaling=scale-down-width&amp;content-scaling=fixed&amp;page-id=0%3A1&amp;embed-host=share"
-              allowfullscreen
-            ></iframe>
-          </div>
-        </div>
-      </div>
     </aside>
-  </div>
-
-  <div class="figma-modal" id="enoterra-ui-kit-modal" hidden aria-hidden="true">
-    <div class="figma-modal__backdrop" data-figma-close tabindex="-1"></div>
-    <div class="figma-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="enoterra-ui-kit-modal-title">
-      <div class="figma-modal__header">
-        <button type="button" class="figma-modal__close" data-figma-close aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <h2 class="visually-hidden" id="enoterra-ui-kit-modal-title">Token-driven UI Kit · Design System Sneak Peek</h2>
-      <div class="figma-modal__frame-wrap">
-        <iframe
-          title="Token-driven UI Kit · Design System Sneak Peek"
-          data-figma-src="https://embed.figma.com/proto/QEHNNjkGY9CJrhkHtZzr9G/Enoterra-AI-App?node-id=0-332&amp;viewport=328%2C60%2C0.09&amp;scaling=scale-down-width&amp;content-scaling=fixed&amp;page-id=0%3A1&amp;embed-host=share"
-          allowfullscreen
-        ></iframe>
-      </div>
-    </div>
   </div>
 
   <footer class="site-footer">
@@ -387,6 +351,6 @@
     </div>
   </footer>
 
-  <script src="main.js?v=90"></script>
+  <script src="main.js?v=41"></script>
 </body>
 </html>

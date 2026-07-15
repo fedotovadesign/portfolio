@@ -1,0 +1,70 @@
+/* Experience timeline — Read more toggles (matches GitHub master) */
+.experience-timeline-details {
+  margin-top: 0;
+}
+
+.experience-timeline-details > summary {
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 0;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color 0.2s ease;
+  user-select: none;
+}
+
+.experience-timeline-details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.experience-timeline-details > summary::marker {
+  display: none;
+  content: "";
+}
+
+.experience-timeline-details > summary:hover,
+.experience-timeline-details[open] > summary {
+  color: var(--ink);
+}
+
+.experience-timeline-toggle-label::before {
+  content: attr(data-closed);
+}
+
+.experience-timeline-details[open] .experience-timeline-toggle-label::before {
+  content: attr(data-open);
+}
+
+.experience-timeline-toggle-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: currentColor;
+  transition: transform 0.25s ease;
+}
+
+.experience-timeline-details[open] .experience-timeline-toggle-icon {
+  transform: rotate(45deg);
+}
+
+.experience-timeline-details .experience-timeline-text {
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .experience-timeline-details > summary {
+    padding: 10px 0;
+    font-size: 11px;
+  }
+
+  .experience-timeline-details .experience-timeline-text {
+    margin-top: 8px;
+    font-size: 13px;
+  }
+}

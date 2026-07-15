@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Token-driven design system · Case Study</title>
+  <meta name="description" content="Token-driven design system — semantic variables, component library, and AI-ready documentation for production hand-off." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=332" />
+  <link rel="stylesheet" href="design-system.css?v=11" />
+</head>
+<body class="site-theme">
+  <header class="site-header">
+    <nav class="nav" aria-label="Main">
+      <a class="logo" href="welcome.html">Vera Fedotova</a>
+      <div class="nav-end">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#projects">Projects</a></li>
+          <li><a href="index.html#experience">Experience</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="case-hero">
+      <div class="container">
+        <p class="section-label">Case study · Design systems · In progress</p>
+        <h1 class="hero-title">Token-driven design system</h1>
+        <p class="hero-sub">Semantic tokens · Controls · AI hand-off</p>
+        <p class="section-lead">
+          A Figma library built on a three-tier token model — primitives, semantic roles, component aliases. So designers, developers, and AI tools assemble UI from one system, not one-offs.
+        </p>
+
+        <dl class="case-meta case-meta--hero-aligned">
+          <div>
+            <dt>Role</dt>
+            <dd>UX/UI Designer ·<br>Design system owner</dd>
+          </div>
+          <div>
+            <dt>Scope</dt>
+            <dd>Figma variables ·<br>Documentation</dd>
+          </div>
+          <div>
+            <dt>Status</dt>
+            <dd>In progress ·<br>Expanding</dd>
+          </div>
+          <div>
+            <dt>Focus</dt>
+            <dd>Tokens · Components ·<br>Dev &amp; AI specs</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="case-showcase case-showcase--design-system" aria-label="Design system cover preview">
+      <div class="container">
+        <figure class="case-showcase-figure">
+          <img
+            class="case-showcase-cover"
+            src="images/design-system/hero/project-cover.png"
+            alt="Token-driven design system — component library and token documentation preview"
+            width="2560"
+            height="1600"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+      </div>
+    </section>
+
+    <section class="case-block case-block--erp">
+      <div class="container">
+        <h3 class="case-block-subtitle">Scope</h3>
+        <div class="erp-scope-grid">
+          <article class="erp-scope-panel">
+            <h4 class="erp-scope-title">Designer role</h4>
+            <ol class="erp-role-list">
+              <li class="erp-role-item">
+                <span class="erp-role-num" aria-hidden="true">1</span>
+                <span class="erp-role-text">Foundations — layered structure for colour, spacing, and type so updates carry through the whole library</span>
+              </li>
+              <li class="erp-role-item">
+                <span class="erp-role-num" aria-hidden="true">2</span>
+                <span class="erp-role-text">Type and controls — text styles and core interactive elements designed to work as one system on screen</span>
+              </li>
+              <li class="erp-role-item">
+                <span class="erp-role-num" aria-hidden="true">3</span>
+                <span class="erp-role-text">Built to stay on-system — shared rules across components; no one-off styling or disconnected overrides</span>
+              </li>
+              <li class="erp-role-item">
+                <span class="erp-role-num" aria-hidden="true">4</span>
+                <span class="erp-role-text">Specs and delivery — documentation and production-ready output for design, development, and team hand-off</span>
+              </li>
+            </ol>
+          </article>
+          <article class="erp-scope-panel erp-scope-panel--tools">
+            <h4 class="erp-scope-title">Tools</h4>
+            <ul class="erp-tool-tags">
+              <li class="erp-tool-tag"><span class="erp-tool-dot erp-tool-dot--pink" aria-hidden="true"></span>Figma</li>
+              <li class="erp-tool-tag"><span class="erp-tool-dot erp-tool-dot--pink" aria-hidden="true"></span>Claude · Cursor AI</li>
+              <li class="erp-tool-tag"><span class="erp-tool-dot erp-tool-dot--blue" aria-hidden="true"></span>Variables &amp; tokens</li>
+            </ul>
+            <p class="erp-tools-note"><span class="erp-tools-note-item">Figma&nbsp;— variable collections, component library, and in-file documentation frames.</span> <span class="erp-tools-note-item">Claude &amp; Cursor AI&nbsp;— markdown context and component code for AI-assisted screen design.</span> <span class="erp-tools-note-item">Semantic tokens&nbsp;— colour, spacing, typography, and component-level variables mapped to CSS.</span></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="case-accordion case-accordion--comarch case-accordion--design-system">
+    <section class="case-block case-block--erp-develop case-accordion-item">
+      <div class="container">
+        <h2 class="case-accordion-heading">
+          <button type="button" class="case-accordion-trigger" aria-expanded="false" aria-controls="accordion-ds-principles" id="accordion-trigger-ds-principles">
+            <span class="case-accordion-title">Token-driven principles</span>
+            <span class="case-accordion-icon" aria-hidden="true"></span>
+          </button>
+        </h2>
+        <div class="case-accordion-panel" id="accordion-ds-principles" role="region" aria-labelledby="accordion-trigger-ds-principles" hidden>
+
+
+        <div class="ds-principles-flow" aria-label="How the system is layered">
+          <div class="ds-principles-flow__step">
+            <span class="ds-principles-flow__num">1</span>
+            <span class="ds-principles-flow__label">Foundation</span>
+            <span class="ds-principles-flow__desc">Colour, spacing, type</span>
+          </div>
+          <span class="ds-principles-flow__arrow" aria-hidden="true">→</span>
+          <div class="ds-principles-flow__step">
+            <span class="ds-principles-flow__num">2</span>
+            <span class="ds-principles-flow__label">Meaning</span>
+            <span class="ds-principles-flow__desc">What it does on screen</span>
+          </div>
+          <span class="ds-principles-flow__arrow" aria-hidden="true">→</span>
+          <div class="ds-principles-flow__step">
+            <span class="ds-principles-flow__num">3</span>
+            <span class="ds-principles-flow__label">Components</span>
+            <span class="ds-principles-flow__desc">Buttons, fields, states</span>
+          </div>
+          <span class="ds-principles-flow__arrow" aria-hidden="true">→</span>
+          <div class="ds-principles-flow__step">
+            <span class="ds-principles-flow__num">4</span>
+            <span class="ds-principles-flow__label">Hand-off</span>
+            <span class="ds-principles-flow__desc">Specs beside each control</span>
+          </div>
+        </div>
+
+        <div class="erp-outcome-grid ds-principles-grid">
+          <article class="erp-outcome-box">
+            <h3 class="erp-outcome-label">Set the base</h3>
+            <p class="erp-outcome-text">I collect colour, spacing, and type in one place before touching components. No one-off values on individual buttons or fields.</p>
+          </article>
+          <article class="erp-outcome-box">
+            <h3 class="erp-outcome-label">Name by role</h3>
+            <p class="erp-outcome-text">Each value gets a name that says what it does — primary text, error background, focus ring — not what it looks like today.</p>
+          </article>
+          <article class="erp-outcome-box">
+            <h3 class="erp-outcome-label">Build on top</h3>
+            <p class="erp-outcome-text">Controls pull from that shared set. Default, hover, focus, and disabled stay consistent because they share the same source.</p>
+          </article>
+          <article class="erp-outcome-box">
+            <h3 class="erp-outcome-label">Document as I go</h3>
+            <p class="erp-outcome-text">Every component ships with a short spec next to it — enough for design review, dev hand-off, and later library updates.</p>
+          </article>
+        </div>
+
+        <dl class="case-meta case-meta--ds-rules case-meta--boxed">
+          <div>
+            <dt>What I keep</dt>
+            <dd class="discover-box-body">
+              <p>One naming logic across the file and the specs.</p>
+              <p>States tested before a component is marked done.</p>
+            </dd>
+          </div>
+          <div>
+            <dt>What I avoid</dt>
+            <dd class="discover-box-body">
+              <p>Detached styles and duplicate frames for the same state.</p>
+              <p>Docs that drift away from what is in the library.</p>
+            </dd>
+          </div>
+          <div>
+            <dt>What that gives</dt>
+            <dd class="discover-box-body">
+              <p>Faster screen assembly without breaking consistency.</p>
+              <p>A library that stays current when the product evolves.</p>
+            </dd>
+          </div>
+        </dl>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="case-block case-block--erp-develop case-accordion-item">
+      <div class="container">
+        <h2 class="case-accordion-heading">
+          <button type="button" class="case-accordion-trigger" aria-expanded="false" aria-controls="accordion-ds-controls" id="accordion-trigger-ds-controls">
+            <span class="case-accordion-title">Controls overview</span>
+            <span class="case-accordion-badge" aria-hidden="true">Figma</span>
+            <span class="case-accordion-icon" aria-hidden="true"></span>
+          </button>
+        </h2>
+        <div class="case-accordion-panel" id="accordion-ds-controls" role="region" aria-labelledby="accordion-trigger-ds-controls" hidden>
+
+        <div class="case-accordion-panel-inner">
+        <div class="erp-brainstorm-section">
+          <p class="erp-develop-prose">A controls sample centred on buttons — illustrative, not exhaustive, but sufficient to review states and in-context documentation.</p>
+          <div class="card-accordion-embed ds-controls-embed">
+            <iframe
+              title="Controls design system preview"
+              src="https://www.figma.com/embed?embed_host=share&amp;url=https%3A%2F%2Fwww.figma.com%2Fproto%2FBw6ZuzQ8TmdzR3OHgazEqE%2Fdesign-system--new-%3Fnode-id%3D2038-12320%26scaling%3Dscale-down-width%26content-scaling%3Dfixed%26page-id%3D2038%253A12319"
+              loading="lazy"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+        </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="case-block case-block--erp-develop case-accordion-item">
+      <div class="container">
+        <h2 class="case-accordion-heading">
+          <button type="button" class="case-accordion-trigger" aria-expanded="false" aria-controls="accordion-ds-next" id="accordion-trigger-ds-next">
+            <span class="case-accordion-title">What's next</span>
+            <span class="case-accordion-icon" aria-hidden="true"></span>
+          </button>
+        </h2>
+        <div class="case-accordion-panel" id="accordion-ds-next" role="region" aria-labelledby="accordion-trigger-ds-next" hidden>
+
+        <div class="erp-outcome-grid ds-next-grid">
+          <article class="erp-outcome-box">
+            <h3 class="erp-outcome-label">Full library</h3>
+            <p class="erp-outcome-text">Extend the set with remaining components and complete documentation for each — states, anatomy, and usage notes in one place.</p>
+          </article>
+          <article class="erp-outcome-box">
+            <h3 class="erp-outcome-label">WCAG rules</h3>
+            <p class="erp-outcome-text">Accessibility guidelines in markdown — contrast, focus, labels, and keyboard behaviour defined once in the system, not re-checked on every screen.</p>
+          </article>
+          <article class="erp-outcome-box">
+            <h3 class="erp-outcome-label">Usage &amp; behaviour</h3>
+            <p class="erp-outcome-text">Key examples of components in context — how they combine on real layouts and how interaction patterns behave across the product.</p>
+          </article>
+        </div>
+
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <section class="case-block case-block--erp-closing case-block--design-system-closing">
+      <div class="container">
+        <h2 class="erp-closing-heading">Consistency is the deliverable</h2>
+        <p class="erp-develop-prose">A library pays off when change happens in one place and the product stays coherent. Shared foundations, names that describe purpose, and specs beside every control — that is what keeps design, development, and hand-off aligned as the system grows.</p>
+      </div>
+    </section>
+
+    <div class="container case-nav">
+      <a href="index.html#projects">← All projects</a>
+      <a href="comarch-loyalty.html">Next: Comarch Loyalty Management →</a>
+    </div>
+
+    <section class="section-sm" id="contact">
+      <div class="container">
+        <p class="section-label">Contact</p>
+        <div class="contact-links">
+          <a class="contact-link contact-link--email" href="mailto:fvo.fedotova@gmail.com">
+            <span class="contact-link-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <rect x="2.5" y="4.5" width="19" height="15" rx="2.5" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M3.5 7.5L12 13.5L20.5 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="contact-link-text">fvo.fedotova@gmail.com</span>
+          </a>
+          <a class="contact-link contact-link--linkedin" href="https://www.linkedin.com/in/vera-fedotova/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <g transform="translate(12 12) scale(0.93) translate(-12 -12)">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.062 2.062 0 0 1 2.063-2.063 2.062 2.062 0 0 1 2.063 2.063 2.062 2.062 0 0 1-2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/>
+              </g>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Vera Fedotova</p>
+    </div>
+  </footer>
+
+  <script src="main.js?v=41"></script>
+</body>
+</html>
