@@ -1,0 +1,66 @@
+.design-carousel--erp .design-carousel__viewport {
+  aspect-ratio: 2880 / 1684;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  background: var(--bg);
+  line-height: 0;
+}
+
+.case-showcase--erp .case-showcase-figure.design-carousel {
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: min(100%, 960px);
+  margin-inline: auto;
+  padding-top: 12px;
+  padding-bottom: 20px;
+  align-items: stretch;
+}
+
+.design-carousel--erp .design-carousel__slide {
+  display: flex;
+  align-items: stretch;
+}
+
+.design-carousel--erp .design-carousel__slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  margin: 0;
+  object-fit: cover;
+  object-position: center top;
+  border: none;
+  border-radius: 0;
+}
+
+.case-showcase--erp .design-carousel__controls {
+  width: 100%;
+  max-width: 960px;
+  margin-inline: auto;
+}
+
+.design-carousel--erp .design-carousel__label {
+  margin: 0;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+/* All carousels: keep arrow visible on white hover */
+.design-carousel__btn:hover,
+.design-carousel__btn:focus-visible {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #0b0b0d;
+}
+
+.design-carousel__btn:disabled:hover,
+.design-carousel__btn:disabled:focus-visible {
+  background: var(--surface);
+  border-color: var(--line);
+  color: var(--ink);
+}

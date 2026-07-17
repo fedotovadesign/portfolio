@@ -1,0 +1,15 @@
+/* Contact block in case-panel embed (mobile / narrow sidebar) — match main page #contact */
+@media (max-width: 900px) {
+  html.case-embed #contact {
+    display: block !important;
+  }
+
+  html.case-embed #contact .container {
+    padding-left: clamp(18px, 2.5vw, 32px);
+    padding-right: clamp(18px, 2.5vw, 32px);
+  }
+
+  html.case-embed #contact .contact-tonik {
+    width: 100%;
+  }
+}

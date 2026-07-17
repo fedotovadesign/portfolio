@@ -1,0 +1,16 @@
+/* Shared carousel UI fixes — load on any page with .design-carousel */
+
+/* Keep arrow visible on white hover background */
+.design-carousel__btn:hover,
+.design-carousel__btn:focus-visible {
+  background: #ffffff !important;
+  border-color: #ffffff !important;
+  color: #0b0b0d !important;
+}
+
+.design-carousel__btn:disabled:hover,
+.design-carousel__btn:disabled:focus-visible {
+  background: var(--surface) !important;
+  border-color: var(--line) !important;
+  color: var(--ink) !important;
+}
