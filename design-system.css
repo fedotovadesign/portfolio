@@ -1,4 +1,4 @@
-/* Token-driven design system case study */
+/* Loom Loyalty case study */
 .case-accordion--design-system .erp-develop-prose code {
   font-size: 0.92em;
   letter-spacing: 0.01em;
@@ -13,6 +13,10 @@
 }
 
 .case-accordion--design-system .case-accordion-panel-inner > .erp-develop-prose:first-child {
+  margin-bottom: 24px;
+}
+
+.ds-system-lead {
   margin-bottom: 24px;
 }
 
@@ -155,6 +159,7 @@
   white-space: nowrap;
 }
 
+
 @media (max-width: 640px) {
   .case-accordion--design-system .case-accordion-badge {
     grid-column: 1 / -1;
@@ -187,18 +192,158 @@
   border: 0;
 }
 
-html.case-embed .case-showcase--design-system {
-  display: none !important;
-}
 
-@media (max-width: 900px) {
-  .case-showcase--design-system {
-    display: none !important;
-  }
-}
-
-html.case-embed .case-block--design-system-closing .container {
+html.case-embed .case-block--design-system-closing .container,
+html.case-embed .case-block--erp .container,
+html.case-embed .case-block--erp-discovery .container,
+html.case-embed .case-block--erp-develop .container {
   max-width: none;
   padding-left: clamp(18px, 2.5vw, 32px);
   padding-right: clamp(18px, 2.5vw, 32px);
 }
+
+.ds-principles-grid {
+  margin-bottom: 28px;
+}
+
+.ds-controls-flow {
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+.ds-controls-flow .ux-flow-panel {
+  padding-top: 16px;
+}
+
+.ds-controls-flow .erp-develop-prose {
+  margin-bottom: 16px;
+}
+
+.case-accordion--design-system .ux-flow--collapsible {
+  width: 100%;
+}
+
+/* Nested user-flow / controls dropdowns (details/summary) */
+.case-accordion--design-system details.ux-flow--collapsible {
+  margin-top: 28px;
+  margin-bottom: 0;
+}
+
+.case-accordion--design-system details.ux-flow--collapsible > summary.ux-flow-toggle {
+  list-style: none;
+  cursor: pointer;
+}
+
+.case-accordion--design-system details.ux-flow--collapsible > summary.ux-flow-toggle::-webkit-details-marker {
+  display: none;
+}
+
+.case-accordion--design-system details.ux-flow--collapsible[open] .ux-flow-panel,
+.case-accordion--design-system details.ux-flow--collapsible.is-open .ux-flow-panel {
+  display: block;
+}
+
+/* Beat global rule that hides panel without .is-open */
+.case-accordion--design-system .ux-flow--collapsible:not(.is-open)[open] .ux-flow-panel {
+  display: block;
+}
+
+.case-accordion--design-system details.ux-flow--collapsible[open] .ux-flow-icon::after,
+.case-accordion--design-system details.ux-flow--collapsible.is-open .ux-flow-icon::after {
+  transform: translate(-50%, -50%) rotate(90deg) scaleX(0);
+  opacity: 0;
+}
+
+.case-accordion--design-system details.ux-flow--collapsible[open] .ux-flow-toggle .ux-flow-caption,
+.case-accordion--design-system details.ux-flow--collapsible.is-open .ux-flow-toggle .ux-flow-caption {
+  color: var(--ink);
+}
+
+#ux-flow-loom {
+  margin-top: 32px;
+}
+
+/* Loom product carousel — same stroke as ERP, sharp image edges */
+.case-showcase--loom {
+  background: transparent;
+  border-bottom: 1px solid var(--line);
+}
+
+.case-showcase--loom .container {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.case-showcase--loom .case-showcase-figure.design-carousel {
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: min(100%, 960px);
+  margin-inline: auto;
+  padding-top: 12px;
+  padding-bottom: 20px;
+  align-items: stretch;
+  overflow: visible;
+  background: transparent;
+}
+
+.design-carousel--loom .design-carousel__viewport {
+  aspect-ratio: 2880 / 1684;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  /* light stroke — same as ERP carousel */
+  border: 1px solid rgba(242, 241, 236, 0.34);
+  border-radius: 8px;
+  background: var(--bg);
+  line-height: 0;
+  overflow: hidden;
+  box-shadow: none;
+  -webkit-mask-image: none;
+  mask-image: none;
+  filter: none;
+  outline: none;
+}
+
+.design-carousel--loom .design-carousel__slide {
+  display: flex;
+  align-items: stretch;
+  background: var(--bg);
+}
+
+.design-carousel--loom .design-carousel__slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  object-fit: cover;
+  object-position: center top;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none;
+  filter: none;
+  -webkit-filter: none;
+}
+
+.case-showcase--loom .design-carousel__controls {
+  width: 100%;
+  max-width: 960px;
+  margin-inline: auto;
+}
+
+.design-carousel--loom .design-carousel__label {
+  margin: 0;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+html.case-embed .case-showcase--loom .container {
+  max-width: none;
+  padding-left: clamp(18px, 2.5vw, 32px);
+  padding-right: clamp(18px, 2.5vw, 32px);
+}
+

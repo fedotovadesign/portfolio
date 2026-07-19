@@ -478,15 +478,62 @@
     body.addEventListener("transitionend", handler);
   }
 
+  function primeRowImages(body) {
+    body.querySelectorAll("img").forEach(function (img) {
+      if (img.loading === "lazy") img.loading = "eager";
+      if (typeof img.decode === "function") {
+        img.decode().catch(function () {});
+      }
+    });
+  }
+
+  function fitOpenBody(row, body) {
+    if (!row.open || !body) return;
+    if (body.style.height === "auto") return;
+    body.style.height = measureBody(body) + "px";
+  }
+
+  function watchRowContent(row, body) {
+    if (!body || body.dataset.aboutWatch === "true") return;
+    body.dataset.aboutWatch = "true";
+
+    body.querySelectorAll("img").forEach(function (img) {
+      function onImgReady() {
+        fitOpenBody(row, body);
+        if (row.open && body.style.height === "auto") {
+          /* height auto already grows with content */
+          return;
+        }
+      }
+
+      if (!img.complete) {
+        img.addEventListener("load", onImgReady);
+        img.addEventListener("error", onImgReady);
+      }
+    });
+
+    if (typeof ResizeObserver !== "undefined") {
+      var inner = ensureBodyInner(body);
+      var ro = new ResizeObserver(function () {
+        fitOpenBody(row, body);
+      });
+      ro.observe(inner);
+    }
+  }
+
   function prepareRow(row) {
     var body = row.querySelector(".about-row-body");
-    if (!body || body.dataset.aboutReady === "true") return body;
+    if (!body) return null;
 
-    body.dataset.aboutReady = "true";
-    ensureBodyInner(body);
-    body.style.overflow = "hidden";
-    body.style.transition = "height " + getDuration() + "ms " + easing;
-    body.style.height = row.open ? "auto" : "0px";
+    if (body.dataset.aboutReady !== "true") {
+      body.dataset.aboutReady = "true";
+      ensureBodyInner(body);
+      body.style.overflow = "hidden";
+      body.style.transition = "height " + getDuration() + "ms " + easing;
+      body.style.height = row.open ? "auto" : "0px";
+    }
+
+    watchRowContent(row, body);
     return body;
   }
 
@@ -499,6 +546,7 @@
 
     if (open) {
       row.setAttribute("open", "");
+      primeRowImages(body);
 
       if (ms === 0) {
         body.style.height = "auto";
@@ -508,6 +556,20 @@
       body.style.height = "0px";
       body.offsetHeight;
       body.style.height = measureBody(body) + "px";
+
+      // Remeasure after layout/images start settling (avoids half-open panels)
+      window.requestAnimationFrame(function () {
+        window.requestAnimationFrame(function () {
+          fitOpenBody(row, body);
+        });
+      });
+      window.setTimeout(function () {
+        fitOpenBody(row, body);
+      }, 120);
+      window.setTimeout(function () {
+        fitOpenBody(row, body);
+      }, ms + 40);
+
       onHeightTransitionEnd(body, function () {
         if (row.open) body.style.height = "auto";
       });
@@ -520,14 +582,13 @@
       return;
     }
 
-    if (body.style.height === "auto") {
+    if (body.style.height === "auto" || body.style.height === "") {
       body.style.height = measureBody(body) + "px";
     }
 
     body.offsetHeight;
     body.style.height = "0px";
     onHeightTransitionEnd(body, function () {
-      if (!row.open) return;
       row.removeAttribute("open");
     });
   }
