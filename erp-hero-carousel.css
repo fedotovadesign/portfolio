@@ -37,9 +37,13 @@
 }
 
 .case-showcase--erp .design-carousel__controls {
-  width: 100%;
-  max-width: 960px;
+  width: max-content;
+  max-width: 100%;
   margin-inline: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
 }
 
 .design-carousel--erp .design-carousel__label {
