@@ -328,9 +328,13 @@ html.case-embed .case-block--erp-develop .container {
 }
 
 .case-showcase--loom .design-carousel__controls {
-  width: 100%;
-  max-width: 960px;
+  width: max-content;
+  max-width: 100%;
   margin-inline: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
 .design-carousel--loom .design-carousel__label {
