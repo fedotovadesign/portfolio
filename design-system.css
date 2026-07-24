@@ -288,15 +288,14 @@ html.case-embed .case-block--erp-develop .container {
 }
 
 .design-carousel--loom .design-carousel__viewport {
-  /* Match Figma artboards 1440×900 — do not crop screens */
-  aspect-ratio: 1440 / 900;
+  /* Hug each screen — no letterbox / empty field inside the stroke */
+  aspect-ratio: auto;
   width: 100%;
   height: auto;
   box-sizing: border-box;
-  /* light stroke — same as ERP carousel */
-  border: 1px solid rgba(242, 241, 236, 0.34);
-  border-radius: 8px;
-  background: var(--bg);
+  border: none;
+  border-radius: 0;
+  background: transparent;
   line-height: 0;
   overflow: hidden;
   box-shadow: none;
@@ -306,24 +305,32 @@ html.case-embed .case-block--erp-develop .container {
   outline: none;
 }
 
+.design-carousel--loom .design-carousel__track {
+  height: auto;
+  align-items: flex-start;
+}
+
 .design-carousel--loom .design-carousel__slide {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--bg);
+  display: block;
+  height: auto;
+  align-self: flex-start;
+  background: transparent;
+  line-height: 0;
 }
 
 .design-carousel--loom .design-carousel__slide img {
   display: block;
   width: 100%;
-  height: 100%;
+  height: auto;
   max-width: none;
   max-height: none;
   margin: 0;
-  object-fit: contain;
-  object-position: center center;
-  border: none !important;
-  border-radius: 0 !important;
+  object-fit: unset;
+  object-position: center top;
+  /* Stroke sits on the screen edge — no inner gap */
+  border: 1px solid rgba(242, 241, 236, 0.34) !important;
+  border-radius: 8px !important;
+  box-sizing: border-box;
   box-shadow: none;
   filter: none;
   -webkit-filter: none;

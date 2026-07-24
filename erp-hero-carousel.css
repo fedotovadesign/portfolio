@@ -1,11 +1,13 @@
 .design-carousel--erp .design-carousel__viewport {
-  aspect-ratio: 2880 / 1684;
+  /* Hug each screen — stroke on image edge, no inner empty field */
+  aspect-ratio: auto;
   width: 100%;
   height: auto;
-  border: 1px solid var(--line-strong);
-  border-radius: 8px;
-  background: var(--bg);
+  border: none;
+  border-radius: 0;
+  background: transparent;
   line-height: 0;
+  overflow: hidden;
 }
 
 .case-showcase--erp .case-showcase-figure.design-carousel {
@@ -19,21 +21,30 @@
   align-items: stretch;
 }
 
+.design-carousel--erp .design-carousel__track {
+  height: auto;
+  align-items: flex-start;
+}
+
 .design-carousel--erp .design-carousel__slide {
-  display: flex;
-  align-items: stretch;
+  display: block;
+  height: auto;
+  align-self: flex-start;
+  background: transparent;
+  line-height: 0;
 }
 
 .design-carousel--erp .design-carousel__slide img {
   display: block;
   width: 100%;
-  height: 100%;
+  height: auto;
   max-width: none;
   margin: 0;
-  object-fit: cover;
+  object-fit: unset;
   object-position: center top;
-  border: none;
-  border-radius: 0;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  box-sizing: border-box;
 }
 
 .case-showcase--erp .design-carousel__controls {
