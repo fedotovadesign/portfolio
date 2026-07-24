@@ -327,11 +327,11 @@ html.case-embed .case-block--erp-develop .container {
   margin: 0;
   object-fit: unset;
   object-position: center top;
-  /* Stroke sits on the screen edge — no inner gap */
-  border: 1px solid rgba(242, 241, 236, 0.34) !important;
+  /* Outside stroke — does not inset the image (unlike border + border-box) */
+  border: none !important;
   border-radius: 8px !important;
-  box-sizing: border-box;
-  box-shadow: none;
+  box-sizing: content-box;
+  box-shadow: 0 0 0 1px rgba(242, 241, 236, 0.34);
   filter: none;
   -webkit-filter: none;
 }
