@@ -42,9 +42,9 @@
   margin: 0;
   object-fit: unset;
   object-position: center top;
-  /* Outside stroke — does not inset the image */
+  /* Outside stroke — no corner radius */
   border: none;
-  border-radius: 8px;
+  border-radius: 0;
   box-sizing: content-box;
   box-shadow: 0 0 0 1px var(--line-strong);
 }
