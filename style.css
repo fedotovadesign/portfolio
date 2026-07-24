@@ -465,6 +465,49 @@ main {
   padding-top: calc(var(--nav-h) + 56px);
 }
 
+.home-hero {
+  padding-bottom: 48px;
+}
+
+.home-hero__tag {
+  margin: 0 0 1.1rem;
+  font-family: "Roboto Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-size: clamp(13px, 1.35vw, 15px);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: #f2f1ec;
+}
+
+.home-hero__title {
+  margin: 0;
+  max-width: 14ch;
+  font-family: var(--font);
+  font-size: clamp(40px, 6.5vw, 72px);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  color: #f2f1ec;
+  text-wrap: balance;
+}
+
+.home-hero__smile {
+  font-weight: 400;
+}
+
+.section-sm--after-hero {
+  padding-top: 8px;
+}
+
+@media (max-width: 720px) {
+  .home-hero {
+    padding-bottom: 32px;
+  }
+
+  .home-hero__title {
+    max-width: 12ch;
+  }
+}
+
 .hero--projects + .section-sm {
   padding-top: 12px;
 }
