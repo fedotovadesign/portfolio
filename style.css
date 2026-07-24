@@ -779,14 +779,96 @@ main {
   overflow: hidden;
 }
 
+.intro-welcome {
+  padding-bottom: 8px;
+}
+
+.intro-hello {
+  margin: 0 0 0.35em;
+  font-family: "Syne", system-ui, sans-serif;
+  font-size: clamp(42px, 7vw, 72px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: #f2f1ec;
+}
+
+.intro-smile {
+  display: inline-block;
+  font-weight: 400;
+  font-size: 0.85em;
+  transform: translateY(-0.06em);
+  opacity: 0.88;
+}
+
+.intro-welcome-title {
+  margin: 0 0 1.75rem;
+  max-width: 16ch;
+  font-family: "Syne", system-ui, sans-serif;
+  font-size: clamp(28px, 4.2vw, 44px);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  color: #f2f1ec;
+  text-wrap: balance;
+}
+
+.intro-find {
+  margin: 0 0 1rem;
+  font-size: clamp(15px, 1.5vw, 17px);
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: rgba(242, 241, 236, 0.55);
+}
+
+.intro-columns {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem 1.5rem;
+  list-style: none;
+  margin: 0 0 3.25rem;
+  padding: 0;
+  max-width: 42rem;
+}
+
+.intro-columns a {
+  display: inline-block;
+  font-size: clamp(15px, 1.6vw, 18px);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  color: #f2f1ec;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(242, 241, 236, 0.22);
+  padding-bottom: 0.2em;
+  transition: border-color 0.2s ease, opacity 0.2s ease;
+}
+
+.intro-columns a:hover {
+  border-bottom-color: rgba(242, 241, 236, 0.7);
+  opacity: 0.9;
+}
+
 .about-lead {
-  font-size: clamp(24px, 3.2vw, 34px);
+  font-size: clamp(20px, 2.6vw, 28px);
   font-weight: 300;
   letter-spacing: 0.02em;
-  line-height: 1.25;
-  max-width: 24ch;
-  margin-bottom: 40px;
+  line-height: 1.35;
+  max-width: 28ch;
+  margin: 0 0 40px;
+  color: rgba(242, 241, 236, 0.72);
   text-wrap: balance;
+}
+
+@media (max-width: 720px) {
+  .intro-columns {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .intro-welcome-title {
+    max-width: 18ch;
+  }
 }
 
 .about-accordion {
