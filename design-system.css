@@ -288,7 +288,8 @@ html.case-embed .case-block--erp-develop .container {
 }
 
 .design-carousel--loom .design-carousel__viewport {
-  aspect-ratio: 2880 / 1684;
+  /* Match Figma artboards 1440×900 — do not crop screens */
+  aspect-ratio: 1440 / 900;
   width: 100%;
   height: auto;
   box-sizing: border-box;
@@ -307,7 +308,8 @@ html.case-embed .case-block--erp-develop .container {
 
 .design-carousel--loom .design-carousel__slide {
   display: flex;
-  align-items: stretch;
+  align-items: center;
+  justify-content: center;
   background: var(--bg);
 }
 
@@ -318,8 +320,8 @@ html.case-embed .case-block--erp-develop .container {
   max-width: none;
   max-height: none;
   margin: 0;
-  object-fit: cover;
-  object-position: center top;
+  object-fit: contain;
+  object-position: center center;
   border: none !important;
   border-radius: 0 !important;
   box-shadow: none;
