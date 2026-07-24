@@ -234,17 +234,19 @@
             </dd>
           </div>
           <div>
-            <dt>Create program with AI</dt>
+            <dt>Create promotion with AI</dt>
             <dd class="discover-box-body">
               <p><span class="discover-sub">Prompt</span> Merchant asks for a simple first promotion.</p>
-              <p><span class="discover-sub">Next</span> Program-builder screens (in progress).</p>
+              <p><span class="discover-sub">Draft</span> AI returns a promo card — not live yet.</p>
+              <p><span class="discover-sub">Attach</span> Optional image via Compose + (upload / loading / ready).</p>
+              <p><span class="discover-sub">Confirm</span> Open configuration to save or launch — not in chat.</p>
             </dd>
           </div>
         </dl>
 
         <details class="ux-flow ux-flow--collapsible" id="ux-flow-loom">
           <summary class="ux-flow-toggle" id="ux-flow-loom-trigger">
-            <span class="ux-flow-caption">User flow · Install → onboard → dashboard → create program with AI</span>
+            <span class="ux-flow-caption">User flow · Install → onboard → dashboard → create promotion with AI + image</span>
             <span class="ux-flow-icon" aria-hidden="true"></span>
           </summary>
 
@@ -266,19 +268,31 @@
             <div class="ux-flow-node ux-flow-node--ai">Open Loom assistant<br/>quick actions for offers &amp; campaigns</div>
             <div class="ux-flow-arrow" aria-hidden="true"><span>prompt</span></div>
 
-            <p class="ux-flow-phase" style="margin-top:20px">4 · Create program with AI</p>
-            <div class="ux-flow-node ux-flow-node--user">Merchant writes a simple prompt<br/><strong>e.g. 10% off for new members</strong></div>
-            <div class="ux-flow-arrow" aria-hidden="true"><span>next screens</span></div>
-            <div class="ux-flow-node ux-flow-node--cta">Program builder<br/><strong>in progress</strong></div>
+            <p class="ux-flow-phase" style="margin-top:20px">4 · Create promotion with AI</p>
+            <div class="ux-flow-node ux-flow-node--user">Merchant writes a simple prompt<br/><strong>e.g. 10% off for new members, 14 days</strong></div>
+            <div class="ux-flow-arrow" aria-hidden="true"><span>Loom thinks</span></div>
+            <div class="ux-flow-node ux-flow-node--ai">AI draft card in chat<br/><strong>not live yet · Open configuration</strong></div>
+            <div class="ux-flow-arrow" aria-hidden="true"><span>optional</span></div>
+
+            <p class="ux-flow-phase" style="margin-top:20px">5 · Attach promo image</p>
+            <div class="ux-flow-node ux-flow-node--user">Tap <strong>+</strong> in compose<br/>Compose tools → Image tab</div>
+            <div class="ux-flow-arrow" aria-hidden="true"><span>browse / drop</span></div>
+            <div class="ux-flow-node">Upload states<br/><strong>empty → loading → ready · or format error</strong></div>
+            <div class="ux-flow-arrow" aria-hidden="true"><span>attach</span></div>
+            <div class="ux-flow-node ux-flow-node--ai">Draft updates with image preview<br/>still unpublished</div>
+            <div class="ux-flow-arrow" aria-hidden="true"><span>must leave chat</span></div>
+
+            <p class="ux-flow-phase" style="margin-top:20px">6 · Confirm outside chat</p>
+            <div class="ux-flow-node ux-flow-node--cta">Open configuration<br/><strong>full-screen review</strong></div>
             <div class="ux-flow-arrow" aria-hidden="true"><span>then</span></div>
             <div class="ux-flow-split">
               <div class="ux-flow-split-col">
-                <span class="ux-flow-split-label">Review</span>
-                <p class="ux-flow-why">Adjust AI draft before publish</p>
+                <span class="ux-flow-split-label">Save draft</span>
+                <p class="ux-flow-why">Keep unpublished; return later</p>
               </div>
               <div class="ux-flow-split-col">
-                <span class="ux-flow-split-label">Go live</span>
-                <p class="ux-flow-why">Launch and return to dashboard</p>
+                <span class="ux-flow-split-label">Launch</span>
+                <p class="ux-flow-why">Go live and return to dashboard</p>
               </div>
             </div>
           </div>
