@@ -154,7 +154,7 @@
 
         <h3 class="case-block-subtitle">UX challenge</h3>
         <p>
-          Merchants want loyalty live fast — without a maze of rules and settings. The challenge: a short path from install to a running program, with AI drafting the first setup.
+          Merchants want loyalty live fast — without a maze of rules and settings. The challenge: a short path from Shopify install to a live dashboard, then creating the first program with AI instead of filling empty forms alone.
         </p>
 
         <h3 class="case-block-subtitle">Focus</h3>
@@ -163,70 +163,87 @@
             <dt>Merchant</dt>
             <dd class="discover-box-body">
               <p><span class="discover-sub">Goals</span> Launch fast; see results in one place.</p>
-              <p><span class="discover-sub">Pain</span> Setup feels complex.</p>
-              <p><span class="discover-sub">Opportunity</span> AI draft + guided steps.</p>
+              <p><span class="discover-sub">Pain</span> Setup feels complex and empty.</p>
+              <p><span class="discover-sub">Opportunity</span> Guided install + AI-drafted first program.</p>
             </dd>
           </div>
           <div>
-            <dt>Product shape</dt>
+            <dt>Install</dt>
             <dd class="discover-box-body">
-              <p><span class="discover-sub">Install → account</span> App install and workspace.</p>
-              <p><span class="discover-sub">Onboarding</span> Studio, widget, dashboard, chat.</p>
+              <p><span class="discover-sub">App install</span> Permissions and store access.</p>
+              <p><span class="discover-sub">Create account</span> Workspace for the shop.</p>
+              <p><span class="discover-sub">Request form</span> Early-access / demo path when needed.</p>
             </dd>
           </div>
           <div>
-            <dt>Launch program</dt>
+            <dt>Onboard</dt>
             <dd class="discover-box-body">
-              <p><span class="discover-sub">AI Studio</span> Draft earn rules with AI.</p>
-              <p><span class="discover-sub">Configure</span> Expiry and notifications.</p>
-              <p><span class="discover-sub">Go live</span> Confirm and launch.</p>
+              <p><span class="discover-sub">Orient</span> Studio, widget, dashboard, and AI chat.</p>
+              <p><span class="discover-sub">Promise</span> Show where to act next — not every setting at once.</p>
             </dd>
           </div>
           <div>
             <dt>Dashboard</dt>
             <dd class="discover-box-body">
-              <p><span class="discover-sub">Overview</span> Metrics, customers, promotions.</p>
-              <p><span class="discover-sub">AI</span> Insights and floating assistant.</p>
+              <p><span class="discover-sub">Overview</span> KPIs, enrollment, funnel insights.</p>
+              <p><span class="discover-sub">Launchpad</span> Clear next actions from one panel.</p>
+              <p><span class="discover-sub">Assistant</span> Floating AI for offers, segments, reports.</p>
+            </dd>
+          </div>
+          <div>
+            <dt>Create program with AI</dt>
+            <dd class="discover-box-body">
+              <p><span class="discover-sub">Prompt</span> Merchant asks for a simple first promotion.</p>
+              <p><span class="discover-sub">Next</span> Program-builder screens (coming next in the flow).</p>
+            </dd>
+          </div>
+          <div>
+            <dt>Design principles</dt>
+            <dd class="discover-box-body">
+              <p><span class="discover-sub">Short path</span> Install → onboard → operate → create.</p>
+              <p><span class="discover-sub">AI as co-pilot</span> Draft first; merchant confirms.</p>
+              <p><span class="discover-sub">One system</span> Shared tokens across every step.</p>
             </dd>
           </div>
         </dl>
 
         <details class="ux-flow ux-flow--collapsible" id="ux-flow-loom">
           <summary class="ux-flow-toggle" id="ux-flow-loom-trigger">
-            <span class="ux-flow-caption">User flow · Install → program → dashboard</span>
+            <span class="ux-flow-caption">User flow · Install → onboard → dashboard → create program with AI</span>
             <span class="ux-flow-icon" aria-hidden="true"></span>
           </summary>
 
           <div class="ux-flow-panel" id="ux-flow-loom-panel" role="region" aria-labelledby="ux-flow-loom-trigger">
           <div class="ux-flow-track">
-            <p class="ux-flow-phase">1 · Install &amp; account</p>
+            <p class="ux-flow-phase">1 · Install</p>
             <div class="ux-flow-node ux-flow-node--user">Merchant installs Loom<br/>reviews app permissions</div>
             <div class="ux-flow-arrow" aria-hidden="true"><span>approve</span></div>
-            <div class="ux-flow-node">Create workspace<br/><strong>store · email · password</strong></div>
+            <div class="ux-flow-node">Create account<br/><strong>store · email · password</strong></div>
             <div class="ux-flow-arrow" aria-hidden="true"><span>enter product</span></div>
 
-            <p class="ux-flow-phase" style="margin-top:20px">2 · Onboarding</p>
+            <p class="ux-flow-phase" style="margin-top:20px">2 · Onboard</p>
             <div class="ux-flow-node ux-flow-node--ai">Orient to four areas:<br/><strong>AI Studio · Widget · Dashboard · Chat</strong></div>
-            <div class="ux-flow-arrow" aria-hidden="true"><span>start setup</span></div>
+            <div class="ux-flow-arrow" aria-hidden="true"><span>open dashboard</span></div>
 
-            <p class="ux-flow-phase" style="margin-top:20px">3 · AI Studio · launch program</p>
-            <div class="ux-flow-node ux-flow-node--user">Merchant reviews AI draft<br/>for earn rules</div>
-            <div class="ux-flow-arrow" aria-hidden="true"><span>adjust</span></div>
-            <div class="ux-flow-node">Set <strong>expiration</strong><br/>and <strong>notifications</strong></div>
-            <div class="ux-flow-arrow" aria-hidden="true"><span>confirm</span></div>
-            <div class="ux-flow-node ux-flow-node--cta">Launch program</div>
+            <p class="ux-flow-phase" style="margin-top:20px">3 · Dashboard</p>
+            <div class="ux-flow-node">KPIs, enrollment chart, AI insights<br/>Launchpad + floating assistant</div>
+            <div class="ux-flow-arrow" aria-hidden="true"><span>ask AI</span></div>
+            <div class="ux-flow-node ux-flow-node--ai">Open Loom assistant<br/>quick actions for offers &amp; campaigns</div>
+            <div class="ux-flow-arrow" aria-hidden="true"><span>prompt</span></div>
 
-            <p class="ux-flow-phase" style="margin-top:20px">4 · Dashboard</p>
-            <div class="ux-flow-node">Metrics, customers, promotions<br/>AI insight + floating assistant</div>
-            <div class="ux-flow-arrow" aria-hidden="true"><span>iterate</span></div>
+            <p class="ux-flow-phase" style="margin-top:20px">4 · Create program with AI</p>
+            <div class="ux-flow-node ux-flow-node--user">Merchant writes a simple prompt<br/><strong>e.g. 10% off for new members</strong></div>
+            <div class="ux-flow-arrow" aria-hidden="true"><span>next screens</span></div>
+            <div class="ux-flow-node ux-flow-node--cta">Program builder<br/><strong>coming next</strong></div>
+            <div class="ux-flow-arrow" aria-hidden="true"><span>then</span></div>
             <div class="ux-flow-split">
               <div class="ux-flow-split-col">
-                <span class="ux-flow-split-label">Tune</span>
-                <p class="ux-flow-why">Back to Studio for rules</p>
+                <span class="ux-flow-split-label">Review</span>
+                <p class="ux-flow-why">Adjust AI draft before publish</p>
               </div>
               <div class="ux-flow-split-col">
-                <span class="ux-flow-split-label">Ask AI</span>
-                <p class="ux-flow-why">Chat for next actions</p>
+                <span class="ux-flow-split-label">Go live</span>
+                <p class="ux-flow-why">Launch and return to dashboard</p>
               </div>
             </div>
           </div>
