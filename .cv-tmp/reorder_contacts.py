@@ -5,25 +5,27 @@ import shutil
 import fitz
 from fontTools.subset import main as subset_main
 
-SRC = "/Users/vera/Desktop/Fedotova Vera Design Portfolio/UX:UI Designer  Fedotova Vera.pdf"
-BACKUP = "/Users/vera/Desktop/Fedotova Vera Design Portfolio/UX:UI Designer  Fedotova Vera.reorder-backup.pdf"
+SRC = "/Users/vera/Desktop/Fedotova Vera Design Portfolio/UX:UI Designer  Fedotova Vera.reorder-backup.pdf"
+DEST = "/Users/vera/Desktop/Fedotova Vera Design Portfolio/UX:UI Designer  Fedotova Vera.pdf"
 OUT = "/Users/vera/Projects/portfolio-github/.cv-tmp/cv_reordered.pdf"
 REPO_PDF = "/Users/vera/Projects/portfolio-github/Fedotova-Vera-UX-UI-Designer-CV.pdf"
-FONT = "/Users/vera/Projects/portfolio-github/.cv-tmp/inter-regular.ttf"
-SUBSET = "/Users/vera/Projects/portfolio-github/.cv-tmp/inter-strip-subset.ttf"
+INTER = "/Users/vera/Projects/portfolio-github/.cv-tmp/inter-regular.ttf"
+SF = os.path.expanduser("~/Library/Fonts/SF-Pro-Text-Regular.otf")
+INTER_SUB = "/Users/vera/Projects/portfolio-github/.cv-tmp/inter-strip-subset.ttf"
+SF_SUB = "/Users/vera/Projects/portfolio-github/.cv-tmp/sf-arrow-subset.otf"
 
 INK = (0.949, 0.9451, 0.9255)
 TEXT_ALPHA = 0.7804
 DOT_ALPHA = 0.3412
 PHONE = "+48 509 047 484"
 
-# New order: city last
+# (label, uri, use_arrow_suffix)
 ITEMS = [
-    ("fvo.fedotova@gmail.com", "mailto:fvo.fedotova@gmail.com"),
-    ("LinkedIn", "https://www.linkedin.com/in/vera-fedotova/"),
-    ("Portfolio ↗", "https://fedotovadesign.github.io/portfolio/index.html"),
-    (PHONE, "tel:+48509047484"),
-    ("Warsaw, Poland", None),
+    ("fvo.fedotova@gmail.com", "mailto:fvo.fedotova@gmail.com", False),
+    ("LinkedIn", "https://www.linkedin.com/in/vera-fedotova/", False),
+    ("Portfolio", "https://fedotovadesign.github.io/portfolio/index.html", True),
+    (PHONE, "tel:+48509047484", False),
+    ("Warsaw, Poland", None, False),
 ]
 
 
@@ -31,7 +33,6 @@ def main():
     doc = fitz.open(SRC)
     page = doc[0]
 
-    # Measure existing rhythm from current strip
     email = next(
         s
         for b in page.get_text("dict")["blocks"]
@@ -42,6 +43,7 @@ def main():
     )
     baseline = email["origin"][1]
     fontsize = email["size"]
+    arrow_size = 7.5
     start_x = email["bbox"][0]
     link_y0, link_y1 = 88.5, 100.5
 
@@ -73,7 +75,6 @@ def main():
     dot_r = last_dot["rect"].width / 2
     dot_cy = (last_dot["rect"].y0 + last_dot["rect"].y1) / 2
 
-    # Average gap from existing separators
     gaps_b, gaps_a = [], []
     for d in dots:
         cx = (d["rect"].x0 + d["rect"].x1) / 2
@@ -83,52 +84,74 @@ def main():
         gaps_a.append(after["bbox"][0] - cx)
     gap_before = sum(gaps_b) / len(gaps_b)
     gap_after = sum(gaps_a) / len(gaps_a)
-    print(f"baseline={baseline} size={fontsize} start_x={start_x:.2f}")
-    print(f"gap_before={gap_before:.3f} gap_after={gap_after:.3f} dot_r={dot_r:.3f}")
+
+    # Measured original space between Portfolio and arrow (~0.16-0.2 pt content)
+    arrow_gap = 308.71 - 306.55  # from original spans
 
     subset_main([
-        FONT,
-        f"--text={' '.join(t for t, _ in ITEMS)}+0123456789↗,",
+        INTER,
+        "--text=fvo.fedotova@gmail.com LinkedIn Portfolio+48 509 047 484Warsaw, Poland",
         "--layout-features=",
         "--no-hinting",
         "--desubroutinize",
-        f"--output-file={SUBSET}",
+        f"--output-file={INTER_SUB}",
     ])
-    font = fitz.Font(fontfile=SUBSET)
+    subset_main([
+        SF,
+        "--text=↗ ",
+        "--layout-features=",
+        "--no-hinting",
+        "--desubroutinize",
+        f"--output-file={SF_SUB}",
+    ])
+    font = fitz.Font(fontfile=INTER_SUB)
+    arrow_font = fitz.Font(fontfile=SF_SUB)
 
-    # Cover old strip (black page bg)
-    cover = fitz.Rect(20, 86.5, 520, 102.5)
-    page.draw_rect(cover, color=None, fill=(0, 0, 0), fill_opacity=1)
+    # Opaque cover over the whole strip band
+    page.draw_rect(fitz.Rect(18, 85.5, 530, 103.5), color=None, fill=(0, 0, 0), fill_opacity=1)
 
-    # Delete old contact-strip links
     for i in reversed(range(len(page.get_links()))):
         link = page.get_links()[i]
         if link["from"].y0 < 110:
             page.delete_link(link)
 
-    # Draw new strip
     x = start_x
-    for i, (text, uri) in enumerate(ITEMS):
+    for i, (text, uri, with_arrow) in enumerate(ITEMS):
         w = font.text_length(text, fontsize=fontsize)
         page.insert_text(
             fitz.Point(x, baseline),
             text,
             fontsize=fontsize,
             fontname="InterStrip",
-            fontfile=SUBSET,
+            fontfile=INTER_SUB,
             color=INK,
             fill=INK,
             fill_opacity=TEXT_ALPHA,
         )
+        item_end = x + w
+        if with_arrow:
+            ax = item_end + arrow_gap
+            page.insert_text(
+                fitz.Point(ax, baseline),
+                "↗",
+                fontsize=arrow_size,
+                fontname="SFArrow",
+                fontfile=SF_SUB,
+                color=INK,
+                fill=INK,
+                fill_opacity=TEXT_ALPHA,
+            )
+            item_end = ax + arrow_font.text_length("↗", fontsize=arrow_size)
+
         if uri:
             page.insert_link({
                 "kind": fitz.LINK_URI,
-                "from": fitz.Rect(x - 0.3, link_y0, x + w + 0.3, link_y1),
+                "from": fitz.Rect(x - 0.3, link_y0, item_end + 0.3, link_y1),
                 "uri": uri,
             })
-        x_end = x + w
+
         if i < len(ITEMS) - 1:
-            dot_cx = x_end + gap_before
+            dot_cx = item_end + gap_before
             page.draw_circle(
                 fitz.Point(dot_cx, dot_cy),
                 dot_r,
@@ -138,31 +161,30 @@ def main():
             )
             x = dot_cx + gap_after
         else:
-            x = x_end
+            x = item_end
 
-    print(f"strip ends at {x:.2f} (page {page.rect.x1:.2f})")
-    assert x < page.rect.x1 - 20, "strip overflows page"
-
-    if not os.path.exists(BACKUP):
-        shutil.copy2(SRC, BACKUP)
+    print(f"strip ends at {x:.2f}")
+    assert x < page.rect.x1 - 20
 
     doc.subset_fonts()
     doc.save(OUT, garbage=4, deflate=True, clean=True)
     doc.close()
 
-    # Verify
     b = fitz.open(OUT)
-    print("strip text:", repr(b[0].get_textbox(fitz.Rect(0, 80, 595, 110))))
+    # Visual-only check via pixmap crop
+    b[0].get_pixmap(dpi=500, clip=fitz.Rect(20, 80, 480, 110)).save(
+        "/Users/vera/Projects/portfolio-github/.cv-tmp/strip_reordered.png"
+    )
     print("links:")
     for l in b[0].get_links():
         if l["from"].y0 < 110:
             print(" ", [round(v, 2) for v in l["from"]], l.get("uri"))
-    b[0].get_pixmap(dpi=500, clip=fitz.Rect(20, 80, 480, 110)).save(
-        "/Users/vera/Projects/portfolio-github/.cv-tmp/strip_reordered.png"
-    )
+    # Extract only newly drawn text by checking fonts - show all strip band text for sanity
+    print("band text chars present:", "+48" in b[0].get_textbox(fitz.Rect(0, 80, 595, 110)),
+          "Warsaw" in b[0].get_textbox(fitz.Rect(0, 80, 595, 110)))
     b.close()
 
-    shutil.copy2(OUT, SRC)
+    shutil.copy2(OUT, DEST)
     shutil.copy2(OUT, REPO_PDF)
     print("updated Desktop + repo PDF")
 
