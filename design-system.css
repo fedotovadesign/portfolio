@@ -288,14 +288,14 @@ html.case-embed .case-block--erp-develop .container {
 }
 
 .design-carousel--loom .design-carousel__viewport {
-  /* Hug each screen — no letterbox / empty field inside the stroke */
-  aspect-ratio: auto;
+  aspect-ratio: 2880 / 1684;
   width: 100%;
   height: auto;
   box-sizing: border-box;
-  border: none;
-  border-radius: 0;
-  background: transparent;
+  /* light stroke — same as ERP carousel */
+  border: 1px solid rgba(242, 241, 236, 0.34);
+  border-radius: 8px;
+  background: var(--bg);
   line-height: 0;
   overflow: hidden;
   box-shadow: none;
@@ -305,27 +305,20 @@ html.case-embed .case-block--erp-develop .container {
   outline: none;
 }
 
-.design-carousel--loom .design-carousel__track {
-  height: auto;
-  align-items: flex-start;
-}
-
 .design-carousel--loom .design-carousel__slide {
-  display: block;
-  height: auto;
-  align-self: flex-start;
-  background: transparent;
-  line-height: 0;
+  display: flex;
+  align-items: stretch;
+  background: var(--bg);
 }
 
 .design-carousel--loom .design-carousel__slide img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
   max-width: none;
   max-height: none;
   margin: 0;
-  object-fit: unset;
+  object-fit: cover;
   object-position: center top;
   border: none !important;
   border-radius: 0 !important;
@@ -335,13 +328,9 @@ html.case-embed .case-block--erp-develop .container {
 }
 
 .case-showcase--loom .design-carousel__controls {
-  width: max-content;
-  max-width: 100%;
+  width: 100%;
+  max-width: 960px;
   margin-inline: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
 }
 
 .design-carousel--loom .design-carousel__label {
