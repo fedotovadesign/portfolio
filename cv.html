@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Product Designer · Vera Fedotova</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+  <style>
+    @page { size: A4; margin: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      background: #fff;
+      color: #1a1a1a;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    .sheet {
+      width: 210mm;
+      height: 297mm;
+      margin: 0 auto;
+      padding: 11mm 12mm;
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+    }
+    .cv-bar { display: none; }
+    @media screen {
+      html, body {
+        width: auto;
+        height: auto;
+        min-height: 100%;
+        background: #ececec;
+      }
+      .cv-bar {
+        display: flex;
+        position: sticky;
+        top: 0;
+        z-index: 5;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 14px 22px;
+        background: #111;
+        color: #f3f3f3;
+      }
+      .cv-bar a {
+        color: inherit;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      .cv-bar a:hover { color: #fff; }
+      .cv-bar-download {
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 999px;
+        padding: 8px 14px;
+      }
+      .cv-bar-download:hover {
+        background: #fff;
+        color: #111;
+      }
+      .sheet {
+        height: auto;
+        min-height: 297mm;
+        margin: 28px auto 48px;
+        box-shadow: 0 16px 50px rgba(0, 0, 0, 0.12);
+      }
+    }
+    @media print {
+      .cv-bar { display: none !important; }
+      html, body {
+        width: 210mm;
+        height: 297mm;
+        background: #fff;
+      }
+      .sheet {
+        width: 210mm;
+        height: 297mm;
+        margin: 0;
+        box-shadow: none;
+      }
+    }
+    a { color: inherit; text-decoration: none; }
+
+    .identity {
+      display: grid;
+      grid-template-columns: 17mm 1fr;
+      gap: 4.9mm;
+      align-items: center;
+    }
+    .portrait {
+      width: 17mm;
+      height: 17.2mm;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center 18%;
+      display: block;
+      background: #eee;
+    }
+    .name {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.009em;
+      line-height: 1.05;
+      color: #0e0e0e;
+    }
+    .role {
+      margin-top: 5px;
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #666;
+    }
+    .role .sep {
+      display: inline-block;
+      width: 3px;
+      height: 3px;
+      margin: 0 8px 1px;
+      border-radius: 50%;
+      background: #b5b5b5;
+      vertical-align: middle;
+    }
+    .contacts {
+      margin-top: 4.5mm;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      font-size: 9.6px;
+      color: #333;
+      line-height: 1.35;
+    }
+    .contacts a { color: #1a1a1a; }
+    .dot {
+      display: inline-block;
+      width: 3px;
+      height: 3px;
+      margin: 0 8px;
+      border-radius: 50%;
+      background: #c2c2c2;
+      vertical-align: middle;
+    }
+    .summary {
+      margin-top: 3.5mm;
+      font-size: 9.75px;
+      line-height: 1.5;
+      color: #333;
+      letter-spacing: -0.02em;
+    }
+    .summary .line {
+      display: block;
+      margin-bottom: 1.2mm;
+      text-align: justify;
+      text-align-last: justify;
+    }
+    .summary .keep { white-space: nowrap; }
+    .rule {
+      margin-top: 4mm;
+      border: 0;
+      border-top: 1px solid #e5e5e5;
+    }
+
+    .layout {
+      flex: 1 1 auto;
+      min-height: 0;
+      display: grid;
+      grid-template-columns: 1fr 54mm;
+      gap: 14mm;
+      margin-top: 6.5mm;
+      align-items: start;
+    }
+    main, aside {
+      display: flex;
+      flex-direction: column;
+      gap: 5mm;
+      height: auto;
+      min-height: 0;
+    }
+    .jobs {
+      display: flex;
+      flex-direction: column;
+      gap: 5mm;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 9.5px;
+      font-weight: 600;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 0;
+    }
+    .section-title::before {
+      content: "";
+      width: 12px;
+      height: 1px;
+      background: #ccc;
+    }
+
+    .job { margin: 0; }
+    .job-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 18px;
+    }
+    .job-title {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #111;
+      letter-spacing: -0.015em;
+      line-height: 1.25;
+    }
+    .job-dates {
+      font-size: 9.5px;
+      font-weight: 500;
+      color: #888;
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+      margin-left: auto;
+      padding-left: 12px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .job-meta {
+      margin-top: 2mm;
+      font-size: 10.5px;
+      color: #555;
+      line-height: 1.4;
+    }
+    .job-meta .tenure { color: #999; }
+    .bullets {
+      margin: 3.6mm 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .bullets li {
+      position: relative;
+      padding-left: 11px;
+      margin-bottom: 4.4mm;
+      font-size: 10.8px;
+      line-height: 1.5;
+      color: #2a2a2a;
+    }
+    .bullets li:last-child { margin-bottom: 0; }
+    .bullets li::before {
+      content: "–";
+      position: absolute;
+      left: 0;
+      color: #aaa;
+    }
+
+    .past-block { margin-top: 0; }
+    .past-block .section-title { margin-bottom: 3.2mm; }
+    .past-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 18px;
+    }
+    .past strong {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #111;
+      line-height: 1.25;
+    }
+    .past .job-dates {
+      font-size: 9.5px;
+    }
+    .past .org .tenure { color: #999; }
+    .past .org {
+      display: block;
+      margin-top: 2mm;
+      font-size: 10.5px;
+      color: #666;
+      line-height: 1.4;
+    }
+
+    .side-block { margin: 0; }
+    .side-block .section-title { margin-bottom: 4mm; }
+    .chip-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5mm 4.5mm;
+    }
+    .chip {
+      font-size: 10.5px;
+      color: #2a2a2a;
+      line-height: 1.4;
+    }
+    .chip::before {
+      content: "– ";
+      color: #b0b0b0;
+    }
+    .lang-row, .edu-item, .cert a {
+      font-size: 10.5px;
+      line-height: 1.4;
+      color: #2a2a2a;
+    }
+    .lang-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 3.8mm;
+    }
+    .lang-row:last-child { margin-bottom: 0; }
+    .lang-row span:last-child { color: #888; }
+    .edu-item { margin-bottom: 4.8mm; }
+    .edu-item:last-child { margin-bottom: 0; }
+    .edu-item strong {
+      display: block;
+      font-weight: 600;
+      color: #111;
+      margin-bottom: 1.5px;
+      font-size: 10.5px;
+    }
+    .edu-item span { color: #666; }
+    .edu-dates {
+      display: block;
+      white-space: nowrap;
+    }
+    .cert { margin-bottom: 3.2mm; }
+    .cert:last-child { margin-bottom: 0; }
+    .cert a { color: #222; }
+  </style>
+</head>
+<body>
+  <div class="cv-bar">
+    <a class="cv-bar-back" href="welcome.html">Back</a>
+    <a class="cv-bar-download" href="Product-Designer-Vera-Fedotova.pdf?v=2" download="Vera Fedotova Product Designer CV.pdf">Download as PDF</a>
+  </div>
+  <div class="sheet">
+  <header>
+    <div class="identity">
+      <img class="portrait" src="images/cv-avatar.jpeg" alt="Portrait of Vera Fedotova" />
+      <div>
+        <h1 class="name">Vera Fedotova</h1>
+        <p class="role">Product Designer<span class="sep" aria-hidden="true"></span>UX/UI</p>
+      </div>
+    </div>
+    <p class="contacts">
+      <a href="mailto:fvo.fedotova@gmail.com">fvo.fedotova@gmail.com</a><span class="dot"></span>
+      <a href="https://www.linkedin.com/in/vera-fedotova/" target="_blank" rel="noopener">LinkedIn</a><span class="dot"></span>
+      <a href="tel:+48509047484">+48 509 047 484</a><span class="dot"></span>
+      <a href="https://fedotovadesign.github.io/portfolio/index.html" target="_blank" rel="noopener">Portfolio ↗</a><span class="dot"></span>
+      <span>Warsaw, Poland</span>
+    </p>
+    <p class="summary">
+      <span class="line">Product design across SaaS, enterprise, and mobile apps, with experience spanning Life Sciences Tech, Customer Loyalty, PropTech, DMS, and ERP systems.</span>
+      I value consistency, accessibility, and cross-functional collaboration.
+    </p>
+  </header>
+  <hr class="rule" />
+
+  <div class="layout">
+    <main>
+      <p class="section-title">Experience</p>
+      <div class="jobs">
+        <article class="job">
+          <div class="job-head">
+            <h2 class="job-title">User Experience Designer</h2>
+            <span class="job-dates">Oct 2026 – Present</span>
+          </div>
+          <p class="job-meta">Astek <span class="tenure">· Full-time Remote</span></p>
+          <ul class="bullets">
+            <li>Design data-heavy interfaces with AI-powered features</li>
+            <li>Own design process for an enterprise life sciences product</li>
+            <li>Improve information architecture, design systems, and usability</li>
+            <li>Collaborate with a cross-functional Scrum team and stakeholders</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-head">
+            <h2 class="job-title">Product Designer</h2>
+            <span class="job-dates">Jan 2025 – Present</span>
+          </div>
+          <p class="job-meta">Freelance</p>
+          <ul class="bullets">
+            <li>Led product design for Enoterra ERP: dashboard, order management, and AI features</li>
+            <li>Designed a payment planning system based on workshop insights</li>
+            <li>Conducted UX research, workshops, audits, and user testing</li>
+            <li>Designed a Local Run Club app based on athlete-led community research</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-head">
+            <h2 class="job-title">UX/UI Designer</h2>
+            <span class="job-dates">Apr 2022 – Sep 2026</span>
+          </div>
+          <p class="job-meta">Comarch <span class="tenure">· Full-time Hybrid · 4.6 years</span></p>
+          <ul class="bullets">
+            <li>Designed B2B SaaS products and loyalty mobile apps</li>
+            <li>Integrated AI into prototyping and design process</li>
+            <li>Ran WCAG, HIG, usability, and UX writing audits</li>
+            <li>Conducted user research and usability testing</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-head">
+            <h2 class="job-title">UX/UI Designer</h2>
+            <span class="job-dates">Oct 2021 – Mar 2022</span>
+          </div>
+          <p class="job-meta">iTechArt Group <span class="tenure">· Apprenticeship · 6 months</span></p>
+          <ul class="bullets">
+            <li>Conducted market research for a real estate platform</li>
+            <li>Designed and prototyped key MVP features</li>
+            <li>Built a scalable design system and guidelines</li>
+            <li>Presented design solutions to stakeholders</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="past-block">
+        <p class="section-title">Past Employment</p>
+        <div class="past">
+          <div class="past-head">
+            <strong>Curator &amp; Cultural Project Manager</strong>
+            <span class="job-dates">May 2018 – Nov 2020</span>
+          </div>
+          <span class="org">Photo Month Festival <span class="tenure">· 2.6 years</span></span>
+          <ul class="bullets">
+            <li>Organised and curated exhibitions</li>
+          </ul>
+        </div>
+      </div>
+    </main>
+
+    <aside>
+      <div class="side-block">
+        <p class="section-title">Skills</p>
+        <div class="chip-grid">
+          <span class="chip">Research</span>
+          <span class="chip">Product Design</span>
+          <span class="chip">Design Systems</span>
+          <span class="chip">WCAG Audits</span>
+          <span class="chip">UX Writing</span>
+          <span class="chip">User Tests</span>
+          <span class="chip">Workshops</span>
+          <span class="chip">AI Agents</span>
+        </div>
+      </div>
+
+      <div class="side-block">
+        <p class="section-title">Tools</p>
+        <div class="chip-grid">
+          <span class="chip">Figma</span>
+          <span class="chip">FigJam</span>
+          <span class="chip">Miro</span>
+          <span class="chip">Maze</span>
+          <span class="chip">Claude</span>
+          <span class="chip">UX Pilot</span>
+          <span class="chip">AI Factory</span>
+          <span class="chip">Cursor</span>
+          <span class="chip">Webflow</span>
+          <span class="chip">GitHub</span>
+          <span class="chip">Jira</span>
+          <span class="chip">HIG</span>
+        </div>
+      </div>
+
+      <div class="side-block">
+        <p class="section-title">Languages</p>
+        <div class="lang-row"><span>Polish</span><span>Professional</span></div>
+        <div class="lang-row"><span>English</span><span>Professional</span></div>
+        <div class="lang-row"><span>Belarusian</span><span>Native</span></div>
+      </div>
+
+      <div class="side-block">
+        <p class="section-title">Education</p>
+        <div class="edu-item">
+          <strong>Researcher</strong>
+          <span>University of Warsaw · 2020 – 2021</span>
+        </div>
+        <div class="edu-item">
+          <strong>Master of Arts (MA)</strong>
+          <span>Bard College program · 2015 – 2017</span>
+        </div>
+        <div class="edu-item">
+          <strong>Bachelor of Arts in Communication</strong>
+          <span>European Humanities University</span>
+          <span class="edu-dates">2011 – 2015</span>
+        </div>
+      </div>
+
+      <div class="side-block">
+        <p class="section-title">Certificates</p>
+        <p class="cert"><a href="https://www.linkedin.com/in/vera-fedotova/overlay/Certifications/185175146/treasury/?profileId=ACoAACtGYXkB4kP2Oi49O6wAan643REi6IFET-8" target="_blank" rel="noopener">Design with AI</a></p>
+        <p class="cert"><a href="https://www.linkedin.com/in/vera-fedotova/overlay/Certifications/2009455594/treasury/?profileId=ACoAACtGYXkB4kP2Oi49O6wAan643REi6IFET-8" target="_blank" rel="noopener">Digital Analytics Strategy</a></p>
+        <p class="cert"><a href="https://www.linkedin.com/in/vera-fedotova/overlay/Certifications/1778210129/treasury/?profileId=ACoAACtGYXkB4kP2Oi49O6wAan643REi6IFET-8" target="_blank" rel="noopener">English for Designers</a></p>
+        <p class="cert"><a href="https://app.smalltalk2.me/cert/1269ad4e" target="_blank" rel="noopener">English Speaking Level B2+</a></p>
+        <p class="cert"><a href="https://credsverse.com/credentials/4a7beaeb-f8b5-4c6f-b3bf-e88e8a484a7b" target="_blank" rel="noopener">Digital Designer</a></p>
+        <p class="cert"><a href="https://www.linkedin.com/in/vera-fedotova/overlay/Certifications/238128502/treasury/?profileId=ACoAACtGYXkB4kP2Oi49O6wAan643REi6IFET-8" target="_blank" rel="noopener">WCAG</a></p>
+      </div>
+    </aside>
+  </div>
+  </div>
+</body>
+</html>
