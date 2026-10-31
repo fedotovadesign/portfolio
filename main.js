@@ -68,7 +68,7 @@
       if (isHome) {
         if ((href === "index.html" || href === "./index.html") && !hash) {
           link.classList.add("active");
-        } else if (href === "#projects" && hash === "#projects") {
+        } else if (href === "#about" && hash === "#about") {
           link.classList.add("active");
         } else if (href === "#experience" && hash === "#experience") {
           link.classList.add("active");
@@ -595,7 +595,7 @@
 
   rows.forEach(function (row) {
     var summary = row.querySelector(".about-row-head");
-    if (!summary) return;
+    if (!summary || row.tagName === "A" || !row.querySelector(".about-row-body")) return;
 
     prepareRow(row);
 
@@ -629,9 +629,10 @@
 })();
 
 (function () {
-  var accordion = document.querySelector(".case-accordion");
-  if (!accordion) return;
+  var accordions = Array.prototype.slice.call(document.querySelectorAll(".case-accordion"));
+  if (!accordions.length) return;
 
+  accordions.forEach(function (accordion) {
   var items = Array.prototype.slice.call(
     accordion.querySelectorAll(".case-accordion-item")
   );
@@ -763,10 +764,12 @@
       }
     });
 
-    window.scrollTo({
-      top: getTriggerScrollTop(item),
-      behavior: "auto",
-    });
+    if (!item.closest(".about-row")) {
+      window.scrollTo({
+        top: getTriggerScrollTop(item),
+        behavior: "auto",
+      });
+    }
 
     setItemState(item, true, true);
   }
@@ -828,6 +831,7 @@
       panel.style.transition = "height " + getDuration() + "ms " + easing;
     });
   });
+  });
 })();
 
 (function () {
@@ -846,6 +850,31 @@
 
     trigger.addEventListener("click", function () {
       setOpen(!flow.classList.contains("is-open"));
+    });
+  });
+})();
+
+(function () {
+  function refreshParentAccordion(el) {
+    var panel = el && el.closest(".case-accordion-panel");
+    if (!panel) return;
+    panel.style.height = "auto";
+  }
+
+  function loadFigma(details) {
+    if (!details.open) return;
+    var iframe = details.querySelector("iframe[data-src]");
+    if (!iframe) return;
+    var src = iframe.getAttribute("data-src");
+    if (src && iframe.getAttribute("src") !== src) iframe.setAttribute("src", src);
+  }
+
+  document.querySelectorAll("details.ux-flow--collapsible").forEach(function (details) {
+    details.classList.toggle("is-open", details.open);
+    details.addEventListener("toggle", function () {
+      details.classList.toggle("is-open", details.open);
+      refreshParentAccordion(details);
+      loadFigma(details);
     });
   });
 })();
