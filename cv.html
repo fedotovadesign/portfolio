@@ -77,18 +77,26 @@
     @media screen and (max-width: 860px) {
       html, body { overflow-x: hidden; }
       .cv-bar {
-        padding: 12px 16px;
-        gap: 12px;
+        padding: 12px 14px;
+        gap: 10px;
       }
       .cv-bar a {
         font-size: 10px;
         letter-spacing: 0.08em;
       }
+      .cv-bar-back { min-width: 0; }
       .sheet-frame {
+        position: relative;
+        width: calc(100% - 28px);
+        max-width: 210mm;
+        aspect-ratio: 210 / 297;
         margin: 16px auto 32px;
         overflow: hidden;
       }
       .sheet {
+        position: absolute;
+        top: 0;
+        left: 0;
         margin: 0;
         transform-origin: top left;
       }
@@ -102,12 +110,16 @@
         overflow: visible;
       }
       .sheet-frame {
+        position: static !important;
         width: auto !important;
         height: auto !important;
+        max-width: none !important;
+        aspect-ratio: auto !important;
         margin: 0 !important;
         overflow: visible !important;
       }
       .sheet {
+        position: static !important;
         width: 210mm !important;
         height: 297mm !important;
         margin: 0 !important;
@@ -552,14 +564,17 @@
         var naturalW = sheet.offsetWidth;
         var naturalH = sheet.offsetHeight;
         if (!naturalW || !naturalH) return;
-        var scale = Math.min(1, (window.innerWidth - 28) / naturalW);
+        var avail = document.documentElement.clientWidth - 28;
+        var scale = Math.min(1, avail / naturalW);
         sheet.style.transform = "scale(" + scale + ")";
-        frame.style.width = Math.round(naturalW * scale) + "px";
-        frame.style.height = Math.round(naturalH * scale) + "px";
+        frame.style.width = Math.floor(naturalW * scale) + "px";
+        frame.style.height = Math.floor(naturalH * scale) + "px";
       }
 
       fit();
       window.addEventListener("resize", fit);
+      window.addEventListener("load", fit);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
       if (narrow.addEventListener) narrow.addEventListener("change", fit);
     })();
   </script>
