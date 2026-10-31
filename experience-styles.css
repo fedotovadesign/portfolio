@@ -1,22 +1,17 @@
-/* Experience timeline — Read more toggles (matches GitHub master) */
-.experience-timeline-details {
-  margin-top: 0;
-}
-
+/* Experience timeline — row toggles */
 .experience-timeline-details > summary {
   list-style: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 0;
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(140px, 190px) minmax(0, 1fr);
+  width: 100%;
+  height: auto;
+  padding: 0;
   cursor: pointer;
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
   color: var(--muted);
   transition: color 0.2s ease;
   user-select: none;
+  background: transparent;
 }
 
 .experience-timeline-details > summary::-webkit-details-marker {
@@ -33,24 +28,52 @@
   color: var(--ink);
 }
 
-.experience-timeline-toggle-label::before {
-  content: attr(data-closed);
+.experience-timeline-toggle-open {
+  display: none;
 }
 
-.experience-timeline-details[open] .experience-timeline-toggle-label::before {
-  content: attr(data-open);
+.experience-timeline-details[open] .experience-timeline-toggle-closed {
+  display: none;
+}
+
+.experience-timeline-details[open] .experience-timeline-toggle-open {
+  display: inline;
 }
 
 .experience-timeline-toggle-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  position: absolute;
+  top: calc(24px + (15px * 1.45 - 18px) / 2);
+  right: 24px;
+  display: block;
+  width: 18px;
+  height: 18px;
   color: currentColor;
-  transition: transform 0.25s ease;
 }
 
-.experience-timeline-details[open] .experience-timeline-toggle-icon {
-  transform: rotate(45deg);
+.experience-timeline-toggle-icon::before,
+.experience-timeline-toggle-icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 1px;
+  background: currentColor;
+  transform: translate(-50%, -50%);
+  transition: transform 0.22s ease, opacity 0.22s ease;
+}
+
+.experience-timeline-toggle-icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.experience-timeline-details[open] .experience-timeline-toggle-icon::after {
+  transform: translate(-50%, -50%) rotate(0deg);
+  opacity: 0;
+}
+
+.experience-timeline-details[open] .experience-timeline-content {
+  padding-bottom: 12px;
 }
 
 .experience-timeline-details .experience-timeline-text {
@@ -63,7 +86,7 @@
 
 .experience-timeline-list {
   list-style: none;
-  margin: 10px 0 0;
+  margin: 0 52px 24px 214px;
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -85,19 +108,33 @@
   color: var(--muted);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .experience-timeline-details > summary {
-    padding: 10px 0;
-    font-size: 11px;
+    grid-template-columns: 160px minmax(0, 1fr);
   }
 
+  .experience-timeline-toggle-icon {
+    top: calc(18px + (15px * 1.45 - 18px) / 2);
+    right: 12px;
+  }
+
+  .experience-timeline-details[open] .experience-timeline-content {
+    padding-bottom: 10px;
+  }
+
+  .experience-timeline-list {
+    margin: 0 40px 18px 174px;
+  }
+}
+
+@media (max-width: 768px) {
   .experience-timeline-details .experience-timeline-text {
     margin-top: 8px;
     font-size: 13px;
   }
 
   .experience-timeline-list {
-    margin-top: 8px;
+    margin-top: 0;
     gap: 6px;
   }
 

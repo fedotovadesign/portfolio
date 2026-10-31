@@ -65,17 +65,17 @@
   color: var(--muted);
 }
 
-/* All carousels: keep arrow visible on white hover */
+/* All carousels: circle stroke on hover, no fill */
 .design-carousel__btn:hover,
 .design-carousel__btn:focus-visible {
-  background: #ffffff;
-  border-color: #ffffff;
-  color: #0b0b0d;
+  background: transparent;
+  border-color: var(--ink);
+  color: var(--ink);
 }
 
 .design-carousel__btn:disabled:hover,
 .design-carousel__btn:disabled:focus-visible {
-  background: var(--surface);
-  border-color: var(--line);
+  background: transparent;
+  border-color: transparent;
   color: var(--ink);
 }

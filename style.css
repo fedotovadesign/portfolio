@@ -677,26 +677,37 @@ body:has(.home-hero) #contact {
   justify-content: space-between;
   gap: 12px;
   width: 100%;
-  min-height: 34px;
-  padding: 6px 8px 6px 12px;
-  background: #ffffff;
-  color: #000000;
+  height: 32px;
+  min-height: 32px;
+  max-height: 32px;
+  padding: 0 12px;
+  background: transparent;
+  color: var(--ink-2);
   text-decoration: none;
+  border: 1px solid var(--line-strong);
   border-radius: var(--radius);
-  transition: opacity 0.2s ease;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  text-transform: uppercase;
   box-sizing: border-box;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 .contact-tonik-social:hover {
-  opacity: 0.88;
+  background: var(--bg-hover);
+  border-color: #ffffff;
+  color: #ffffff;
+  opacity: 1;
 }
 
 .contact-tonik-social-name {
-  font-family: ui-monospace, "SFMono-Regular", "Menlo", monospace;
-  font-size: 10px;
-  font-weight: 400;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
 }
 
 .contact-tonik-social-arrow {
@@ -704,7 +715,7 @@ body:has(.home-hero) #contact {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  color: #000000;
+  color: currentColor;
 }
 
 .contact-link {
@@ -1227,8 +1238,7 @@ a.about-row:focus-visible .about-row-arrow svg {
 }
 
 .experience-timeline-item {
-  display: grid;
-  grid-template-columns: minmax(140px, 190px) minmax(0, 1fr);
+  display: block;
   border-bottom: 1px solid var(--line-strong);
 }
 
@@ -1239,7 +1249,6 @@ a.about-row:focus-visible .about-row-arrow svg {
 .experience-timeline-marker {
   position: relative;
   padding: 24px;
-  border-right: 1px solid var(--line-strong);
   background: transparent;
 }
 
@@ -1272,7 +1281,8 @@ a.about-row:focus-visible .about-row-arrow svg {
 }
 
 .experience-timeline-content {
-  padding: 24px;
+  position: relative;
+  padding: 24px 52px 24px 24px;
   min-width: 0;
 }
 
@@ -1289,7 +1299,7 @@ a.about-row:focus-visible .about-row-arrow svg {
   font-size: 13px;
   color: var(--muted);
   line-height: 1.5;
-  margin: 0 0 12px;
+  margin: 0;
 }
 
 .experience-timeline-text {
@@ -1303,23 +1313,28 @@ a.about-row:focus-visible .about-row-arrow svg {
 }
 
 .experience-timeline-details {
+  display: block;
   margin-top: 0;
+  position: relative;
+  background-image: linear-gradient(var(--line-strong), var(--line-strong));
+  background-size: 1px 100%;
+  background-position: 190px 0;
+  background-repeat: no-repeat;
 }
 
 .experience-timeline-details > summary {
   list-style: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 0;
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(140px, 190px) minmax(0, 1fr);
+  width: 100%;
+  height: auto;
+  padding: 0;
   cursor: pointer;
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
   color: var(--muted);
   transition: color 0.2s ease;
   user-select: none;
+  background: transparent;
 }
 
 .experience-timeline-details > summary::-webkit-details-marker {
@@ -1336,24 +1351,48 @@ a.about-row:focus-visible .about-row-arrow svg {
   color: var(--ink);
 }
 
-.experience-timeline-toggle-label::before {
-  content: attr(data-closed);
+.experience-timeline-toggle-open {
+  display: none;
 }
 
-.experience-timeline-details[open] .experience-timeline-toggle-label::before {
-  content: attr(data-open);
+.experience-timeline-details[open] .experience-timeline-toggle-closed {
+  display: none;
+}
+
+.experience-timeline-details[open] .experience-timeline-toggle-open {
+  display: inline;
 }
 
 .experience-timeline-toggle-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  position: absolute;
+  top: calc(24px + (15px * 1.45 - 18px) / 2);
+  right: 24px;
+  display: block;
+  width: 18px;
+  height: 18px;
   color: currentColor;
-  transition: transform 0.25s ease;
 }
 
-.experience-timeline-details[open] .experience-timeline-toggle-icon {
-  transform: rotate(45deg);
+.experience-timeline-toggle-icon::before,
+.experience-timeline-toggle-icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 1px;
+  background: currentColor;
+  transform: translate(-50%, -50%);
+  transition: transform 0.22s ease, opacity 0.22s ease;
+}
+
+.experience-timeline-toggle-icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.experience-timeline-details[open] .experience-timeline-toggle-icon::after {
+  transform: translate(-50%, -50%) rotate(0deg);
+  opacity: 0;
 }
 
 .experience-timeline-details .experience-timeline-text {
@@ -2778,6 +2817,16 @@ body.figma-modal-open {
   opacity: 1;
 }
 
+.case-accordion-badge--stroke,
+.case-accordion-trigger:hover .case-accordion-badge--stroke,
+.case-accordion-trigger:focus-visible .case-accordion-badge--stroke,
+.case-accordion-item.is-open .case-accordion-badge--stroke {
+  color: var(--ink);
+  background: transparent;
+  border: 0.5px solid var(--ink);
+  opacity: 1;
+}
+
 .case-accordion-icon {
   flex-shrink: 0;
   width: 18px;
@@ -3199,6 +3248,18 @@ body.figma-modal-open {
 
 .erp-tools-note-item {
   display: inline;
+}
+
+.case-block--erp .erp-tools-note.erp-tools-note--stack {
+  display: grid;
+  gap: 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.case-block--erp .erp-tools-note--stack .erp-tools-note-item {
+  display: block;
 }
 
 .erp-outcome-grid {
@@ -4982,9 +5043,9 @@ body.figma-modal-open {
   width: 36px;
   height: 36px;
   padding: 0;
-  border: 1px solid var(--line);
+  border: 1px solid transparent;
   border-radius: 999px;
-  background: var(--surface);
+  background: transparent;
   color: var(--ink);
   cursor: pointer;
   transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
@@ -4992,9 +5053,9 @@ body.figma-modal-open {
 
 .design-carousel__btn:hover,
 .design-carousel__btn:focus-visible {
+  background: transparent;
   border-color: var(--ink);
-  background: var(--ink);
-  color: var(--surface);
+  color: var(--ink);
 }
 
 .design-carousel__btn:disabled {
@@ -5004,8 +5065,8 @@ body.figma-modal-open {
 
 .design-carousel__btn:disabled:hover,
 .design-carousel__btn:disabled:focus-visible {
-  border-color: var(--line);
-  background: var(--surface);
+  background: transparent;
+  border-color: transparent;
   color: var(--ink);
 }
 
@@ -5474,7 +5535,16 @@ body.figma-modal-open {
   }
 
   .experience-timeline-item {
+    display: block;
+  }
+
+  .experience-timeline-details > summary {
     grid-template-columns: 160px minmax(0, 1fr);
+    padding: 0;
+  }
+
+  .experience-timeline-details {
+    background-position: 160px 0;
   }
 
   .experience-timeline-marker {
@@ -5486,12 +5556,16 @@ body.figma-modal-open {
   }
 
   .experience-timeline-content {
-    padding: 18px 14px;
+    padding: 18px 40px 18px 14px;
   }
 
   .experience-timeline-details > summary {
-    padding: 10px 0;
-    font-size: 11px;
+    padding: 0;
+  }
+
+  .experience-timeline-toggle-icon {
+    top: calc(18px + (15px * 1.45 - 18px) / 2);
+    right: 12px;
   }
 
   .experience-timeline-details .experience-timeline-text {
@@ -6151,6 +6225,171 @@ body.figma-modal-open {
   .splash-connector {
     width: 20px;
     margin-bottom: 40px;
+  }
+}
+
+/* Enoterra: section-width copy and room around screens */
+.case-enoterra .case-hero .section-lead,
+.case-enoterra .case-block p,
+.case-enoterra .case-block--erp-discovery .case-block-lead,
+.case-enoterra .case-block--erp-develop .erp-develop-prose,
+.case-enoterra .case-block--erp-develop p.erp-develop-prose,
+.case-enoterra .case-block--erp-develop .erp-handover-list,
+.case-enoterra .case-block--erp-develop .erp-feature-text,
+.case-enoterra .case-block--erp-results .erp-develop-prose,
+.case-enoterra .case-block--erp-results p.erp-develop-prose,
+.case-enoterra .erp-kpi-roadmap,
+.case-enoterra .case-block--erp-closing .erp-kpi-lesson {
+  max-width: none;
+  width: 100%;
+}
+
+.case-enoterra .case-block--erp-closing .erp-develop-prose {
+  max-width: none;
+  width: 100%;
+  text-wrap: wrap;
+}
+
+.case-enoterra .case-block--erp-discovery .case-meta.case-meta--erp-priority {
+  max-width: none;
+  width: 100%;
+}
+
+.case-enoterra .case-accordion-panel-inner {
+  padding-top: 40px;
+}
+
+.case-enoterra .case-block--erp .case-block-subtitle {
+  margin-bottom: 16px;
+}
+
+.case-enoterra .erp-scope-grid,
+.case-enoterra .erp-outcome-grid {
+  gap: 16px;
+}
+
+.case-enoterra .erp-scope-panel,
+.case-enoterra .erp-outcome-box {
+  padding: 20px 22px;
+}
+
+.case-enoterra .case-block--erp-discovery .case-block-subtitle:first-of-type {
+  margin-top: 0;
+}
+
+.case-enoterra .case-block--erp-discovery .case-meta.case-meta--erp-workshop,
+.case-enoterra .case-block--erp-discovery .case-meta.case-meta--erp-empathy {
+  column-gap: 16px;
+  row-gap: 16px;
+}
+
+.case-enoterra .case-block--erp-discovery .case-meta--boxed > div {
+  padding: 16px;
+}
+
+.case-enoterra .case-block--erp-discovery .case-meta--erp-priority.case-meta--boxed > div {
+  padding: 14px 16px;
+}
+
+.case-enoterra .erp-priority-items {
+  gap: 8px;
+}
+
+.case-enoterra .case-block--erp-discovery .erp-brainstorm-section + .erp-brainstorm-section {
+  margin-top: 24px;
+}
+
+.case-enoterra .erp-idea-grid {
+  gap: 10px;
+}
+
+.case-enoterra .case-block--erp-develop .erp-feature-text {
+  margin-bottom: 0;
+}
+
+.case-enoterra .case-block--erp-develop .erp-feature-text--tight {
+  margin-bottom: 28px;
+}
+
+.case-enoterra .case-block--erp-develop .case-image-box,
+.case-enoterra .case-block--erp-develop .erp-video-frame,
+.case-enoterra .case-block--erp-develop .erp-flow-video.case-image-box,
+.case-enoterra .case-block--erp-results .erp-video-frame,
+.case-enoterra .erp-kpi-method .erp-video-frame {
+  max-width: none;
+  padding: 16px 16px 12px;
+}
+
+.case-enoterra .case-block--erp-develop .erp-feature > .case-image-box {
+  margin-top: 36px;
+}
+
+.case-enoterra .case-block--erp-develop .ux-flow--before-video + .case-image-box {
+  margin-top: 64px;
+}
+
+.case-enoterra .erp-theme-compare .case-image-box {
+  margin-top: 0;
+}
+
+.case-enoterra .case-block--erp-develop .erp-video-center,
+.case-enoterra .erp-validation-task-video.erp-video-center {
+  max-width: none;
+}
+
+.case-enoterra .erp-validation-task-video.erp-video-center {
+  margin-top: 28px;
+}
+
+.case-enoterra .case-block--erp-develop .erp-handover-list {
+  margin-top: 16px;
+}
+
+.case-enoterra .erp-kpi-method h4.erp-tracked-heading {
+  margin-top: 64px;
+}
+
+.case-enoterra .erp-tracked-note {
+  margin: 0 0 12px;
+}
+
+.case-enoterra .erp-tracked-note:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 640px) {
+  .case-enoterra .erp-scope-grid,
+  .case-enoterra .erp-outcome-grid {
+    gap: 10px;
+  }
+
+  .case-enoterra .erp-scope-panel,
+  .case-enoterra .erp-outcome-box {
+    padding: 14px 12px;
+  }
+
+  .case-enoterra .case-accordion-panel-inner {
+    padding-top: 24px;
+  }
+
+  .case-enoterra .case-block--erp-develop .case-image-box,
+  .case-enoterra .case-block--erp-develop .erp-video-frame,
+  .case-enoterra .case-block--erp-develop .erp-flow-video.case-image-box,
+  .case-enoterra .case-block--erp-results .erp-video-frame,
+  .case-enoterra .erp-kpi-method .erp-video-frame {
+    padding: 8px 8px 6px;
+  }
+
+  .case-enoterra .case-block--erp-develop .erp-feature > .case-image-box {
+    margin-top: 20px;
+  }
+
+  .case-enoterra .erp-kpi-method {
+    padding: 16px 14px;
+  }
+
+  .case-enoterra .erp-kpi-method h4.erp-tracked-heading {
+    margin-top: 40px;
   }
 }
 
