@@ -23,7 +23,7 @@
   --accent-glow: rgba(242, 241, 236, 0.2);
   --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-display: "Syne", var(--font);
-  --max: 1040px;
+  --max: 1280px;
   --measure: calc(62ch - 120px);
   --measure-lead: min(720px, 100%);
   --nav-h: 64px;
@@ -482,23 +482,23 @@ body:has(.home-hero) #contact {
 
 .home-hero__title {
   margin: 0;
-  max-width: 18em;
+  max-width: 16em;
   font-family: var(--font);
-  font-size: clamp(30px, 4.9vw, 54px);
-  font-weight: 400;
-  letter-spacing: 0.01em;
-  line-height: 1.15;
+  font-size: clamp(42px, 6.4vw, 76px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
   color: #f2f1ec;
 }
 
 .home-hero__lead {
   display: block;
-  max-width: 68ch;
-  margin-top: 16px;
-  font-size: clamp(16.9px, 1.755vw, 19.5px);
+  max-width: 36em;
+  margin-top: 20px;
+  font-size: clamp(18px, 2vw, 23px);
   font-weight: 300;
-  letter-spacing: 0.06em;
-  line-height: 1.55;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
   color: #f2f1ec;
 }
 
@@ -1186,6 +1186,20 @@ a.about-row:focus-visible .about-row-arrow svg {
   align-items: flex-start;
   gap: 18px;
   width: 100%;
+}
+
+.about-me__columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.85fr);
+  gap: 28px 48px;
+  width: 100%;
+}
+
+.about-me__col {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
 }
 
 .about-me__copy p {
@@ -5655,6 +5669,15 @@ body.figma-modal-open {
   }
 
   .about-me__copy {
+    gap: 14px;
+  }
+
+  .about-me__columns {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .about-me__col {
     gap: 14px;
   }
 
