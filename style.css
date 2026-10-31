@@ -5516,17 +5516,7 @@ body.figma-modal-open {
   }
 
   .about-row-preview--label {
-    display: block;
-    position: static;
-    opacity: 1;
-    transform: none;
-    width: auto;
-    margin-left: auto;
-    align-self: center;
-    flex: 0 0 auto;
-    font-size: 9px;
-    letter-spacing: 0.12em;
-    pointer-events: none;
+    display: none;
   }
 
   a.about-row:hover .about-row-arrow svg,
@@ -6357,7 +6347,59 @@ body.figma-modal-open {
   margin-bottom: 0;
 }
 
+@media (min-width: 641px) {
+  .case-accordion--scope {
+    border: 0;
+  }
+
+  .case-accordion--scope .case-accordion-item {
+    border-bottom: 0;
+  }
+
+  .case-accordion--scope .case-accordion-item .container,
+  .case-accordion--scope .case-accordion-item.is-open .container {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .case-accordion--scope .case-accordion-heading {
+    margin: 28px 0 16px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .case-accordion--scope .case-accordion-icon {
+    display: none;
+  }
+
+  .case-accordion--scope .case-accordion-trigger {
+    width: auto;
+    display: inline-flex;
+    padding: 0;
+    pointer-events: none;
+    cursor: default;
+  }
+
+  .case-enoterra .case-accordion--scope .case-accordion-panel-inner {
+    padding-top: 0;
+  }
+}
+
 @media (max-width: 640px) {
+  .case-accordion--scope .case-block--erp {
+    padding: 0;
+    border-bottom: 0;
+  }
+
+  .case-accordion--scope .case-accordion-heading {
+    margin: 0;
+    max-width: none;
+    width: 100%;
+  }
+
   .case-enoterra .erp-scope-grid,
   .case-enoterra .erp-outcome-grid {
     gap: 10px;

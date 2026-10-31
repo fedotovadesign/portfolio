@@ -637,6 +637,7 @@
     accordion.querySelectorAll(".case-accordion-item")
   );
   var motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var mobileAccordionMq = window.matchMedia("(max-width: 640px)");
   var duration = 460;
   var easing = "cubic-bezier(0.33, 1, 0.68, 1)";
 
@@ -646,6 +647,26 @@
 
   function getDuration() {
     return prefersReduced() ? 0 : duration;
+  }
+
+  function syncMobileAccordionItem(item) {
+    if (!item.hasAttribute("data-accordion-mobile")) return;
+
+    var trigger = item.querySelector(".case-accordion-trigger");
+    var onMobile = mobileAccordionMq.matches;
+
+    if (trigger) trigger.tabIndex = onMobile ? 0 : -1;
+
+    if (!onMobile) {
+      item.dataset.accordionViewport = "desktop";
+      if (!item.classList.contains("is-open")) setItemState(item, true, false);
+      return;
+    }
+
+    if (item.dataset.accordionViewport !== "mobile") {
+      item.dataset.accordionViewport = "mobile";
+      setItemState(item, false, false);
+    }
   }
 
   function ensurePanelInner(panel) {
@@ -804,6 +825,8 @@
     if (!trigger) return;
 
     trigger.addEventListener("click", function () {
+      if (item.hasAttribute("data-accordion-mobile") && !mobileAccordionMq.matches) return;
+
       var panel = item.querySelector(".case-accordion-panel");
       var isOpen = item.classList.contains("is-open");
 
@@ -818,8 +841,11 @@
     });
   });
 
+  items.forEach(syncMobileAccordionItem);
+
   window.addEventListener("resize", function () {
     items.forEach(function (item) {
+      syncMobileAccordionItem(item);
       if (!item.classList.contains("is-open")) return;
 
       var panel = item.querySelector(".case-accordion-panel");

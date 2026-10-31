@@ -74,17 +74,44 @@
         box-shadow: 0 16px 50px rgba(0, 0, 0, 0.12);
       }
     }
+    @media screen and (max-width: 860px) {
+      html, body { overflow-x: hidden; }
+      .cv-bar {
+        padding: 12px 16px;
+        gap: 12px;
+      }
+      .cv-bar a {
+        font-size: 10px;
+        letter-spacing: 0.08em;
+      }
+      .sheet-frame {
+        margin: 16px auto 32px;
+        overflow: hidden;
+      }
+      .sheet {
+        margin: 0;
+        transform-origin: top left;
+      }
+    }
     @media print {
       .cv-bar { display: none !important; }
       html, body {
         width: 210mm;
         height: 297mm;
         background: #fff;
+        overflow: visible;
+      }
+      .sheet-frame {
+        width: auto !important;
+        height: auto !important;
+        margin: 0 !important;
+        overflow: visible !important;
       }
       .sheet {
-        width: 210mm;
-        height: 297mm;
-        margin: 0;
+        width: 210mm !important;
+        height: 297mm !important;
+        margin: 0 !important;
+        transform: none !important;
         box-shadow: none;
       }
     }
@@ -337,9 +364,10 @@
 </head>
 <body>
   <div class="cv-bar">
-    <a class="cv-bar-back" href="welcome.html">Back</a>
+    <a class="cv-bar-back" href="welcome.html">Back to portfolio</a>
     <a class="cv-bar-download" href="Product-Designer-Vera-Fedotova.pdf?v=3" download="Vera Fedotova Product Designer CV.pdf">Download as PDF</a>
   </div>
+  <div class="sheet-frame">
   <div class="sheet">
   <header>
     <div class="identity">
@@ -508,5 +536,32 @@
     </aside>
   </div>
   </div>
+  </div>
+  <script>
+    (function () {
+      var frame = document.querySelector(".sheet-frame");
+      var sheet = document.querySelector(".sheet");
+      if (!frame || !sheet) return;
+      var narrow = window.matchMedia("(max-width: 860px)");
+
+      function fit() {
+        sheet.style.transform = "none";
+        frame.style.width = "";
+        frame.style.height = "";
+        if (!narrow.matches) return;
+        var naturalW = sheet.offsetWidth;
+        var naturalH = sheet.offsetHeight;
+        if (!naturalW || !naturalH) return;
+        var scale = Math.min(1, (window.innerWidth - 28) / naturalW);
+        sheet.style.transform = "scale(" + scale + ")";
+        frame.style.width = Math.round(naturalW * scale) + "px";
+        frame.style.height = Math.round(naturalH * scale) + "px";
+      }
+
+      fit();
+      window.addEventListener("resize", fit);
+      if (narrow.addEventListener) narrow.addEventListener("change", fit);
+    })();
+  </script>
 </body>
 </html>

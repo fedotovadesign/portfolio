@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=413" />
+  <link rel="stylesheet" href="style.css?v=414" />
   <link rel="stylesheet" href="erp-hero-carousel.css?v=11" />
   <link rel="stylesheet" href="carousel-ui.css?v=3" />
 </head>
@@ -65,9 +65,16 @@
       </div>
     </section>
 
-    <section class="case-block case-block--erp">
+    <div class="case-accordion case-accordion--scope">
+    <section class="case-block case-block--erp case-accordion-item" data-accordion-mobile>
       <div class="container">
-        <h3 class="case-block-subtitle">Scope</h3>
+        <h2 class="case-accordion-heading">
+          <button type="button" class="case-accordion-trigger" aria-expanded="true" aria-controls="accordion-erp-scope" id="accordion-trigger-erp-scope">
+            <span class="case-accordion-title">Scope</span>
+            <span class="case-accordion-icon" aria-hidden="true"></span>
+          </button>
+        </h2>
+        <div class="case-accordion-panel" id="accordion-erp-scope" role="region" aria-labelledby="accordion-trigger-erp-scope">
         <div class="erp-scope-grid">
           <article class="erp-scope-panel">
             <h4 class="erp-scope-title">Designer role</h4>
@@ -116,8 +123,10 @@
             </p>
           </article>
         </div>
+        </div>
       </div>
     </section>
+    </div>
 
     <section class="case-showcase case-showcase--erp" aria-label="Pulpit dashboard preview">
       <div class="container">
@@ -644,7 +653,7 @@
     </div>
   </footer>
 
-  <script src="main.js?v=90"></script>
+  <script src="main.js?v=92"></script>
   <script src="carousel-keyboard.js?v=1"></script>
 </body>
 </html>
