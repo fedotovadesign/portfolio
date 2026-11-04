@@ -332,12 +332,6 @@
         continue;
       }
 
-      if (next && shouldBind(next)) {
-        result.push(word + "\u00A0" + next);
-        i += 2;
-        continue;
-      }
-
       result.push(word);
       i += 1;
     }
